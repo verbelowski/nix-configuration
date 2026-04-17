@@ -20,7 +20,7 @@
 
   # Build context.
   # Flake outputs and build definition.
-  outputs = { nixpkgs, home-manager }: let
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     # Shared variables.
     # External constant definitions.
     vars = import ./lib/shared-variables.nix;
