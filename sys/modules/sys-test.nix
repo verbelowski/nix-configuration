@@ -1,4 +1,4 @@
-{ pkgs, stateVersion, ... }: {
+{ pkgs, vars, ... }: {
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -15,5 +15,5 @@
 
   virtualisation.vmware.guest.enable = true;
 
-  system.stateVersion = stateVersion;
+  system.stateVersion = vars.stateVersion;
 }

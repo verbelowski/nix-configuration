@@ -1,10 +1,14 @@
 {
+  # Build platform.
+  # Linux system execution target definition.
+  system = "x86_64-linux";
+
   # Host identity.
-  # Target machine and user identifiers.
+  # Machine and user naming context.
   hostname = "nixos";
   username = "vertennn";
 
-  # System state.
-  # NixOS compatibility version baseline.
+  # State baseline.
+  # NixOS version compatibility reference.
   stateVersion = "25.11";
 }

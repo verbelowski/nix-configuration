@@ -1,10 +1,8 @@
-{ pkgs, username, stateVersion, ... }: {
-  home.username = username;
-  home.homeDirectory = "/home/${username}";
+{ pkgs, vars, ... }: {
+  home.username = vars.username;
+  home.homeDirectory = "/home/${vars.username}";
 
   home.packages = with pkgs; [ /* empty list */ ];
-
-  /* SECTION TO MOVE + TO MODIFY */
 
   programs.git = {
     enable = true;
@@ -19,9 +17,7 @@
     };
   };
 
-  /* SECTION TO MOVE + TO MODIFY */
-
   systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = stateVersion;
+  home.stateVersion = vars.stateVersion;
 }

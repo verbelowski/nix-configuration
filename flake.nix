@@ -19,7 +19,7 @@
   };
 
   # Build context.
-  # Flake outputs and system build definition.
+  # Flake outputs and build definition.
   outputs = { nixpkgs, home-manager }: let
     # Shared variables.
     # External constant definitions.
@@ -28,22 +28,22 @@
     # Shared context.
     # Common argument set for modules and Home Manager.
     sharedArgs = {
-      inherit (vars) hostname username stateVersion;
+      inherit vars;
     };
   in {
     # Host configuration.
-    # System build definition for machine.
+    # Build definition for machine.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
       # Target platform.
-      # Linux x86_64 architecture definition.
-      system = "x86_64-linux";
+      # Linux architecture definition.
+      system = vars.system;
 
       # Argument context.
       # Shared arguments available to modules.
       specialArgs = sharedArgs;
 
       # Module composition.
-      # System module list and composition structure.
+      # Module list and structure.
       modules = [
         # Base setup.
         # Core system and hardware definitions.
