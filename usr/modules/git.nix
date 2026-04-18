@@ -1,4 +1,8 @@
-{ vars, ... }: {
+{ lib, vars, ... }: let
+  # String transformation.
+  # First character capitalization utility function.
+  capitalize = str: with lib.strings; toUpper (substring 0 1 str) + substring 1 (stringLength str - 1) str;
+in {
   # Git configuration.
   # Version control setup and user identity definition.
   programs.git = {
@@ -12,8 +16,8 @@
       # Identity settings.
       # Commit author configuration.
       user = {
-        name = "Vertennn";
-        email = "145216301+verbelowski@users.noreply.github.com";
+        name = capitalize vars.user.name;
+        email = vars.user.email;
       };
 
       # Repository defaults.
@@ -29,7 +33,7 @@
 
       # Credential storage.
       # Persistent authentication storage.
-      credential.helper = "store";
+      credential.helper = "cache";
 
       # Pull behavior.
       # Rebase strategy with automatic stash handling.
@@ -45,7 +49,7 @@
 
       # Safe directories.
       # Allowed filesystem context for Git operations.
-      safe.directory = "/home/${vars.username}";
+      safe.directory = "/home/${vars.user.name}";
     };
   };
-}
+};

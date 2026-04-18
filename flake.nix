@@ -64,7 +64,7 @@
 
           # User setup.
           # Home Manager entrypoint for user environment.
-          home-manager.users.${vars.username} = import ./usr/home.nix;
+          home-manager.users.${vars.user.name} = import ./usr/home.nix;
         }
       ];
     };
