@@ -4,10 +4,10 @@
   description = "Personal NixOS configuration with Hyprland tiling Wayland compositor.";
 
   # Input sources.
-  # External dependencies and flake inputs.
+  # External dependencies and inputs.
   inputs = {
     # Package source.
-    # Unstable nixpkgs channel reference.
+    # Unstable nixpkgs channel.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home Manager.
@@ -19,51 +19,51 @@
   };
 
   # Build context.
-  # Flake outputs and build definition.
+  # Flake outputs definition.
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     # Shared variables.
-    # External constant definitions.
+    # External values.
     vars = import ./lib/shared-variables.nix;
 
     # Shared context.
-    # Common argument set for modules and Home Manager.
+    # Module arguments set.
     sharedArgs = {
       inherit vars;
     };
   in {
     # Host configuration.
-    # Build definition for machine.
+    # System build definition.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
       # Target platform.
-      # Linux architecture definition.
+      # System architecture.
       system = vars.system;
 
       # Argument context.
-      # Shared arguments available to modules.
+      # Module shared arguments.
       specialArgs = sharedArgs;
 
       # Module composition.
-      # Module list and structure.
+      # System module set.
       modules = [
         # Base setup.
-        # Core system and hardware definitions.
+        # System configuration and hardware.
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
 
         # Home integration.
-        # Home Manager binding layer.
+        # Home Manager layer.
         home-manager.nixosModules.home-manager {
           # Package alignment.
-          # Shared packages and user-level installs.
+          # Global package sharing.
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
           # Argument context.
-          # Shared arguments available to Home Manager.
+          # Home Manager shared arguments.
           home-manager.extraSpecialArgs = sharedArgs;
 
           # User setup.
-          # Home Manager entrypoint for user environment.
+          # Home Manager user configuration.
           home-manager.users.${vars.user.name} = import ./usr/home.nix;
         }
       ];

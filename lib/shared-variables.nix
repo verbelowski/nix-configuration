@@ -1,20 +1,20 @@
 {
   # Platform target.
-  # System architecture definition.
+  # System architecture.
   system = "x86_64-linux";
 
   # Host identity.
-  # Machine naming context.
+  # Machine name.
   hostname = "nixos";
 
   # User identity.
-  # Account name and email metadata.
+  # Account metadata.
   user = {
     name = "vertennn";
     email = "145216301+verbelowski@users.noreply.github.com";
   };
 
-  # State baseline.
-  # NixOS and Home Manager version compatibility reference.
+  # State version baseline.
+  # NixOS and Home Manager compatibility version.
   stateVersion = "25.11";
 }

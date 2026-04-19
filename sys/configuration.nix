@@ -1,13 +1,13 @@
 { vars, ... }: {
   # Module imports.
-  # System module aggregation via dynamic loader.
+  # System modules.
   imports = import ../lib/import-modules.nix {
     # Module directory.
-    # System module source path.
+    # System modules path.
     dir = ../sys/modules;
   };
 
-  # NixOS state.
-  # System configuration version compatibility reference.
+  # System state version.
+  # NixOS compatibility baseline.
   system.stateVersion = vars.stateVersion;
 }
