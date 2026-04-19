@@ -1,74 +1,83 @@
 { lib, vars, ... }: let
-  # String transformation.
-  # Capitalization utility.
+  # String helper.
+  # Capitalization utility function.
   capitalize = str: with lib.strings; toUpper (substring 0 1 str) + substring 1 (stringLength str - 1) str;
 in {
   # Git setup.
   # Version control configuration.
   programs.git = {
-    # Enablement.
-    # Git program.
+    # Enable flag.
+    # Git activation state.
     enable = true;
 
-    # Settings scope.
-    # Git configuration.
+    # Settings block.
+    # Git configuration scope.
     settings = {
-      # Identity.
-      # User configuration.
+      # Identity configuration.
+      # User identity definition.
       user = {
-        # Fields.
-        # Name and email.
+        # Identity fields.
+        # Name and email values.
         name = capitalize vars.user.name;
         email = vars.user.email;
 
+        # Signing key.
+        # SSH key for commit signing.
+        signingkey = "~/.ssh/id_ed25519.pub";
+
         # Configuration scope.
-        # Restricted user values.
+        # Strict identity usage rule.
         useConfigOnly = true;
       };
 
-      # Init.
-      # Repository defaults.
+      # Signature setup.
+      # Commit signing configuration.
+      gpg.format = "ssh";
+      commit.gpgsign = true;
+
+      # Repository init.
+      # Default branch name.
       init.defaultBranch = "main";
 
-      # Core.
-      # Editor and line handling.
+      # Core behavior.
+      # Editor and line ending handling.
       core = {
         editor = "nvim";
         autocrlf = "input";
       };
 
       # URL rewrite.
-      # GitHub transport rules.
+      # GitHub SSH transport mapping.
       url."git@github.com:".insteadOf = "https://github.com/";
 
-      # Fetch.
-      # Remote pruning.
+      # Fetch behavior.
+      # Remote branch pruning.
       fetch.prune = true;
 
-      # Pull.
-      # Update strategy.
+      # Pull strategy.
+      # Rebase for updates.
       pull.rebase = true;
 
-      # Push.
-      # Push defaults.
+      # Push rules.
+      # Default push configuration.
       push = {
         default = "simple";
         autoSetupRemote = true;
       };
 
-      # Rebase.
-      # Rebase behavior.
+      # Rebase rules.
+      # Automatic stash and squash handling.
       rebase = {
         autoStash = true;
         autoSquash = true;
       };
 
-      # Merge.
-      # Conflict style.
+      # Merge style.
+      # Conflict output format.
       merge.conflictstyle = "zdiff3";
 
-      # Safe directories.
-      # Repository trust list.
+      # Safe paths.
+      # Trusted repository list.
       safe.directory = "*";
     };
   };

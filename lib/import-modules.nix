@@ -1,18 +1,18 @@
 { dir }: let
-  # Directory entries.
-  # Filesystem directory listing.
+  # Directory listing.
+  # Raw filesystem scan output.
   dirEntries = builtins.readDir dir;
   dirEntryNames = builtins.attrNames dirEntries;
 
-  # Nix file filter.
-  # File extension match.
+  # File matcher.
+  # Nix extension validation rule.
   isNixFile = name: builtins.match ".*\\.nix$" name != null;
 
-  # Regular file filter.
-  # File type validation.
+  # File filter.
+  # Regular Nix file constraint.
   isRegularNixFile = name: dirEntries.${name} == "regular" && isNixFile name;
 in
   # Module paths.
-  # Filtered file paths list.
+  # Filtered Nix module path list.
   map (file: "${dir}/${file}")
     (builtins.filter isRegularNixFile dirEntryNames)

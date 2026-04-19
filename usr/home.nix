@@ -1,13 +1,13 @@
 { vars, ... }: {
   # Module imports.
-  # User modules.
+  # User module composition set.
   imports = import ../lib/import-modules.nix {
     # Module directory.
-    # User modules path.
+    # User modules path reference.
     dir = ../usr/modules;
   };
 
-  # Home state version.
-  # Home Manager compatibility baseline.
+  # Home state.
+  # Home Manager version baseline.
   home.stateVersion = vars.stateVersion;
 }

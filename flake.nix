@@ -4,14 +4,14 @@
   description = "Personal NixOS configuration with Hyprland tiling Wayland compositor.";
 
   # Input sources.
-  # External dependencies and inputs.
+  # External dependencies for build inputs.
   inputs = {
     # Package source.
-    # Unstable nixpkgs channel.
+    # Unstable nixpkgs channel reference.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home Manager.
-    # User environment management layer.
+    # User environment management system.
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,51 +19,51 @@
   };
 
   # Build context.
-  # Flake outputs definition.
+  # Flake output definition.
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     # Shared variables.
-    # External values.
+    # Central configuration values import.
     vars = import ./lib/shared-variables.nix;
 
-    # Shared context.
-    # Module arguments set.
+    # Shared arguments.
+    # Common module arguments set.
     sharedArgs = {
       inherit vars;
     };
   in {
-    # Host configuration.
-    # System build definition.
+    # Host system.
+    # NixOS configuration entry.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
-      # Target platform.
-      # System architecture.
+      # Target system.
+      # Architecture definition.
       system = vars.system;
 
-      # Argument context.
-      # Module shared arguments.
+      # Module arguments.
+      # Shared configuration context.
       specialArgs = sharedArgs;
 
-      # Module composition.
-      # System module set.
+      # Module list.
+      # System configuration modules.
       modules = [
-        # Base setup.
-        # System configuration and hardware.
+        # Base system.
+        # Core NixOS configuration and hardware setup.
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
 
-        # Home integration.
-        # Home Manager layer.
+        # Home setup.
+        # Home Manager integration for user environment.
         home-manager.nixosModules.home-manager {
-          # Package alignment.
-          # Global package sharing.
+          # Package sharing.
+          # Unified package set between system and user.
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # Argument context.
-          # Home Manager shared arguments.
+          # Module arguments.
+          # Shared context for Home Manager.
           home-manager.extraSpecialArgs = sharedArgs;
 
-          # User setup.
-          # Home Manager user configuration.
+          # User configuration.
+          # Home Manager user profile definition.
           home-manager.users.${vars.user.name} = import ./usr/home.nix;
         }
       ];
