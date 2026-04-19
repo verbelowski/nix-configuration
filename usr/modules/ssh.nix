@@ -1,26 +1,21 @@
 { ... }: {
-  # SSH setup.
-  # Remote access configuration.
   programs.ssh = {
-    # Enablement.
-    # SSH client.
     enable = true;
+    enableDefaultConfig = false;
 
-    # Agent.
-    # Key management.
-    startAgent = true;
+    matchBlocks = {
+      "*" = {
+        identitiesOnly = true;
+        addKeysToAgent = true;
+        serverAliveInterval = 60;
+        serverAliveCountMax = 3;
+        strictHostKeyChecking = "accept-new";
+      };
 
-    # Host rules.
-    # Host-specific configuration.
-    extraConfig = ''
-      Host github.com
-        User git
-        IdentityFile ~/.ssh/id_ed25519
-        IdentitiesOnly yes
-        AddKeysToAgent yes
-        ServerAliveInterval 60
-        ServerAliveCountMax 3
-        StrictHostKeyChecking accept-new
-    '';
+      "github.com" = {
+        user = "git";
+        identityFile = "~/.ssh/id_ed25519";
+      };
+    };
   };
 }
