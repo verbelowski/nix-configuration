@@ -1,11 +1,11 @@
 { vars, ... }: {
   # Module imports.
-  # User module composition set.
+  # Home module loading from external directory.
   imports = import ../lib/import-modules.nix {
     dir = ../usr/modules;
   };
 
-  # Home state.
-  # Home Manager version baseline.
+  # State version.
+  # Home Manager compatibility version reference.
   home.stateVersion = vars.stateVersion;
 }

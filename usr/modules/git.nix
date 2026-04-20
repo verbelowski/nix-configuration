@@ -9,8 +9,17 @@ in {
         name = capitalize vars.user.name;
         email = vars.user.email;
 
+        signingKey = "~/.ssh/id_ed25519"; # idk czy pub czy prywatny
+
         useConfigOnly = true;
       };
+
+      gpg = {
+        format = "ssh";
+        ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      };
+
+      commit.gpgSign = true;
 
       init.defaultBranch = "main";
 
@@ -18,6 +27,8 @@ in {
         editor = "nvim";
         autocrlf = "input";
       };
+
+      url."git@github.com:".insteadOf = "https://github.com/";
 
       fetch.prune = true;
 
@@ -36,19 +47,6 @@ in {
       merge.conflictStyle = "zdiff3";
 
       safe.directory = "*";
-
-      /* do kluczy */
-      gpg = {
-        format = "ssh";
-        ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      };
-
-      commit.gpgsign = true;
-
-      url."git@github.com:".insteadOf = "https://github.com/";
     };
-      /* do kluczy */
-    signing.key = "~/.ssh/id_ed25519.pub";
-    signing.signByDefault = true;
   };
 }

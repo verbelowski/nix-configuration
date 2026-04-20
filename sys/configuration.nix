@@ -1,11 +1,11 @@
 { vars, ... }: {
   # Module imports.
-  # System module composition set.
+  # System module loading from external directory.
   imports = import ../lib/import-modules.nix {
     dir = ../sys/modules;
   };
 
-  # System state.
-  # NixOS version baseline.
+  # State version.
+  # System compatibility version reference.
   system.stateVersion = vars.stateVersion;
 }

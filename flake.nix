@@ -1,69 +1,69 @@
 {
-  # System scope.
-  # Personal NixOS configuration with Hyprland tiling Wayland compositor.
+  # Project scope.
+  # System configuration context.
   description = "Personal NixOS configuration with Hyprland tiling Wayland compositor.";
 
   # Input sources.
-  # External dependencies for build inputs.
+  # External dependency definitions.
   inputs = {
     # Package source.
-    # Unstable nixpkgs channel reference.
+    # NixOS package collection reference.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home Manager.
-    # User environment management system.
+    # User environment management setup.
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  # Build context.
-  # Flake output definition.
+  # Output configuration.
+  # System build definitions.
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     # Shared variables.
-    # Central configuration values import.
+    # Common configuration values import.
     vars = import ./lib/shared-variables.nix;
 
     # Shared arguments.
-    # Common module arguments set.
+    # Global parameter collection.
     sharedArgs = {
       inherit vars;
     };
   in {
-    # Host system.
-    # NixOS configuration entry.
+    # System configurations.
+    # Machine build definitions.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
-      # Target system.
-      # Architecture definition.
+      # System target.
+      # Architecture selection value.
       system = vars.system;
 
-      # Module arguments.
-      # Shared configuration context.
+      # Special arguments.
+      # Global parameter set for modules.
       specialArgs = sharedArgs;
 
       # Module list.
-      # System configuration modules.
+      # System configuration composition.
       modules = [
-        # Base system.
-        # Core NixOS configuration and hardware setup.
+        # System configuration.
+        # Core operating system and hardware definitions.
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
 
-        # Home setup.
-        # Home Manager integration for user environment.
+        # Home Manager integration.
+        # User environment configuration.
         home-manager.nixosModules.home-manager {
-          # Package sharing.
-          # Unified package set between system and user.
+          # Package usage.
+          # Shared package set and user package installation settings.
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # Module arguments.
-          # Shared context for Home Manager.
+          # Extra arguments.
+          # Additional configuration inputs.
           home-manager.extraSpecialArgs = sharedArgs;
 
           # User configuration.
-          # Home Manager user profile definition.
+          # Home environment definition.
           home-manager.users.${vars.user.name} = import ./usr/home.nix;
         }
       ];
