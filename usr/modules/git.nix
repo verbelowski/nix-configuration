@@ -17,7 +17,7 @@ in {
       # User identity definition.
       user = {
         # Identity fields.
-        # Name and email values.
+        # Name and e-mail values.
         name = capitalize vars.user.name;
         email = vars.user.email;
 
@@ -31,8 +31,14 @@ in {
       };
 
       # Signature setup.
-      # Commit signing configuration.
-      gpg.format = "ssh";
+      # Git commit signing.
+      gpg = {
+        format = "ssh";
+        ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      };
+
+      # Commit signing.
+      # Signature requirement for commits.
       commit.gpgsign = true;
 
       # Repository init.
