@@ -54,7 +54,7 @@
         # User environment configuration.
         home-manager.nixosModules.home-manager {
           # Package usage.
-          # Shared package set and user package installation settings.
+          # Global package set and user package installation settings.
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
