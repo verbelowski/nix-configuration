@@ -1,22 +1,19 @@
 { dir }:
-  # Path validation.
-  # Directory existence requirement check.
+  # Directory validation.
+  # Ensure directory existence.
   assert builtins.pathExists dir;
 let
-  # Directory scan.
-  # Directory entry listing result.
+  # Directory listing.
+  # Read directory entries.
   dirEntries = builtins.readDir dir;
-
-  # Name sorting.
-  # Alphabetical directory entry ordering.
   dirEntryNames = builtins.sort builtins.lessThan (builtins.attrNames dirEntries);
 
-  # File filtering.
-  # Regular file entries with Nix extension matching.
+  # Entry filtering.
+  # Select regular files only.
   isNixFile = name: builtins.match ".*\\.nix$" name != null;
   isRegularNixFile = name: dirEntries.${name} == "regular" && isNixFile name;
 in
   # Path mapping.
-  # Filtered file path list construction.
+  # Map filtered files to full paths.
   map (file: dir + "/${file}")
     (builtins.filter isRegularNixFile dirEntryNames)

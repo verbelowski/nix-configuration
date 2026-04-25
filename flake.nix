@@ -1,68 +1,68 @@
 {
-  # Project scope.
-  # System configuration context.
+  # Flake description.
+  # Project configuration.
   description = "Personal NixOS configuration with Hyprland tiling Wayland compositor.";
 
-  # Input sources.
-  # External dependency definitions.
+  # Flake inputs.
+  # External sources and dependencies.
   inputs = {
-    # Package source.
-    # NixOS package collection reference.
+    # Nixpkgs source.
+    # System package set.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager.
-    # User environment management setup.
+    # Home Manager source.
+    # User environment module.
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  # Output configuration.
-  # System build definitions.
+  # Flake outputs.
+  # System configuration definitions.
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     # Shared variables.
-    # Common configuration values import.
+    # Central configuration values.
     vars = import ./lib/shared-variables.nix;
 
     # Shared arguments.
-    # Global parameter collection.
+    # Common module argument set.
     sharedArgs = {
       inherit vars;
     };
   in {
-    # System configurations.
-    # Machine build definitions.
+    # NixOS system.
+    # Host configuration entry.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
-      # System target.
-      # Architecture selection value.
+      # System platform.
+      # Target architecture definition.
       system = vars.system;
 
-      # Special arguments.
-      # Global parameter set for modules.
+      # Module arguments.
+      # Shared context passed to modules.
       specialArgs = sharedArgs;
 
       # Module list.
-      # System configuration composition.
+      # System and user configuration modules.
       modules = [
-        # System configuration.
-        # Core operating system and hardware definitions.
+        # Module entries.
+        # System and hardware configuration files.
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
 
-        # Home Manager integration.
-        # User environment configuration.
+        # Home Manager module.
+        # User environment integration layer.
         home-manager.nixosModules.home-manager {
-          # Package usage.
-          # Global package set and user package installation settings.
+          # Package management mode.
+          # System-wide package set with user package enablement.
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # Extra arguments.
-          # Additional configuration inputs.
+          # Home Manager arguments.
+          # Shared configuration context.
           home-manager.extraSpecialArgs = sharedArgs;
 
-          # User configuration.
+          # User configuration entry.
           # Home environment definition.
           home-manager.users.${vars.user.name} = import ./usr/home.nix;
         }
