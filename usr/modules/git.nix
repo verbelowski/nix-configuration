@@ -71,10 +71,6 @@ in {
       # Push behavior.
       # Remote update and authentication handling.
       push = {
-        # SSH signing.
-        # Automatic signature generation.
-        gpgSign = true;
-
         # Default push mode.
         # Strategy and upstream configuration rules.
         default = "simple";
