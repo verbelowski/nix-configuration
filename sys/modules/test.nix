@@ -14,6 +14,4 @@
   };
 
   environment.systemPackages = with pkgs; [ neovim ];
-
-  virtualisation.vmware.guest.enable = true;
 }
