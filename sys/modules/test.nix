@@ -8,6 +8,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  networking.networkmanager.enable = true;
+
   users.users.vertennn = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
