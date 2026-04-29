@@ -14,18 +14,15 @@
     # Per-host connection settings.
     matchBlocks = {
       "*" = {
-        # Authentication restriction.
-        # Key usage limited to explicit identities.
+        # Authentication with agent control.
+        # Identity restriction and key management.
         identitiesOnly = true;
+        addKeysToAgent = "yes";
 
         # Connection keep-alive behavior.
         # Periodic reachability checks and failure tolerance.
         serverAliveInterval = 60;
         serverAliveCountMax = 3;
-
-        # SSH agent integration.
-        # Automatic key addition to agent.
-        addKeysToAgent = "yes";
       };
 
       "github.com" = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -15,5 +15,5 @@
     extraGroups = [ "wheel" ];
   };
 
-  environment.systemPackages = with pkgs; [ neovim ];
+  # virtualisation.vmware.guest.enable = true;
 }
