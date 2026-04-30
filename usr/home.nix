@@ -11,7 +11,7 @@
   home.homeDirectory = "/home/${vars.user.name}";
 
   # Package selection.
-  # Additional packages in home environment.
+  # Additional packages in user environment.
   home.packages = with pkgs; [ ];
 
   # State version.

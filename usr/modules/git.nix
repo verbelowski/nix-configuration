@@ -26,7 +26,7 @@ in {
         signingKey = "~/.ssh/id_ed25519_sign.pub";
 
         # Identity restriction.
-        # Values (`user.name`, `user.email`) from this configuration only.
+        # Values (`user.name`, `user.email`) from this file only.
         useConfigOnly = true;
       };
 
@@ -45,7 +45,7 @@ in {
       # Automatic signature generation for tags.
       tag.gpgSign = true;
 
-      # Core settings.
+      # Core options.
       # Editor and line ending handling.
       core = {
         editor = "nvim";
@@ -60,19 +60,19 @@ in {
       # GitHub SSH access instead of HTTPS.
       url."git@github.com:".insteadOf = "https://github.com/";
 
-      # Fetch behavior.
+      # Fetch policy.
       # Remote branch pruning.
       fetch.prune = true;
 
-      # Pull behavior.
+      # Pull policy.
       # Linear history during pull.
       pull.rebase = true;
 
-      # Push behavior.
+      # Push policy.
       # Remote update and authentication handling.
       push = {
         # Default push mode.
-        # Strategy and upstream configuration rules.
+        # Strategy and upstream rules.
         default = "simple";
         autoSetupRemote = true;
 
@@ -81,7 +81,7 @@ in {
         followTags = true;
       };
 
-      # Rebase behavior.
+      # Rebase policy.
       # History rewriting process.
       rebase = {
         # Local state handling.
@@ -94,14 +94,14 @@ in {
         updateRefs = true;
       };
 
-      # Merge configuration.
+      # Merge options.
       # Rename detection and conflict resolution style.
       merge = {
         renames = true;
         conflictStyle = "zdiff3";
       };
 
-      # Diff configuration.
+      # Diff options.
       # Comparison algorithm selection.
       diff.algorithm = "histogram";
 

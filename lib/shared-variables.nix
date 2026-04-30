@@ -8,7 +8,7 @@
   hostname = "nixos";
 
   # User identity.
-  # Account configuration data.
+  # Account details.
   user = {
     name = "vertennn";
     email = "145216301+verbelowski@users.noreply.github.com";

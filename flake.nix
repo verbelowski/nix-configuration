@@ -1,16 +1,16 @@
 {
-  # Flake description.
-  # Project configuration.
+  # Flake metadata.
+  # Project description.
   description = "Personal NixOS configuration with Hyprland tiling Wayland compositor.";
 
   # Flake inputs.
   # External sources and dependencies.
   inputs = {
-    # Nixpkgs source.
+    # Nixpkgs input.
     # System package set.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager source.
+    # Home Manager input.
     # User environment module.
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -43,10 +43,10 @@
       specialArgs = sharedArgs;
 
       # Module list.
-      # System and user configuration modules.
+      # System and user modules.
       modules = [
         # Module entries.
-        # System and hardware configuration files.
+        # System and hardware files.
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
 

@@ -6,7 +6,7 @@
     # Program activation state.
     enable = true;
 
-    # Default settings override.
+    # Default override.
     # Legacy SSH configuration generation.
     enableDefaultConfig = false;
 
@@ -14,19 +14,19 @@
     # Per-host connection settings.
     matchBlocks = {
       "*" = {
-        # Authentication with agent control.
+        # Authentication policy.
         # Identity restriction and key management.
         identitiesOnly = true;
         addKeysToAgent = "yes";
 
-        # Connection keep-alive behavior.
+        # Keep-alive policy.
         # Periodic reachability checks and failure tolerance.
         serverAliveInterval = 60;
         serverAliveCountMax = 3;
       };
 
       "github.com" = {
-        # Remote user definition.
+        # Remote user.
         # Account for Git operations.
         user = "git";
 
