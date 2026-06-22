@@ -34,17 +34,17 @@
     # NixOS system.
     # Host configuration entry.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
-      # System platform.
-      # Target architecture definition.
-      system = vars.system;
-
       # Module arguments.
-      # Shared context passed to modules.
+      # Shared context for all modules.
       specialArgs = sharedArgs;
 
       # Module list.
       # System and user modules.
       modules = [
+        # System platform.
+        # Target architecture definition.
+        { nixpkgs.hostPlatform = vars.hostPlatform; }
+
         # Module entries.
         # System and hardware files.
         ./sys/configuration.nix

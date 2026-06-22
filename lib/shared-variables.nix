@@ -1,11 +1,11 @@
 {
-  # System platform.
-  # Target architecture and operating system type.
-  system = "x86_64-linux";
-
   # Host identity.
   # Machine hostname.
   hostname = "nixos";
+
+  # System platform.
+  # Target architecture and operating system type.
+  hostPlatform = "x86_64-linux";
 
   # User identity.
   # Account details.
@@ -16,5 +16,5 @@
 
   # State version.
   # NixOS and Home Manager compatibility version.
-  stateVersion = "25.11";
+  stateVersion = "26.05";
 }
