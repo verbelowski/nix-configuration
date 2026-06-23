@@ -41,10 +41,6 @@
       # Module list.
       # System and user modules.
       modules = [
-        # System platform.
-        # Target architecture definition.
-        { nixpkgs.hostPlatform = vars.hostPlatform; }
-
         # Module entries.
         # System and hardware files.
         ./sys/configuration.nix

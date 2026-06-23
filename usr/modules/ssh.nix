@@ -12,30 +12,30 @@
 
     # Host matching rules.
     # Per-host connection settings.
-    matchBlocks = {
+    settings = {
       "*" = {
         # Identity restriction.
         # Key usage limited to explicit identities.
-        identitiesOnly = true;
+        IdentitiesOnly = true;
 
         # Keep-alive policy.
         # Periodic reachability checks and failure tolerance.
-        serverAliveInterval = 60;
-        serverAliveCountMax = 3;
+        ServerAliveInterval = 60;
+        ServerAliveCountMax = 3;
 
         # SSH agent integration.
         # Automatic key addition to agent.
-        addKeysToAgent = "yes";
+        AddKeysToAgent = "yes";
       };
 
       "github.com" = {
         # Remote user.
         # Account for Git operations.
-        user = "git";
+        User = "git";
 
         # Authentication key.
         # Identity file for repository access.
-        identityFile = "~/.ssh/id_ed25519_auth";
+        IdentityFile = "~/.ssh/id_ed25519_auth";
       };
     };
   };
