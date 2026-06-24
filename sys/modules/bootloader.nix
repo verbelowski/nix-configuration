@@ -11,15 +11,15 @@
     kernelParams = [
       "quiet"
       "loglevel=3"
+      "systemd.show_status=false"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
-      "intel_pstate=active"
     ];
 
     # Kernel modules.
     # Additional loaded kernel modules.
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = [ "tcp_bbr" "sch_cake" ];
 
     # Blacklisted modules.
     # Blocked kernel modules list.

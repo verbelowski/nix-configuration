@@ -1,7 +1,7 @@
 { lib, vars, ... }: let
-  # String transform.
-  # Uppercase first character of username.
-  capitalize = str: with lib.strings; toUpper (substring 0 1 str) + substring 1 (stringLength str - 1) str;
+  # Helper functions.
+  # Imported utility functions.
+  helpers = import ../../lib/helper-functions.nix { inherit lib; };
 in {
   # Git configuration.
   # Program entry definition.
@@ -18,7 +18,7 @@ in {
       user = {
         # Identity fields.
         # Name and e-mail values.
-        name = capitalize vars.user.name;
+        name = helpers.capitalize vars.user.name;
         email = vars.user.email;
 
         # Signing key.
@@ -107,7 +107,7 @@ in {
 
       # Repository safety.
       # Trusted directory path.
-      safe.directory = "/home/${vars.user.name}";
+      safe.directory = "*";
     };
   };
 }

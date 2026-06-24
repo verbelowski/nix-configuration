@@ -1,4 +1,6 @@
 { ... }: {
+  # Kernel settings.
+  # Runtime kernel tuning.
   boot.kernel.sysctl = {
     # File descriptors.
     # System-wide open file descriptor limit.

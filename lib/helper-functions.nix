@@ -1,0 +1,5 @@
+{ lib }: {
+  # String transform.
+  # Uppercase first character of username.
+  capitalize = str: with lib.strings; toUpper (substring 0 1 str) + substring 1 (stringLength str - 1) str;
+}

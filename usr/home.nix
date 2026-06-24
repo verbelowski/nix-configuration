@@ -1,9 +1,7 @@
 { pkgs, vars, ... }: {
   # Module imports.
   # User configuration modules.
-  imports = import ../lib/import-modules.nix {
-    dir = ../usr/modules;
-  };
+  imports = import ../lib/import-modules.nix { dir = ../usr/modules; };
 
   # Home environment.
   # Username and home directory mapping.
