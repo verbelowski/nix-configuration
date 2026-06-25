@@ -69,7 +69,7 @@
 
       # Boot timeout.
       # Seconds before automatic boot.
-      timeout = 3; # TODO: Set to "0" when configuration is stable!
+      timeout = 3; # TODO: Set to "0" when running on physical machine.
     };
   };
 }
