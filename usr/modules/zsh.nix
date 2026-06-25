@@ -11,8 +11,8 @@
     autocd = true;
 
     # Default keymap.
-    # Emacs key bindings for command line editing.
-    defaultKeymap = "emacs";
+    # Vi insert mode key bindings for command line editing.
+    defaultKeymap = "viins";
 
     # Syntax highlighting.
     # Real-time command syntax coloring.
