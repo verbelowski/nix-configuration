@@ -23,7 +23,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     # Shared variables.
     # Central configuration values.
-    vars = import ./lib/shared-variables.nix;
+    vars = import ./lib/global-variables.nix;
 
     # Shared arguments.
     # Common module argument set.

@@ -1,4 +1,4 @@
-{ pkgs, lib, vars, ... }: let
+{ lib, pkgs, vars, ... }: let
   # Helper functions.
   # Imported utility functions.
   helpers = import ../../lib/helper-functions.nix { inherit lib; };

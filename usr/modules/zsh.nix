@@ -11,16 +11,33 @@
     autocd = true;
 
     # Default keymap.
-    # Vi insert mode key bindings for command line editing.
-    defaultKeymap = "viins";
+    # Emacs key bindings for command line editing.
+    defaultKeymap = "emacs";
 
-    # Syntax highlighting.
+    # Fast syntax highlighting.
     # Real-time command syntax coloring.
-    syntaxHighlighting.enable = true;
+    fastSyntaxHighlighting.enable = true; # NOTE: Set theme when terminal is configured.
 
     # Auto suggestions.
     # History-based command completion hints.
     autosuggestion.enable = true;
+
+    # History substring search.
+    # Arrow key navigation through matching history entries.
+    historySubstringSearch.enable = true;
+
+    # History settings.
+    # Command history configuration.
+    history = {
+      # History filtering.
+      # Duplicate and space-prefixed command exclusion.
+      ignoreAllDups = true;
+      ignoreSpace = true;
+
+      # Timestamps.
+      # Date and time recorded for each history entry.
+      extended = true;
+    };
 
     # Shell aliases.
     # Command shorthand definitions.

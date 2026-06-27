@@ -14,9 +14,18 @@
     # Per-host connection settings.
     settings = {
       "*" = {
+        # Agent forwarding.
+        # Disabled for security.
+        ForwardAgent = false;
+
         # Identity restriction.
         # Key usage limited to explicit identities.
         IdentitiesOnly = true;
+
+        # Known hosts.
+        # File location and hash settings.
+        HashKnownHosts = false;
+        UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Keep-alive policy.
         # Periodic reachability checks and failure tolerance.
