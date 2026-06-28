@@ -23,11 +23,11 @@ in {
 
       # User groups.
       # Permission group membership.
-      extraGroups = [ "wheel" ]; # TODO: Add groups as configuration grows (e.g. `networkmanager`, `video`, `audio`, `input`).
+      extraGroups = [ "networkmanager" "wheel" ]; # TODO: Add groups as configuration grows (e.g. `audio`, `video`, `render`, `input`, `lp`).
     };
   };
 
   # Zsh activation.
   # Shell availability in system environment.
-  programs.zsh.enable = true; # NOTE: User configuration managed by Home Manager in `usr/modules/zsh.nix`.
+  programs.zsh.enable = true;
 }

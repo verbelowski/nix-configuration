@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   # Boot configuration.
-  # Kernel, bootloader and sysctl settings.
+  # System boot settings.
   boot = {
     # Kernel package.
     # Zen desktop-optimized kernel.
@@ -171,7 +171,7 @@
 
       # Boot timeout.
       # Seconds before automatic boot.
-      timeout = 3; # TODO: Set to "0" when running on physical machine.
+      timeout = 3; # TODO: Set to "0" when configuration is stable.
     };
   };
 }

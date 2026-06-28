@@ -14,9 +14,9 @@
     # Emacs key bindings for command line editing.
     defaultKeymap = "emacs";
 
-    # Fast syntax highlighting.
+    # Syntax highlighting.
     # Real-time command syntax coloring.
-    fastSyntaxHighlighting.enable = true; # NOTE: Set theme when terminal is configured.
+    syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
 
     # Auto suggestions.
     # History-based command completion hints.

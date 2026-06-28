@@ -22,9 +22,12 @@
         # Key usage limited to explicit identities.
         IdentitiesOnly = true;
 
-        # Known hosts.
-        # File location and hash settings.
+        # Known hosts hashing.
+        # Unobfuscated host entries for readability.
         HashKnownHosts = false;
+
+        # Known hosts path.
+        # Default location for known hosts file.
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Keep-alive policy.
