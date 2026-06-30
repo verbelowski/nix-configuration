@@ -1,25 +1,25 @@
 { ... }: {
   # Zsh configuration.
-  # Program entry definition.
+  # Interactive shell program settings.
   programs.zsh = {
     # Enable flag.
     # Program activation state.
     enable = true;
 
     # Auto CD.
-    # Directory navigation without `cd` command.
+    # Implicit directory navigation without `cd` command.
     autocd = true;
 
     # Default keymap.
-    # Emacs key bindings for command line editing.
+    # Emacs key binding mode for command line editing.
     defaultKeymap = "emacs";
 
     # Syntax highlighting.
-    # Real-time command syntax coloring.
+    # Real-time command syntax coloring state.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
 
     # Auto suggestions.
-    # History-based command completion hints.
+    # History-based command completion hint state.
     autosuggestion.enable = true;
 
     # History substring search.
@@ -27,20 +27,20 @@
     historySubstringSearch.enable = true;
 
     # History settings.
-    # Command history configuration.
+    # Command history configuration options.
     history = {
       # History filtering.
-      # Duplicate and space-prefixed command exclusion.
+      # Duplicate and space-prefixed command exclusion state.
       ignoreAllDups = true;
       ignoreSpace = true;
 
       # Timestamps.
-      # Date and time recorded for each history entry.
+      # Per-entry date and time recording state.
       extended = true;
     };
 
     # Shell aliases.
-    # Command shorthand definitions.
+    # Command shorthand definition map.
     shellAliases = {
       cls = "clear";
       ls = "ls --color=auto";

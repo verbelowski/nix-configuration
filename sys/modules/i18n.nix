@@ -1,10 +1,6 @@
 { ... }: {
-  # System timezone.
-  # Local time zone definition.
-  time.timeZone = "Europe/Warsaw";
-
   # Locale configuration.
-  # Language and region settings.
+  # System language and region settings.
   i18n = {
     # Default locale.
     # System-wide language definition.
@@ -24,4 +20,8 @@
       LC_TIME = "pl_PL.UTF-8";
     };
   };
+
+  # System timezone.
+  # Local time zone definition.
+  time.timeZone = "Europe/Warsaw";
 }

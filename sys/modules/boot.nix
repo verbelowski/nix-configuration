@@ -1,13 +1,13 @@
 { pkgs, ... }: {
   # Boot configuration.
-  # System boot settings.
+  # System boot and kernel settings.
   boot = {
     # Kernel package.
-    # Zen desktop-optimized kernel.
+    # Zen desktop-optimized kernel variant.
     kernelPackages = pkgs.linuxPackages_zen;
 
     # Kernel parameters.
-    # Silent boot flags.
+    # Silent boot configuration flags.
     kernelParams = [
       "quiet"
       "loglevel=3"
@@ -22,24 +22,8 @@
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
     # Blacklisted modules.
-    # Blocked kernel modules list.
+    # Blocked kernel module list.
     blacklistedKernelModules = [ "iTCO_wdt" "pcspkr" ];
-
-    # Console log level.
-    # Kernel message suppression.
-    consoleLogLevel = 0;
-
-    # Initrd verbosity.
-    # Early boot message suppression.
-    initrd.verbose = false;
-
-    # Temporary files.
-    # Cleanup on system start.
-    tmp.cleanOnBoot = true;
-
-    # Zswap configuration.
-    # Compressed swap cache in RAM.
-    zswap.enable = true; # NOTE: Swap partition is 4GB (16GB RAM).
 
     # Kernel settings.
     # Runtime kernel tuning via sysctl.
@@ -65,11 +49,11 @@
       "kernel.core_pattern" = "|/bin/false";
 
       # Connection queue.
-      # Maximum socket connection backlog.
+      # Maximum socket connection backlog size.
       "net.core.somaxconn" = 65536;
 
       # Network backlog.
-      # Maximum network device receive queue.
+      # Maximum network device receive queue size.
       "net.core.netdev_max_backlog" = 250000;
 
       # Receive buffer.
@@ -113,20 +97,20 @@
       "net.ipv4.tcp_congestion_control" = "bbr";
 
       # SYN cookies.
-      # SYN flood attack protection.
+      # SYN flood attack protection mechanism.
       "net.ipv4.tcp_syncookies" = 1;
 
       # Reverse path filter.
-      # Loose source address validation.
+      # Loose source address validation mode.
       "net.ipv4.conf.all.rp_filter" = 2;
       "net.ipv4.conf.default.rp_filter" = 2;
 
       # ICMP broadcasts.
-      # Broadcast ping request suppression.
+      # Broadcast ping request suppression flag.
       "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
 
       # ICMP errors.
-      # Bogus error response suppression.
+      # Bogus error response suppression flag.
       "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
 
       # Secure redirects.
@@ -135,15 +119,31 @@
       "net.ipv4.conf.default.secure_redirects" = 1;
 
       # Swap usage.
-      # Reduced swap aggressiveness.
+      # Reduced swap aggressiveness setting.
       "vm.swappiness" = 10;
     };
+
+    # Console log level.
+    # Kernel message suppression level.
+    consoleLogLevel = 0;
+
+    # Initrd verbosity.
+    # Early boot message suppression flag.
+    initrd.verbose = false;
+
+    # Temporary files.
+    # Boot-time temporary file cleanup.
+    tmp.cleanOnBoot = true;
+
+    # Zswap configuration.
+    # Compressed swap cache in RAM.
+    zswap.enable = true; # NOTE: Swap partition is 4GB (16GB RAM).
 
     # Loader configuration.
     # Bootloader and EFI settings.
     loader = {
       # Systemd-boot options.
-      # EFI boot manager settings.
+      # EFI boot manager configuration settings.
       systemd-boot = {
         # Enable flag.
         # Boot manager activation state.
@@ -158,19 +158,19 @@
         consoleMode = "max";
 
         # Configuration limit.
-        # Maximum stored NixOS generations.
+        # Maximum stored NixOS generation count.
         configurationLimit = 10;
       };
 
       # EFI options.
-      # Partition and variable settings.
+      # EFI partition and variable settings.
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
       };
 
       # Boot timeout.
-      # Seconds before automatic boot.
+      # Automatic boot delay in seconds.
       timeout = 3; # TODO: Set to "0" when configuration is stable.
     };
   };

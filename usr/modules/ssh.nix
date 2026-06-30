@@ -1,52 +1,52 @@
 { ... }: {
   # SSH configuration.
-  # Program entry definition.
+  # Secure shell program settings.
   programs.ssh = {
     # Enable flag.
     # Program activation state.
     enable = true;
 
     # Default override.
-    # Legacy SSH configuration generation.
+    # Legacy SSH configuration generation state.
     enableDefaultConfig = false;
 
     # Host matching rules.
-    # Per-host connection settings.
+    # Per-host connection configuration settings.
     settings = {
       "*" = {
         # Agent forwarding.
-        # Disabled for security.
+        # SSH agent forwarding disabled state.
         ForwardAgent = false;
 
         # Identity restriction.
-        # Key usage limited to explicit identities.
+        # Explicit identity file only enforcement.
         IdentitiesOnly = true;
 
         # Known hosts hashing.
-        # Unobfuscated host entries for readability.
+        # Unobfuscated host entry storage state.
         HashKnownHosts = false;
 
         # Known hosts path.
-        # Default location for known hosts file.
+        # Known hosts file location definition.
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Keep-alive policy.
-        # Periodic reachability checks and failure tolerance.
+        # Server reachability check interval and failure tolerance.
         ServerAliveInterval = 60;
         ServerAliveCountMax = 3;
 
         # SSH agent integration.
-        # Automatic key addition to agent.
+        # Automatic key addition to agent state.
         AddKeysToAgent = "yes";
       };
 
       "github.com" = {
         # Remote user.
-        # Account for Git operations.
+        # Git operations account name.
         User = "git";
 
         # Authentication key.
-        # Identity file for repository access.
+        # Repository access identity file path.
         IdentityFile = "~/.ssh/id_ed25519_auth";
       };
     };

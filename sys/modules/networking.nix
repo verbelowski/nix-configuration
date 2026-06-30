@@ -3,7 +3,7 @@
   # Hostname and connection settings.
   networking = {
     # Host name.
-    # Machine network identifier.
+    # Machine network hostname.
     hostName = vars.hostname;
 
     # DNS servers.
@@ -18,22 +18,22 @@
       enable = true;
 
       # Log level.
-      # Network Manager message suppression.
+      # Network Manager message suppression level.
       logLevel = "OFF";
 
       # DNS management.
-      # Systemd-resolved integration.
+      # Systemd-resolved integration mode.
       dns = "systemd-resolved";
 
       # Wi-Fi settings.
       # Wireless connection options.
       wifi = {
         # Power save.
-        # Disabled for reduced latency.
+        # Wireless power save mode state.
         powersave = false;
 
         # MAC address.
-        # Randomized address for privacy.
+        # Randomized MAC address for privacy.
         macAddress = "random";
       };
     };
@@ -47,14 +47,14 @@
     enable = true;
 
     # Resolver settings.
-    # Systemd-resolved configuration options.
+    # DNS security and encryption options.
     settings.Resolve = {
       # DNSSEC validation.
       # Cryptographic DNS response verification.
       DNSSEC = "true";
 
       # DNS over TLS.
-      # Encrypted DNS query transmission.
+      # Encrypted DNS query transmission mode.
       DNSOverTLS = "true";
     };
   };

@@ -1,6 +1,6 @@
 { pkgs, vars, ... }: {
   # Module imports.
-  # User configuration modules.
+  # User configuration module list.
   imports = import ../lib/import-modules.nix {
     dir = ../usr/modules;
   };
@@ -11,10 +11,17 @@
   home.homeDirectory = "/home/${vars.user.name}";
 
   # Package selection.
-  # Additional packages in user environment.
-  home.packages = with pkgs; [ ];
+  # Additional user environment packages.
+  home.packages = with pkgs; [ neovim ];
+
+  # Session variables.
+  # User environment variable definitions.
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
 
   # State version.
-  # Home Manager compatibility version.
+  # Home Manager compatibility version identifier.
   home.stateVersion = vars.stateVersion;
 }
