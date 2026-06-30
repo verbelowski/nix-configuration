@@ -12,14 +12,7 @@
 
   # Package selection.
   # Additional user environment packages.
-  home.packages = with pkgs; [ neovim ];
-
-  # Session variables.
-  # User environment variable definitions.
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
+  home.packages = with pkgs; [ ];
 
   # State version.
   # Home Manager compatibility version identifier.

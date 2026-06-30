@@ -14,6 +14,13 @@
     # Emacs key binding mode for command line editing.
     defaultKeymap = "emacs";
 
+    # Environment variables.
+    # Default editor environment variable definitions.
+    envExtra = ''
+      export EDITOR=nvim
+      export VISUAL=nvim
+    '';
+
     # Syntax highlighting.
     # Real-time command syntax coloring state.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
