@@ -38,9 +38,6 @@
       -- Case-insensitive search
       vim.opt.ignorecase = true
       vim.opt.smartcase = true
-
-      -- Clipboard synchronization
-      vim.opt.clipboard = "unnamedplus"
     '';
   };
 }
