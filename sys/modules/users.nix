@@ -1,8 +1,4 @@
-{ lib, pkgs, vars, ... }: let
-  # Helper functions.
-  # Imported utility functions from lib.
-  helpers = import ../../lib/helper-functions.nix { inherit lib; };
-in {
+{ pkgs, vars, ... }: {
   # User configuration.
   # Account and shell settings.
   users = {
@@ -19,7 +15,7 @@ in {
 
       # Display name.
       # User description field value.
-      description = helpers.capitalize vars.user.name;
+      description = vars.capitalize vars.user.name;
 
       # User groups.
       # Permission group membership list.

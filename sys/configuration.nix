@@ -26,7 +26,7 @@
 
     # Rebuild flags.
     # Additional rebuild command arguments.
-    flags = [ "--update-input" "nixpkgs" "--update-input" "home-manager" "-L" ];
+    flags = [ "--update-input" "nixpkgs" "--update-input" "home-manager" ];
 
     # Reboot permission.
     # Automatic restart after kernel update.

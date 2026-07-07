@@ -1,8 +1,4 @@
-{ lib, vars, ... }: let
-  # Helper functions.
-  # Imported utility functions from lib.
-  helpers = import ../../lib/helper-functions.nix { inherit lib; };
-in {
+{ vars, ... }: {
   # Git configuration.
   # Version control program settings.
   programs.git = {
@@ -18,7 +14,7 @@ in {
       user = {
         # Identity fields.
         # Commit author name and email values.
-        name = helpers.capitalize vars.user.name;
+        name = vars.capitalize vars.user.name;
         email = vars.user.email;
 
         # Signing key.

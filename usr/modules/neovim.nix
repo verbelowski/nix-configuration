@@ -16,7 +16,7 @@
     vimAlias = true;
 
     # Lua configuration.
-    # Editor appearance and behavior settings.
+    # https://neovim.io/doc/user/options
     initLua = ''
       -- Line numbers
       vim.opt.number = true
