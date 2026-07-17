@@ -7,60 +7,60 @@ Personal NixOS configuration with Hyprland tiling Wayland compositor.
 ```bash
 ├── lib
 │   ├── import-modules.nix
-│   │   # Module resolution.
-│   │   # Path import definitions.
+│   │   ├── # Module resolution.
+│   │   ├── # Path import definitions.
 │   ├── shared-variables.nix
-│   │   # Global constants.
-│   │   # Common parameter sets.
+│   │   ├── # Global constants.
+│   │   ├── # Common parameter sets.
 ├── sys
 │   ├── modules
 │   │   ├── boot.nix
-│   │   │   # Systemd-boot settings.
-│   │   │   # Kernel boot parameters.
+│   │   │   ├── # Systemd-boot settings.
+│   │   │   ├── # Kernel boot parameters.
 │   │   ├── console.nix
-│   │   │   # Terminal appearance.
-│   │   │   # Keymap layout definitions.
+│   │   │   ├── # Terminal appearance.
+│   │   │   ├── # Keymap layout definitions.
 │   │   ├── i18n.nix
-│   │   │   # Locale settings.
-│   │   │   # Timezone region definitions.
+│   │   │   ├── # Locale settings.
+│   │   │   ├── # Timezone region definitions.
 │   │   ├── networking.nix
-│   │   │   # Interface configuration.
-│   │   │   # Firewall security policy.
+│   │   │   ├── # Interface configuration.
+│   │   │   ├── # Firewall security policy.
 │   │   ├── nix.nix
-│   │   │   # Nixpkgs optimization.
-│   │   │   # Garbage collection policy.
+│   │   │   ├── # Nixpkgs optimization.
+│   │   │   ├── # Garbage collection policy.
 │   │   ├── security.nix
-│   │   │   # Privilege management.
-│   │   │   # Sudo access rules.
+│   │   │   ├── # Privilege management.
+│   │   │   ├── # Sudo access rules.
 │   │   ├── users.nix
-│   │   │   # Account definitions.
-│   │   │   # Group membership mappings.
+│   │   │   ├── # Account definitions.
+│   │   │   ├── # Group membership mappings.
 │   ├── configuration.nix
-│   │   # Module integration.
-│   │   # Base configuration blocks.
+│   │   ├── # Module integration.
+│   │   ├── # Base configuration blocks.
 │   ├── hardware-configuration.nix
-│   │   # Hardware mapping.
-│   │   # Filesystem storage definitions.
+│   │   ├── # Hardware mapping.
+│   │   ├── # Filesystem storage definitions.
 ├── usr
 │   ├── modules
 │   │   ├── git.nix
-│   │   │   # Version control.
-│   │   │   # User identity settings.
+│   │   │   ├── # Version control.
+│   │   │   ├── # User identity settings.
 │   │   ├── neovim.nix
-│   │   │   # Editor options.
-│   │   │   # Plugin architecture definitions.
+│   │   │   ├── # Editor options.
+│   │   │   ├── # Plugin architecture definitions.
 │   │   ├── ssh.nix
-│   │   │   # Remote access.
-│   │   │   # Security key policy.
+│   │   │   ├── # Remote access.
+│   │   │   ├── # Security key policy.
 │   │   ├── zsh.nix
-│   │   │   # Shell customization.
-│   │   │   # Theme style options.
+│   │   │   ├── # Shell customization.
+│   │   │   ├── # Theme style options.
 │   ├── home.nix
-│   │   # User integration.
-│   │   # Home environment configuration.
+│   │   ├── # User integration.
+│   │   ├── # Home environment configuration.
 ├── flake.nix
-│   # Dependency management.
-│   # System definition structures.
+│   ├── # Dependency management.
+│   ├── # System definition structures.
 ```
 
 ## Commenting Guidelines
