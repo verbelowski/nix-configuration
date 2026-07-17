@@ -1,13 +1,13 @@
 { pkgs, ... }: {
-  # Boot configuration.
-  # System boot and kernel settings.
+  # Startup configurations.
+  # System boot definitions.
   boot = {
-    # Kernel package.
-    # Zen desktop-optimized kernel variant.
+    # Core package.
+    # Zen desktop optimized kernel variant.
     kernelPackages = pkgs.linuxPackages_zen;
 
-    # Kernel parameters.
-    # Silent boot configuration flags.
+    # Core options.
+    # Silent boot startup flags.
     kernelParams = [
       "quiet"
       "loglevel=3"
@@ -17,159 +17,159 @@
       "udev.log_priority=3"
     ];
 
-    # Kernel modules.
-    # Additional loaded kernel modules.
+    # Core extensions.
+    # Loaded kernel modules.
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
-    # Blacklisted modules.
+    # Blacklisted extensions.
     # Blocked kernel module list.
     blacklistedKernelModules = [ "iTCO_wdt" "pcspkr" ];
 
-    # Kernel settings.
-    # Runtime kernel tuning via sysctl.
+    # Runtime settings.
+    # Core tuning via sysctl.
     kernel.sysctl = {
-      # File descriptors.
-      # System-wide open file descriptor limit.
+      # Descriptor limit.
+      # System wide open file count.
       "fs.file-max" = 1000000;
 
       # Inotify watches.
-      # Per-user inotify watch limit.
+      # Per-user monitoring limit.
       "fs.inotify.max_user_watches" = 524288;
 
       # Inotify instances.
-      # Per-user inotify instance limit.
+      # Per-user allocation limit.
       "fs.inotify.max_user_instances" = 256;
 
-      # Process limit.
-      # Maximum process identifier value.
+      # Process threshold.
+      # Maximum PID identifier value.
       "kernel.pid_max" = 4194303;
 
-      # Core dumps.
+      # Crash files.
       # Disabled core dump generation.
       "kernel.core_pattern" = "|/bin/false";
 
-      # Connection queue.
-      # Maximum socket connection backlog size.
+      # Pending connections.
+      # Maximum socket backlog size.
       "net.core.somaxconn" = 65536;
 
-      # Network backlog.
-      # Maximum network device receive queue size.
+      # Network ingress.
+      # Maximum device receive queue size.
       "net.core.netdev_max_backlog" = 250000;
 
-      # Receive buffer.
-      # Maximum socket receive buffer size.
+      # Receive memory.
+      # Maximum socket buffer size.
       "net.core.rmem_max" = 16777216;
 
-      # Send buffer.
-      # Maximum socket send buffer size.
+      # Transmit memory.
+      # Maximum socket outbound buffer size.
       "net.core.wmem_max" = 16777216;
 
-      # Packet scheduler.
+      # Traffic scheduler.
       # CAKE queue discipline for reduced bufferbloat.
       "net.core.default_qdisc" = "cake";
 
       # SYN backlog.
-      # Maximum TCP SYN queue length.
+      # Maximum TCP synchronization queue length.
       "net.ipv4.tcp_max_syn_backlog" = 65536;
 
-      # Port range.
-      # Local TCP port allocation range.
+      # Port spectrum.
+      # Local TCP socket allocation range.
       "net.ipv4.ip_local_port_range" = "1024\t65535";
 
-      # Socket reuse.
-      # TIME_WAIT socket reuse for new connections.
+      # Socket recycling.
+      # TIME_WAIT state endpoint reuse.
       "net.ipv4.tcp_tw_reuse" = 1;
 
-      # FIN timeout.
+      # Closure timeout.
       # TCP connection close wait duration.
       "net.ipv4.tcp_fin_timeout" = 15;
 
-      # TCP receive buffer.
-      # Minimum, default and maximum receive buffer sizes.
+      # TCP inbound buffer.
+      # Minimum, default and maximum receive memory sizes.
       "net.ipv4.tcp_rmem" = "4096\t87380\t16777216";
 
-      # TCP send buffer.
-      # Minimum, default and maximum send buffer sizes.
+      # TCP outbound buffer.
+      # Minimum, default and maximum send memory sizes.
       "net.ipv4.tcp_wmem" = "4096\t65536\t16777216";
 
-      # TCP congestion control.
+      # Congestion control.
       # BBR algorithm for improved throughput.
       "net.ipv4.tcp_congestion_control" = "bbr";
 
       # SYN cookies.
-      # SYN flood attack protection mechanism.
+      # TCP flood attack protection mechanism.
       "net.ipv4.tcp_syncookies" = 1;
 
-      # Reverse path filter.
+      # Routing filter.
       # Loose source address validation mode.
       "net.ipv4.conf.all.rp_filter" = 2;
       "net.ipv4.conf.default.rp_filter" = 2;
 
       # ICMP broadcasts.
-      # Broadcast ping request suppression flag.
+      # Network ping request suppression flag.
       "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
 
       # ICMP errors.
-      # Bogus error response suppression flag.
+      # Bogus failure response suppression flag.
       "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
 
       # Secure redirects.
-      # ICMP redirect acceptance from gateways only.
+      # ICMP route acceptance from gateways only.
       "net.ipv4.conf.all.secure_redirects" = 1;
       "net.ipv4.conf.default.secure_redirects" = 1;
 
-      # Swap usage.
-      # Reduced swap aggressiveness setting.
+      # Paging aggressiveness.
+      # Reduced swap utilization intensity.
       "vm.swappiness" = 10;
     };
 
-    # Console log level.
+    # Output severity.
     # Kernel message suppression level.
     consoleLogLevel = 0;
 
     # Initrd verbosity.
-    # Early boot message suppression flag.
+    # Early startup message suppression flag.
     initrd.verbose = false;
 
-    # Temporary files.
-    # Boot-time temporary file cleanup.
+    # Ephemeral storage.
+    # Boot time temporary directory cleanup.
     tmp.cleanOnBoot = true;
 
-    # Zswap configuration.
-    # Compressed swap cache in RAM.
+    # Zswap settings.
+    # Compressed paging cache in RAM.
     zswap.enable = true; # NOTE: Swap partition is 4GB (16GB RAM).
 
-    # Loader configuration.
-    # Bootloader and EFI settings.
+    # Startup configurations.
+    # Bootloader and EFI components.
     loader = {
       # Systemd-boot options.
-      # EFI boot manager configuration settings.
+      # EFI startup manager parameters.
       systemd-boot = {
-        # Enable flag.
-        # Boot manager activation state.
+        # Enablement state.
+        # Boot manager activation flag.
         enable = true;
 
-        # Kernel editor.
+        # Command editor.
         # Boot parameter modification lock.
         editor = false;
 
-        # Console mode.
-        # Maximum firmware display resolution.
+        # Display mode.
+        # Maximum firmware console resolution.
         consoleMode = "max";
 
-        # Configuration limit.
-        # Maximum stored NixOS generation count.
+        # Generation limit.
+        # Maximum stored NixOS environment count.
         configurationLimit = 10;
       };
 
-      # EFI options.
-      # EFI partition and variable settings.
+      # Firmware options.
+      # EFI partition and variable values.
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
       };
 
-      # Boot timeout.
+      # Startup timeout.
       # Automatic boot delay in seconds.
       timeout = 3; # TODO: Set to "0" when configuration is stable.
     };

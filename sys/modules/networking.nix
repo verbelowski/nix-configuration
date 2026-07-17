@@ -1,59 +1,59 @@
 { vars, ... }: {
-  # Network configuration.
+  # Connectivity configurations.
   # Hostname and connection settings.
   networking = {
-    # Host name.
+    # Device identity.
     # Machine network hostname.
     hostName = vars.hostname;
 
-    # DNS servers.
-    # Quad9 nameserver addresses.
+    # Resolution servers.
+    # Quad9 DNS addresses.
     nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
 
     # Network Manager.
-    # Dynamic network connection management settings.
+    # Dynamic connection management options.
     networkmanager = {
-      # Enable flag.
-      # Network Manager activation state.
+      # Activation state.
+      # Network Manager enablement flag.
       enable = true;
 
-      # Log level.
-      # Network Manager message suppression level.
+      # Output severity.
+      # Daemon message suppression level.
       logLevel = "OFF";
 
-      # DNS management.
+      # Name resolution.
       # Systemd-resolved integration mode.
       dns = "systemd-resolved";
 
-      # Wi-Fi settings.
-      # Wireless connection options.
+      # Wireless settings.
+      # Radio connection options.
       wifi = {
-        # Power save.
+        # Energy efficiency.
         # Wireless power save mode state.
         powersave = false;
 
-        # MAC address.
+        # Hardware identity.
         # Randomized MAC address for privacy.
         macAddress = "random";
       };
     };
   };
 
-  # Systemd-resolved.
-  # DNS resolver and cache service.
+  # Resolver configurations.
+  # Systemd-resolved daemon and cache service.
   services.resolved = {
-    # Enable flag.
-    # DNS resolver activation state.
+    # Activation flag.
+    # DNS resolver enablement state.
     enable = true;
 
-    # Resolver settings.
-    # DNS security and encryption options.
+    # Resolution settings.
+    # Domain security and encryption options.
     settings.Resolve = {
       # DNSSEC validation.
-      # Cryptographic DNS response verification.
+      # Cryptographic domain response verification.
       DNSSEC = "true";
 
-      # DNS over TLS.
+      # DOT protocol.
       # Encrypted DNS query transmission mode.
       DNSOverTLS = "true";
     };

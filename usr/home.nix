@@ -1,20 +1,20 @@
 { pkgs, vars, ... }: {
-  # Module imports.
-  # User configuration module list.
+  # Component imports.
+  # User configurations list.
   imports = import ../lib/import-modules.nix {
     dir = ../usr/modules;
   };
 
-  # Home environment.
-  # Username and home directory mapping.
+  # Workspace context.
+  # Username and root directory mappings.
   home.username = vars.user.name;
   home.homeDirectory = "/home/${vars.user.name}";
 
-  # Package selection.
-  # Additional user environment packages.
+  # Software selection.
+  # Global user environment packages.
   home.packages = with pkgs; [ ];
 
-  # State version.
-  # Home Manager compatibility version identifier.
+  # State identifier.
+  # Home Manager compatibility version string.
   home.stateVersion = vars.stateVersion;
 }

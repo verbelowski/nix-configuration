@@ -1,52 +1,52 @@
 { ... }: {
-  # SSH configuration.
-  # Secure shell program settings.
+  # Transport configurations.
+  # Secure shell program options.
   programs.ssh = {
-    # Enable flag.
-    # Program activation state.
+    # Activation flag.
+    # Program enablement state.
     enable = true;
 
-    # Default override.
-    # Legacy SSH configuration generation state.
+    # Fallback override.
+    # Legacy SSH configurations generation state.
     enableDefaultConfig = false;
 
-    # Host matching rules.
-    # Per-host connection configuration settings.
+    # Target definitions.
+    # Per-host connection options.
     settings = {
       "*" = {
-        # Agent forwarding.
+        # Credential proxy.
         # SSH agent forwarding disabled state.
         ForwardAgent = false;
 
-        # Identity restriction.
-        # Explicit identity file only enforcement.
+        # Material restriction.
+        # Explicit identity file strict enforcement.
         IdentitiesOnly = true;
 
-        # Known hosts hashing.
+        # Fingerprint hashing.
         # Unobfuscated host entry storage state.
         HashKnownHosts = false;
 
-        # Known hosts path.
-        # Known hosts file location definition.
+        # Fingerprint path.
+        # Known hosts file location definitions.
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
-        # Keep-alive policy.
+        # Connection policy.
         # Server reachability check interval and failure tolerance.
         ServerAliveInterval = 60;
         ServerAliveCountMax = 3;
 
-        # SSH agent integration.
+        # Daemon integration.
         # Automatic key addition to agent state.
         AddKeysToAgent = "yes";
       };
 
       "github.com" = {
-        # Remote user.
-        # Git operations account name.
+        # Remote account.
+        # Git operations profile name.
         User = "git";
 
-        # Authentication key.
-        # Repository access identity file path.
+        # Access material.
+        # Repository authentication identity file path.
         IdentityFile = "~/.ssh/id_ed25519_auth";
       };
     };

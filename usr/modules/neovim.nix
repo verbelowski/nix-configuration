@@ -1,22 +1,22 @@
 { ... }: {
-  # Neovim configuration.
-  # Text editor program settings.
+  # Editor configurations.
+  # Text manipulation program options.
   programs.neovim = {
-    # Enable flag.
-    # Program activation state.
+    # Activation flag.
+    # Program enablement state.
     enable = true;
 
-    # Default editor.
-    # System-wide editor definition.
+    # Primary workspace.
+    # System wide editor definitions.
     defaultEditor = true;
 
-    # Vi and Vim aliases.
-    # Neovim as `vi` and `vim` commands.
+    # Command aliases.
+    # Neovim substitution for legacy commands.
     viAlias = true;
     vimAlias = true;
 
-    # Lua configuration.
-    # https://neovim.io/doc/user/options
+    # Script configurations.
+    # Editor appearance and behavior parameters.
     initLua = ''
       -- Line numbers
       vim.opt.number = true

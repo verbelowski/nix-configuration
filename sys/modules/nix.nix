@@ -1,69 +1,69 @@
 { vars, ... }: {
-  # Nix configuration.
-  # Package manager settings.
+  # Package management.
+  # Nix daemon configurations.
   nix = {
-    # Channel management.
+    # Source tracking.
     # Legacy channel system state.
     channel.enable = false;
 
-    # Garbage collection.
+    # Space reclamation.
     # Automatic old generation removal settings.
     gc = {
-      # Enable flag.
+      # Enablement flag.
       # Automatic garbage collection state.
       automatic = true;
 
-      # Schedule.
-      # Weekly collection interval definition.
+      # Execution schedule.
+      # Weekly collection interval definitions.
       dates = "weekly";
 
-      # Collection options.
-      # Generation age removal threshold.
+      # Removal options.
+      # Generation age deletion threshold.
       options = "--delete-older-than 7d";
     };
 
-    # Nix settings.
-    # Store and build configuration options.
+    # Daemon settings.
+    # Store and build options.
     settings = {
-      # Experimental features.
+      # Modern capabilities.
       # Flakes and new CLI command enablement.
       experimental-features = [ "nix-command" "flakes" ];
 
-      # Trusted users.
-      # Privileged Nix operation access list.
+      # Privileged accounts.
+      # Trusted Nix operation access list.
       trusted-users = [ vars.user.name ];
 
-      # Connection timeout.
+      # Request timeout.
       # Binary cache connection time limit in seconds.
       connect-timeout = 5;
 
-      # Fallback builds.
-      # Source build fallback on binary cache failure.
+      # Compilation fallback.
+      # Source build on binary cache failure.
       fallback = true;
 
-      # Dirty warning.
-      # Git tree modification warning state.
+      # Repository warnings.
+      # Git tree modification alert state.
       warn-dirty = false;
 
-      # Store optimisation.
+      # Capacity optimisation.
       # Automatic hard link deduplication state.
       auto-optimise-store = true;
 
-      # Minimum free space.
+      # Minimum capacity.
       # Garbage collection trigger threshold in bytes.
       min-free = 128000000;
 
-      # Maximum free space.
+      # Maximum capacity.
       # Garbage collection target threshold in bytes.
       max-free = 1000000000;
     };
   };
 
-  # Nixpkgs configuration.
+  # Repository configurations.
   # Unfree package installation allowance.
   nixpkgs.config.allowUnfree = true;
 
-  # NixOS documentation.
+  # Manual pages.
   # System documentation generation state.
   documentation.enable = false;
 }

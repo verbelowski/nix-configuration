@@ -1,108 +1,108 @@
 { vars, ... }: {
-  # Git configuration.
-  # Version control program settings.
+  # Repository configurations.
+  # Version control program options.
   programs.git = {
-    # Enable flag.
-    # Program activation state.
+    # Activation flag.
+    # Program enablement state.
     enable = true;
 
-    # Git settings.
-    # https://git-scm.com/docs/git-config
+    # Global settings.
+    # Version control program options.
     settings = {
-      # User identity.
-      # Commit author metadata fields.
+      # Author identity.
+      # Commit creator metadata fields.
       user = {
-        # Identity fields.
-        # Commit author name and email values.
+        # Personal details.
+        # Commit creator name and email values.
         name = vars.capitalize vars.user.name;
         email = vars.user.email;
 
-        # Signing key.
-        # SSH key for commit signature verification.
+        # Cryptographic key.
+        # SSH material for commit signature verification.
         signingKey = "~/.ssh/id_ed25519_sign.pub";
 
-        # Identity restriction.
-        # Config-file-only identity value enforcement.
+        # Scope restriction.
+        # Configuration file identity value enforcement.
         useConfigOnly = true;
       };
 
-      # Repository safety.
-      # Trusted directory path definition.
+      # Security bounds.
+      # Trusted directory path definitions.
       safe.directory = "*";
 
-      # Commit signature.
-      # SSH format and trusted signers file path.
+      # Attestation format.
+      # SSH mode and trusted signers file path.
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
 
-      # Commit signing.
+      # Revision signing.
       # Automatic commit signature generation state.
       commit.gpgSign = true;
 
-      # Tag signing.
+      # Release signing.
       # Automatic tag signature generation state.
       tag.gpgSign = true;
 
-      # Core options.
-      # Editor and line ending configuration.
+      # Engine options.
+      # Editor and line ending configurations.
       core = {
         editor = "nvim";
         autocrlf = "input";
       };
 
-      # Repository init.
-      # Default branch name definition.
+      # Creation defaults.
+      # Primary branch name definitions.
       init.defaultBranch = "main";
 
-      # URL rewrite rule.
-      # GitHub SSH access over HTTPS substitution.
+      # Transport substitution.
+      # GitHub SSH access over HTTPS rule.
       url."git@github.com:".insteadOf = "https://github.com/";
 
       # Fetch policy.
-      # Remote branch pruning configuration.
+      # Remote branch pruning behavior.
       fetch.prune = true;
 
       # Pull policy.
-      # Linear history rebase configuration.
+      # Linear history rebase behavior.
       pull.rebase = true;
 
       # Push policy.
-      # Remote update and authentication settings.
+      # Remote update and authentication options.
       push = {
-        # Default push mode.
-        # Simple push strategy definition.
+        # Upload mode.
+        # Simple transmission strategy definitions.
         default = "simple";
         autoSetupRemote = true;
 
-        # Tag propagation.
+        # Release propagation.
         # Remote tag synchronization state.
         followTags = true;
       };
 
       # Rebase policy.
-      # History rewriting configuration settings.
+      # History rewriting rules.
       rebase = {
-        # Local state handling.
+        # Workspace management.
         # Automatic stash and squash state.
         autoStash = true;
         autoSquash = true;
 
-        # Reference updates.
+        # Pointer updates.
         # Branch reference adjustment state.
         updateRefs = true;
       };
 
-      # Merge options.
-      # Rename detection and conflict style settings.
+      # Integration options.
+      # Rename detection and conflict style values.
       merge = {
         renames = true;
         conflictStyle = "zdiff3";
       };
 
-      # Diff options.
-      # Histogram comparison algorithm selection.
+      # Comparison options.
+      # Histogram diff algorithm selection.
       diff.algorithm = "histogram";
     };
   };

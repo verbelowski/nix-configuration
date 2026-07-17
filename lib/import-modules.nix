@@ -1,9 +1,9 @@
 { dir }:
   # Directory validation.
-  # Input directory existence requirement.
+  # Input folder existence requirement.
   assert builtins.pathExists dir;
 let
-  # Directory listing.
+  # Folder listing.
   # Sorted directory entry names.
   dirEntries = builtins.readDir dir;
   dirEntryNames = builtins.sort builtins.lessThan (builtins.attrNames dirEntries);

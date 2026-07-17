@@ -1,53 +1,53 @@
 { ... }: {
-  # Zsh configuration.
-  # Interactive shell program settings.
+  # Interpreter configurations.
+  # Interactive shell program options.
   programs.zsh = {
-    # Enable flag.
-    # Program activation state.
+    # Activation flag.
+    # Program enablement state.
     enable = true;
 
-    # Auto CD.
-    # Implicit directory navigation without `cd` command.
+    # Path transition.
+    # Implicit directory navigation without command prefix.
     autocd = true;
 
-    # Default keymap.
-    # Emacs key binding mode for command line editing.
+    # Input mapping.
+    # Emacs key binding mode for prompt editing.
     defaultKeymap = "emacs";
 
-    # Environment variables.
-    # Default editor environment variable definitions.
+    # Session context.
+    # Default workspace environment definitions.
     envExtra = ''
       export EDITOR=nvim
       export VISUAL=nvim
     '';
 
-    # Syntax highlighting.
-    # Real-time command syntax coloring state.
+    # Visual feedback.
+    # Real time command syntax coloring state.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
 
-    # Auto suggestions.
-    # History-based command completion hint state.
+    # Input predictions.
+    # History based command completion hint state.
     autosuggestion.enable = true;
 
-    # History substring search.
+    # Record filtering.
     # Arrow key navigation through matching history entries.
     historySubstringSearch.enable = true;
 
-    # History settings.
-    # Command history configuration options.
+    # Transcript options.
+    # Command history parameters.
     history = {
-      # History filtering.
-      # Duplicate and space-prefixed command exclusion state.
+      # Record exclusion.
+      # Duplicate and space prefixed command omission state.
       ignoreAllDups = true;
       ignoreSpace = true;
 
-      # Timestamps.
+      # Chronological markers.
       # Per-entry date and time recording state.
       extended = true;
     };
 
-    # Shell aliases.
-    # Command shorthand definition map.
+    # Execution shorthands.
+    # Command alias definitions.
     shellAliases = {
       cls = "clear";
       ls = "ls --color=auto";
