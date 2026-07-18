@@ -53,7 +53,7 @@
       # Cryptographic domain response verification.
       DNSSEC = "true";
 
-      # DOT protocol.
+      # DoT protocol.
       # Encrypted DNS query transmission mode.
       DNSOverTLS = "true";
     };

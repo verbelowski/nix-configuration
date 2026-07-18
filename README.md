@@ -58,10 +58,27 @@ Personal NixOS configuration with Hyprland tiling Wayland compositor.
 │   ├── home.nix
 │   │   ├── # User integration.
 │   │   ├── # Home environment configuration.
+├── flake.lock
+│   ├── # Lockfile generation.
+│   ├── # Immutable dependency hashes.
 ├── flake.nix
 │   ├── # Dependency management.
 │   ├── # System definition structures.
+├── LICENSE.md
+│   ├── # Legal basis.
+│   ├── # Usage permission declarations.
+├── README.md
+│   ├── # Project documentation.
+│   ├── # Informational content blocks.
 ```
+
+## Reference Documentation
+
+* Nix: [File Reference](https://nix.dev/manual/nix/2.34/command-ref/conf-file)
+* NixOS: [Options Search](https://search.nixos.org/options?channel=26.05) | [Manual](https://nixos.org/manual/nixos/stable)
+* Home Manager: [NixOS Settings](https://home-manager.dev/manual/26.05/nixos-options.xhtml)
+* Git: [Configuration Variables](https://git-scm.com/docs/git-config)
+* Neovim: [User Preferences](https://neovim.io/doc/user/options)
 
 ## Commenting Guidelines
 
