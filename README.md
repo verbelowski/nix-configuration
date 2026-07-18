@@ -32,6 +32,9 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   ├── security.nix
 │   │   │   ├── # Privilege management.
 │   │   │   ├── # Administrative access policy.
+│   │   ├── systemd.nix
+│   │   │   ├── # Service lifecycle management.
+│   │   │   ├── # Resource and crash policy.
 │   │   ├── users.nix
 │   │   │   ├── # Account configuration.
 │   │   │   ├── # Group membership definitions.

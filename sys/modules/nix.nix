@@ -41,6 +41,14 @@
       # Source build on binary cache failures.
       fallback = true;
 
+      # Binary caches.
+      # External binary cache sources.
+      substituters = [ "https://nix-community.cachix.org" ];
+
+      # Public keys.
+      # Trusted binary cache keys.
+      trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+
       # Repository warnings.
       # Git tree modification alert states.
       warn-dirty = false;

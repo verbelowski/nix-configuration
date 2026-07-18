@@ -7,7 +7,7 @@
     sudo = {
       # Authentication requirement.
       # Wheel group passwordless sudo states.
-      wheelNeedsPassword = false;
+      wheelNeedsPassword = false; # TODO: Remove this option for security once the configuration is stable.
 
       # Binary restriction.
       # Path executable sudo enforcement.
