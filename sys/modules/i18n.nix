@@ -1,9 +1,9 @@
 { ... }: {
-  # Regional configurations.
-  # System language and area settings.
+  # Regional configuration.
+  # System-wide language and area settings.
   i18n = {
     # Primary locale.
-    # System wide language definitions.
+    # System-wide language definitions.
     defaultLocale = "en_US.UTF-8";
 
     # Specific formats.

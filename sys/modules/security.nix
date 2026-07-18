@@ -1,21 +1,21 @@
 { ... }: {
-  # Protection configurations.
+  # Protection configuration.
   # System security parameters.
   security = {
-    # Escalation configurations.
+    # Escalation configuration.
     # Privilege management options.
     sudo = {
       # Authentication requirement.
-      # Wheel group passwordless sudo state.
+      # Wheel group passwordless sudo states.
       wheelNeedsPassword = false;
 
       # Binary restriction.
-      # PATH executable sudo enforcement.
+      # Path executable sudo enforcement.
       execWheelOnly = true;
     };
 
     # Memory protection.
-    # Runtime kernel modification prevention state.
+    # Runtime kernel modification prevention states.
     protectKernelImage = true;
   };
 }

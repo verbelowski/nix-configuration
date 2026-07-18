@@ -1,17 +1,17 @@
 { ... }: {
-  # Interpreter configurations.
+  # Interpreter configuration.
   # Interactive shell program options.
   programs.zsh = {
-    # Activation flag.
-    # Program enablement state.
+    # Enablement state.
+    # Program activation flags.
     enable = true;
 
     # Path transition.
-    # Implicit directory navigation without command prefix.
+    # Implicit directory navigation without command prefixes.
     autocd = true;
 
     # Input mapping.
-    # Emacs key binding mode for prompt editing.
+    # Emacs key binding modes for prompt editing.
     defaultKeymap = "emacs";
 
     # Session context.
@@ -22,11 +22,11 @@
     '';
 
     # Visual feedback.
-    # Real time command syntax coloring state.
+    # Real-time command syntax coloring states.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
 
     # Input predictions.
-    # History based command completion hint state.
+    # History-based command completion hint states.
     autosuggestion.enable = true;
 
     # Record filtering.
@@ -37,12 +37,12 @@
     # Command history parameters.
     history = {
       # Record exclusion.
-      # Duplicate and space prefixed command omission state.
+      # Duplicate and space prefixed command omission states.
       ignoreAllDups = true;
       ignoreSpace = true;
 
       # Chronological markers.
-      # Per-entry date and time recording state.
+      # Per-entry date and time recording states.
       extended = true;
     };
 

@@ -1,13 +1,13 @@
 { vars, ... }: {
-  # Repository configurations.
+  # Repository configuration.
   # Version control program options.
   programs.git = {
-    # Activation flag.
-    # Program enablement state.
+    # Enablement state.
+    # Program activation flags.
     enable = true;
 
     # Global settings.
-    # Version control program options.
+    # Version control configuration options.
     settings = {
       # Author identity.
       # Commit creator metadata fields.
@@ -31,18 +31,18 @@
       safe.directory = "*";
 
       # Attestation format.
-      # SSH mode and trusted signers file path.
+      # SSH mode and trusted signers file paths.
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
 
       # Revision signing.
-      # Automatic commit signature generation state.
+      # Automatic commit signature generation states.
       commit.gpgSign = true;
 
       # Release signing.
-      # Automatic tag signature generation state.
+      # Automatic tag signature generation states.
       tag.gpgSign = true;
 
       # Engine options.
@@ -57,15 +57,15 @@
       init.defaultBranch = "main";
 
       # Transport substitution.
-      # GitHub SSH access over HTTPS rule.
+      # GitHub SSH access HTTPS rules.
       url."git@github.com:".insteadOf = "https://github.com/";
 
       # Fetch policy.
-      # Remote branch pruning behavior.
+      # Remote branch pruning behaviors.
       fetch.prune = true;
 
       # Pull policy.
-      # Linear history rebase behavior.
+      # Linear history rebase behaviors.
       pull.rebase = true;
 
       # Push policy.
@@ -77,7 +77,7 @@
         autoSetupRemote = true;
 
         # Release propagation.
-        # Remote tag synchronization state.
+        # Remote tag synchronization states.
         followTags = true;
       };
 
@@ -85,12 +85,12 @@
       # History rewriting rules.
       rebase = {
         # Workspace management.
-        # Automatic stash and squash state.
+        # Automatic stash and squash states.
         autoStash = true;
         autoSquash = true;
 
         # Pointer updates.
-        # Branch reference adjustment state.
+        # Branch reference adjustment states.
         updateRefs = true;
       };
 

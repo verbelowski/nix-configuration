@@ -11,11 +11,11 @@
   };
 
   # State identifier.
-  # NixOS and Home Manager compatibility version.
+  # NixOS and Home Manager compatibility versions.
   stateVersion = "26.05";
 
-  # Text capitalization.
-  # Uppercase first character of input string.
+  # Text transformation.
+  # Uppercase first character string operations.
   capitalize = str: with lib.strings;
     toUpper (substring 0 1 str) + substring 1 (stringLength str - 1) str;
 }

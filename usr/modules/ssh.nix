@@ -1,13 +1,13 @@
 { ... }: {
-  # Transport configurations.
+  # Transport configuration.
   # Secure shell program options.
   programs.ssh = {
-    # Activation flag.
-    # Program enablement state.
+    # Enablement state.
+    # Program activation flags.
     enable = true;
 
     # Fallback override.
-    # Legacy SSH configurations generation state.
+    # Legacy SSH configuration generation states.
     enableDefaultConfig = false;
 
     # Target definitions.
@@ -15,7 +15,7 @@
     settings = {
       "*" = {
         # Credential proxy.
-        # SSH agent forwarding disabled state.
+        # SSH agent forwarding disabled states.
         ForwardAgent = false;
 
         # Material restriction.
@@ -23,7 +23,7 @@
         IdentitiesOnly = true;
 
         # Fingerprint hashing.
-        # Unobfuscated host entry storage state.
+        # Unobfuscated host entry storage states.
         HashKnownHosts = false;
 
         # Fingerprint path.
@@ -31,22 +31,22 @@
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Connection policy.
-        # Server reachability check interval and failure tolerance.
+        # Server reachability check intervals and failure tolerance.
         ServerAliveInterval = 60;
         ServerAliveCountMax = 3;
 
         # Daemon integration.
-        # Automatic key addition to agent state.
+        # Automatic key addition to agent states.
         AddKeysToAgent = "yes";
       };
 
       "github.com" = {
         # Remote account.
-        # Git operations profile name.
+        # Git operations profile names.
         User = "git";
 
         # Access material.
-        # Repository authentication identity file path.
+        # Repository authentication identity file paths.
         IdentityFile = "~/.ssh/id_ed25519_auth";
       };
     };

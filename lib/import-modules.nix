@@ -1,6 +1,6 @@
 { dir }:
   # Directory validation.
-  # Input folder existence requirement.
+  # Input folder existence requirements.
   assert builtins.pathExists dir;
 let
   # Folder listing.
@@ -9,11 +9,11 @@ let
   dirEntryNames = builtins.sort builtins.lessThan (builtins.attrNames dirEntries);
 
   # Entry filtering.
-  # Regular Nix file recognition predicates.
+  # Nix source file recognition predicates.
   isNixFile = name: builtins.match ".*\\.nix$" name != null;
   isRegularNixFile = name: dirEntries.${name} == "regular" && isNixFile name;
 in
   # Path mapping.
-  # Absolute paths of matched Nix files.
+  # Absolute paths for matched Nix files.
   map (file: dir + "/${file}")
     (builtins.filter isRegularNixFile dirEntryNames)

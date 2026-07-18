@@ -1,6 +1,6 @@
 { pkgs, vars, ... }: {
   # Component imports.
-  # User configurations list.
+  # User configuration lists.
   imports = import ../lib/import-modules.nix {
     dir = ../usr/modules;
   };
@@ -15,6 +15,6 @@
   home.packages = with pkgs; [ ];
 
   # State identifier.
-  # Home Manager compatibility version string.
+  # Home Manager compatibility version strings.
   home.stateVersion = vars.stateVersion;
 }

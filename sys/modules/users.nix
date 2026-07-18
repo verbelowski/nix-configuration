@@ -1,29 +1,29 @@
 { pkgs, vars, ... }: {
-  # Identity configurations.
+  # Identity configuration.
   # Account and shell options.
   users = {
     # Primary interpreter.
-    # System wide login shell definitions.
+    # System-wide login shell definitions.
     defaultUserShell = pkgs.zsh;
 
     # Personal account.
     # Primary profile definitions.
     users.${vars.user.name} = {
       # Privilege level.
-      # Normal user profile with home directory.
+      # Normal user profile directories.
       isNormalUser = true;
 
       # Visual moniker.
-      # Profile description field value.
+      # Profile description field values.
       description = vars.capitalize vars.user.name;
 
       # Access rings.
-      # Permission group membership list.
+      # Permission group membership lists.
       extraGroups = [ "networkmanager" "wheel" ]; # TODO: Add groups as configuration grows (e.g. `audio`, `video`, `render`, `input`, `lp`).
     };
   };
 
   # Interpreter activation.
-  # System wide Zsh login shell enablement.
+  # System-wide Zsh login shell enablement.
   programs.zsh.enable = true;
 }

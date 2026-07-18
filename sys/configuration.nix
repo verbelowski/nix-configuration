@@ -1,6 +1,6 @@
 { pkgs, vars, ... }: {
   # Component imports.
-  # System configurations list.
+  # System configuration lists.
   imports = import ../lib/import-modules.nix {
     dir = ../sys/modules;
   };
@@ -9,11 +9,11 @@
   # Global system environment packages.
   environment.systemPackages = with pkgs; [ ];
 
-  # Maintenance configurations.
+  # Maintenance configuration.
   # Scheduled system update options.
   system.autoUpgrade = {
-    # Activation state.
-    # Automatic upgrade enablement flag.
+    # Enablement state.
+    # Automatic upgrade activation flags.
     enable = true;
 
     # Execution schedule.
@@ -29,11 +29,11 @@
     flags = [ "--update-input" "nixpkgs" "--update-input" "home-manager" ];
 
     # Restart permission.
-    # Automatic reboot after kernel update.
+    # Automatic reboot after kernel updates.
     allowReboot = true; # NOTE: `persistent` defaults to `true`, so missed weekly upgrades run on next boot.
   };
 
   # State identifier.
-  # NixOS compatibility version string.
+  # NixOS compatibility version strings.
   system.stateVersion = vars.stateVersion;
 }

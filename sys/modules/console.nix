@@ -1,5 +1,5 @@
 { vars, ... }: {
-  # TTY configurations.
+  # TTY configuration.
   # Terminal appearance and input settings.
   console = {
     font = "Lat2-Terminus16";
@@ -7,7 +7,7 @@
     earlySetup = true;
   };
 
-  # Login configurations.
+  # Login configuration.
   # Automatic Getty and silent boot settings.
   services.getty = {
     autologinUser = vars.user.name;

@@ -3,14 +3,14 @@
   # Nix daemon configurations.
   nix = {
     # Source tracking.
-    # Legacy channel system state.
+    # Legacy channel system states.
     channel.enable = false;
 
     # Space reclamation.
     # Automatic old generation removal settings.
     gc = {
-      # Enablement flag.
-      # Automatic garbage collection state.
+      # Enablement state.
+      # Automatic garbage collection flags.
       automatic = true;
 
       # Execution schedule.
@@ -18,7 +18,7 @@
       dates = "weekly";
 
       # Removal options.
-      # Generation age deletion threshold.
+      # Generation age deletion thresholds.
       options = "--delete-older-than 7d";
     };
 
@@ -30,40 +30,40 @@
       experimental-features = [ "nix-command" "flakes" ];
 
       # Privileged accounts.
-      # Trusted Nix operation access list.
+      # Trusted Nix operation access lists.
       trusted-users = [ vars.user.name ];
 
       # Request timeout.
-      # Binary cache connection time limit in seconds.
+      # Binary cache connection time limits.
       connect-timeout = 5;
 
       # Compilation fallback.
-      # Source build on binary cache failure.
+      # Source build on binary cache failures.
       fallback = true;
 
       # Repository warnings.
-      # Git tree modification alert state.
+      # Git tree modification alert states.
       warn-dirty = false;
 
-      # Capacity optimisation.
-      # Automatic hard link deduplication state.
+      # Capacity optimization.
+      # Automatic hard link deduplication states.
       auto-optimise-store = true;
 
       # Minimum capacity.
-      # Garbage collection trigger threshold in bytes.
+      # Garbage collection trigger threshold bytes.
       min-free = 128000000;
 
       # Maximum capacity.
-      # Garbage collection target threshold in bytes.
+      # Garbage collection target threshold bytes.
       max-free = 1000000000;
     };
   };
 
-  # Repository configurations.
-  # Unfree package installation allowance.
+  # Repository configuration.
+  # Unfree package installation allowances.
   nixpkgs.config.allowUnfree = true;
 
   # Manual pages.
-  # System documentation generation state.
+  # System documentation generation states.
   documentation.enable = false;
 }

@@ -1,22 +1,22 @@
 # nix-configuration
 
-Personal NixOS configuration with Hyprland tiling Wayland compositor.
+Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 
 ## Project Structure
 
 ```bash
 ├── lib
 │   ├── import-modules.nix
-│   │   ├── # Module resolution.
-│   │   ├── # Path import definitions.
+│   │   ├── # Evaluation logic.
+│   │   ├── # Directory path definitions.
 │   ├── shared-variables.nix
 │   │   ├── # Global constants.
-│   │   ├── # Common parameter sets.
+│   │   ├── # Shared system settings.
 ├── sys
 │   ├── modules
 │   │   ├── boot.nix
-│   │   │   ├── # Systemd-boot settings.
-│   │   │   ├── # Kernel boot parameters.
+│   │   │   ├── # Startup sequence.
+│   │   │   ├── # Core kernel settings.
 │   │   ├── console.nix
 │   │   │   ├── # Terminal appearance.
 │   │   │   ├── # Keymap layout definitions.
@@ -27,19 +27,19 @@ Personal NixOS configuration with Hyprland tiling Wayland compositor.
 │   │   │   ├── # Interface configuration.
 │   │   │   ├── # Firewall security policy.
 │   │   ├── nix.nix
-│   │   │   ├── # Nixpkgs optimization.
+│   │   │   ├── # Package manager.
 │   │   │   ├── # Garbage collection policy.
 │   │   ├── security.nix
 │   │   │   ├── # Privilege management.
-│   │   │   ├── # Sudo access rules.
+│   │   │   ├── # Administrative access policy.
 │   │   ├── users.nix
-│   │   │   ├── # Account definitions.
-│   │   │   ├── # Group membership mappings.
+│   │   │   ├── # Account configuration.
+│   │   │   ├── # Group membership definitions.
 │   ├── configuration.nix
-│   │   ├── # Module integration.
-│   │   ├── # Base configuration blocks.
+│   │   ├── # Host integration.
+│   │   ├── # Base platform configuration.
 │   ├── hardware-configuration.nix
-│   │   ├── # Hardware mapping.
+│   │   ├── # Hardware layout.
 │   │   ├── # Filesystem storage definitions.
 ├── usr
 │   ├── modules
@@ -56,29 +56,21 @@ Personal NixOS configuration with Hyprland tiling Wayland compositor.
 │   │   │   ├── # Shell customization.
 │   │   │   ├── # Theme style options.
 │   ├── home.nix
-│   │   ├── # User integration.
+│   │   ├── # Profile integration.
 │   │   ├── # Home environment configuration.
 ├── flake.lock
-│   ├── # Lockfile generation.
+│   ├── # Version lock.
 │   ├── # Immutable dependency hashes.
 ├── flake.nix
-│   ├── # Dependency management.
-│   ├── # System definition structures.
+│   ├── # Dependency map.
+│   ├── # System structure definitions.
 ├── LICENSE.md
 │   ├── # Legal basis.
-│   ├── # Usage permission declarations.
+│   ├── # Usage permission definitions.
 ├── README.md
-│   ├── # Project documentation.
-│   ├── # Informational content blocks.
+│   ├── # Project overview.
+│   ├── # Repository structure documentation.
 ```
-
-## Reference Documentation
-
-* Nix: [File Reference](https://nix.dev/manual/nix/2.34/command-ref/conf-file)
-* NixOS: [Options Search](https://search.nixos.org/options?channel=26.05) | [Manual](https://nixos.org/manual/nixos/stable)
-* Home Manager: [NixOS Settings](https://home-manager.dev/manual/26.05/nixos-options.xhtml)
-* Git: [Configuration Variables](https://git-scm.com/docs/git-config)
-* Neovim: [User Preferences](https://neovim.io/doc/user/options)
 
 ## Commenting Guidelines
 
@@ -89,15 +81,27 @@ Technical documentation within the source code must adhere to the following rest
 3. **Description style**: Noun-phrase expansion of the header meaning, strictly devoid of verbs.
 4. **Vocabulary uniqueness**: Prohibition of word or synonym repetition within a single entry. Requirement for linguistic diversity.
 5. **Technical nomenclature**: Strict assignment of terms to specific functions:
-  * `settings`: specific configuration values (e.g., boolean, nix parameters).
+  * `settings`: specific configuration values (e.g., *boolean*, *nix parameters*).
   * `options`: available variants, parameters, or sets of configuration values.
   * `policy`: rules, restrictions, or operational guidelines.
   * `definitions`: declarations, mappings, or structures defining elements.
   * `configuration`: larger structures, whole module blocks, or groups of related settings.
 6. **Enumeration format**: Comma-separated lists permitted only for values inherently composed of multiple equivalent parts. Otherwise, a uniform noun phrase is required.
-7. **Linguistic precision**: Elimination of generic or vague terms (e.g., all, additional, extra, various, other, some).
-8. **Word spelling**: Avoidance of hyphens except for proper names and technical terms requiring such syntax (e.g., systemd-boot, per-user, zdiff3).
+7. **Linguistic precision**: Elimination of generic or vague terms (e.g., *all*, *additional*, *extra*, *various*, *other*, *some*).
+8. **Punctuation and typography**: Strict punctuation enforcement. Both the header and the description must end with a period. The description must begin with a capital letter.
+9. **Comment placement**: Strict vertical positioning directly above the documented code block without blank lines. Inline comments are prohibited unless explicitly prefixed with `NOTE`, `TODO`, or `FIXME`.
+10. **Line length boundaries**: Hard character limit per line (e.g., *80*, *100*, or *120* characters) to prevent IDE text wrapping and ensure the single-line constraint is practical.
+11. **Acronyms and abbreviations**: Allowance strictly for universally recognized technical acronyms (e.g., *API*, *HTTP*). Prohibition of truncated or colloquial terms (e.g., *info*, *config*, *dir* must be expanded to *information*, *configuration*, *directory*).
+12. **Language standard**: Mandatory use of standard US English to eliminate spelling variations (e.g., *color* vs *colour*) and ensure repository-wide consistency.
+
+## Reference Documentation
+
+* Nix: [File Reference](https://nix.dev/manual/nix/2.34/command-ref/conf-file)
+* NixOS: [Options Search](https://search.nixos.org/options?channel=26.05) | [Manual](https://nixos.org/manual/nixos/stable)
+* Home Manager: [NixOS Settings](https://home-manager.dev/manual/26.05/nixos-options.xhtml)
+* Git: [Configuration Variables](https://git-scm.com/docs/git-config)
+* Neovim: [User Preferences](https://neovim.io/doc/user/options)
 
 ## Attribution Notice
 
-Comments within this project have been generated with the assistance of Claude to optimize development time. Please note that the substantive content, conceptual intent, and final technical verification were entirely crafted by a human.
+The technical implementation, system architecture, and source code of this configuration are entirely human-made. However, the standardized, highly structured code comments were generated with the assistance of Claude to ensure strict and unwavering adherence to the project's rigid documentation guidelines.

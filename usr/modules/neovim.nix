@@ -1,13 +1,13 @@
 { ... }: {
-  # Editor configurations.
+  # Editor configuration.
   # Text manipulation program options.
   programs.neovim = {
-    # Activation flag.
-    # Program enablement state.
+    # Enablement state.
+    # Program activation flags.
     enable = true;
 
     # Primary workspace.
-    # System wide editor definitions.
+    # System-wide editor definitions.
     defaultEditor = true;
 
     # Command aliases.
@@ -15,13 +15,13 @@
     viAlias = true;
     vimAlias = true;
 
-    # Script configurations.
+    # Script configuration.
     # Editor appearance and behavior parameters.
     initLua = ''
       -- Line numbers
       vim.opt.number = true
 
-      -- Empty line markers
+      -- End-of-buffer markers
       vim.opt.fillchars = { eob = " " }
 
       -- Indentation

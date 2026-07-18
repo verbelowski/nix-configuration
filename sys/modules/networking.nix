@@ -1,5 +1,5 @@
 { vars, ... }: {
-  # Connectivity configurations.
+  # Connectivity configuration.
   # Hostname and connection settings.
   networking = {
     # Device identity.
@@ -13,37 +13,37 @@
     # Network Manager.
     # Dynamic connection management options.
     networkmanager = {
-      # Activation state.
-      # Network Manager enablement flag.
+      # Enablement state.
+      # Network Manager activation flags.
       enable = true;
 
       # Output severity.
-      # Daemon message suppression level.
+      # Daemon message suppression levels.
       logLevel = "OFF";
 
       # Name resolution.
-      # Systemd-resolved integration mode.
+      # Systemd-resolved integration modes.
       dns = "systemd-resolved";
 
       # Wireless settings.
       # Radio connection options.
       wifi = {
         # Energy efficiency.
-        # Wireless power save mode state.
+        # Wireless power-save mode states.
         powersave = false;
 
         # Hardware identity.
-        # Randomized MAC address for privacy.
+        # Randomized MAC address privacy policies.
         macAddress = "random";
       };
     };
   };
 
-  # Resolver configurations.
-  # Systemd-resolved daemon and cache service.
+  # Resolver configuration.
+  # Systemd-resolved daemon services.
   services.resolved = {
-    # Activation flag.
-    # DNS resolver enablement state.
+    # Enablement state.
+    # DNS resolver activation flags.
     enable = true;
 
     # Resolution settings.
@@ -54,7 +54,7 @@
       DNSSEC = "true";
 
       # DoT protocol.
-      # Encrypted DNS query transmission mode.
+      # Encrypted DNS query transmission modes.
       DNSOverTLS = "true";
     };
   };
