@@ -75,6 +75,32 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   ├── # Repository structure documentation.
 ```
 
+## Hardware Interaction
+
+### System Functional Keys
+
+* **F1**: Access BIOS/UEFI firmware interface.
+* **F5**: Display hardware asset information.
+* **F10**: Execute system diagnostic utility.
+* **F12**: Trigger boot device selection menu.
+
+### Boot Menu Selection
+
+* **LTS Version**: Prioritize system stability and reduced error probability.
+* **Latest Kernel**: Prioritize feature availability and hardware compatibility.
+
+## Disk Sanitization
+
+Permanent storage erasure via block overwrite.
+
+> **Warning:** Operation causes irreversible data loss on the designated target device. Verification of the correct identifier via `lsblk` is mandatory before execution.
+
+```bash
+dd if=/dev/zero of=/dev/sda bs=1M status=progress
+```
+
+> **Note:** Process duration depends on the storage capacity and write velocity.
+
 ## NixOS Installation
 
 ### 1. Root Access
@@ -198,6 +224,22 @@ Restart the machine to boot into your new system.
 reboot
 ```
 
+## Shortcut Reference
+
+### Hyprland Environment
+
+* **Ctrl+Q**: Initiate built-in terminal session.
+* **Ctrl+M**: Switch to TTY console environment.
+
+### Neovim Editor
+
+* **%d**: Execute file content clearance.
+* **v**: Activate graphical selection layer.
+* **+y**: Copy to system clipboard.
+* **:e file.nix**: Navigate to target file.
+* **:p**: Paste from system clipboard.
+* **i**: Activate text editing layer.
+
 ## Commenting Guidelines
 
 Technical documentation within the source code must adhere to the following restrictions to maintain high quality and structural clarity:
@@ -220,7 +262,7 @@ Technical documentation within the source code must adhere to the following rest
 11. **Acronyms and abbreviations**: Allowance strictly for universally recognized technical acronyms (e.g., *API*, *HTTP*). Prohibition of truncated or colloquial terms (e.g., *info*, *config*, *dir* must be expanded to *information*, *configuration*, *directory*).
 12. **Language standard**: Mandatory use of standard US English to eliminate spelling variations (e.g., *color* vs *colour*) and ensure repository-wide consistency.
 
-## Reference Documentation
+## Technical Resources
 
 * Nix: [File Reference](https://nix.dev/manual/nix/2.34/command-ref/conf-file)
 * NixOS: [Options Search](https://search.nixos.org/options?channel=26.05) | [Manual](https://nixos.org/manual/nixos/stable)
