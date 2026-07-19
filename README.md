@@ -224,6 +224,23 @@ Restart the machine to boot into your new system.
 reboot
 ```
 
+## Security Infrastructure
+
+### SSH Key Generation
+
+```bash
+ssh-keygen -t ed25519 -C "id_ed25519_sign" -f ~/.ssh/id_ed25519_sign
+ssh-keygen -t ed25519 -C "id_ed25519_auth" -f ~/.ssh/id_ed25519_auth
+```
+
+### Access Control
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_ed25519_{auth,sign}
+chmod 644 ~/.ssh/*.pub ~/.ssh/known_hosts ~/.ssh/allowed_signers
+```
+
 ## Shortcut Reference
 
 ### Hyprland Environment
