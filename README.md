@@ -75,6 +75,129 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   ├── # Repository structure documentation.
 ```
 
+## NixOS Installation
+
+### 1. Root Access
+
+Switch to the root user to begin the installation process.
+
+```bash
+sudo -i
+```
+
+> **Note:** Press `Ctrl+L` to clear the terminal screen.
+
+### 2. Internet Connection
+
+Establish a Wi-Fi connection if you are not using an Ethernet cable.
+
+```bash
+nmcli device wifi list
+nmcli device wifi connect "WIFI_NAME" password "WIFI_PASSWORD"
+```
+
+> **Note:** Press `Ctrl+C` to interrupt and exit the current operation.
+
+### 3. Disk Partitioning
+
+Identify your drive and create the required GPT partitions.
+
+```bash
+lsblk
+cfdisk /dev/sda
+```
+
+* Select a **GPT** partition table.
+* Create a new partition -> `1G` -> **EFI System**
+* Create a new partition -> `4G` -> **Linux swap**
+* Create a new partition -> Remaining disk space -> **Linux filesystem**
+* Confirm changes by selecting **Write**, then terminate with **Quit**.
+
+### 4. Filesystem Formatting
+
+Initialize the filesystems on the newly created partitions.
+
+```bash
+mkfs.ext4 -L nixos /dev/sda3
+mkswap -L swap /dev/sda2
+mkfs.fat -F 32 -n boot /dev/sda1
+```
+
+### 5. Partition Mounting
+
+Mount the partitions to the target installation directory and enable swap.
+
+```bash
+mount /dev/sda3 /mnt
+mount --mkdir /dev/sda1 /mnt/boot/efi
+swapon /dev/sda2
+mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+```
+
+### 6. System Configuration
+
+Generate the initial configuration structure.
+
+```bash
+nixos-generate-config --root /mnt
+vim /mnt/etc/nixos/configuration.nix
+```
+
+Update the generated `configuration.nix` with the following base settings:
+
+```nix
+{ pkgs, ... }: {
+  # Imports required dependencies.
+  imports = [ ./hardware-configuration.nix ];
+
+  # Uses the systemd-boot EFI bootloader.
+  boot.loader = {
+    systemd-boot.enable = true;
+
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+  };
+
+  # Uses the Zen kernel optimized for gaming.
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  # Enables network management.
+  networking.networkmanager.enable = true;
+
+  # Creates a user account.
+  users.users.vertennn = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
+  # Installs list of defined system packages.
+  # https://search.nixos.org/
+  environment.systemPackages = with pkgs; [ git ];
+
+  # Sets version of first NixOS installation.
+  system.stateVersion = "26.05";
+}
+```
+
+### 7. Base Installation
+
+Run the installer and set the password for your user account.
+
+```bash
+nixos-install
+nixos-enter --root /mnt -c 'passwd vertennn'
+```
+
+### 8. System Reboot
+
+Restart the machine to boot into your new system.
+
+```bash
+reboot
+```
+
 ## Commenting Guidelines
 
 Technical documentation within the source code must adhere to the following restrictions to maintain high quality and structural clarity:
