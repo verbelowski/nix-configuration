@@ -7,7 +7,7 @@
     kernelPackages = pkgs.linuxPackages_zen;
 
     # Core options.
-    # Silent boot startup flags.
+    # Silent initialization command flags.
     kernelParams = [
       "quiet"
       "loglevel=3"
@@ -170,7 +170,7 @@
       };
 
       # Startup timeout.
-      # Automatic boot-time delay seconds.
+      # Automatic pre-launch delay seconds.
       timeout = 3; # TODO: Set to "0" when configuration is stable.
     };
   };

@@ -96,10 +96,11 @@ Permanent storage erasure via block overwrite.
 > **Warning:** Operation causes irreversible data loss on the designated target device. Verification of the correct identifier via `lsblk` is mandatory before execution.
 
 ```bash
-dd if=/dev/zero of=/dev/sda bs=1M status=progress
+lsblk
+dd if=/dev/zero of=/dev/sdX bs=1M status=progress
 ```
 
-> **Note:** Process duration depends on the storage capacity and write velocity.
+> **Note:** Replace `/dev/sdX` with the identifier confirmed in the previous step. Process duration depends on the storage capacity and write velocity.
 
 ## NixOS Installation
 
@@ -173,36 +174,46 @@ Update the generated `configuration.nix` with the following base settings:
 
 ```nix
 { pkgs, ... }: {
-  # Imports required dependencies.
+  # Component imports.
+  # Hardware definition file references.
   imports = [ ./hardware-configuration.nix ];
 
-  # Uses the systemd-boot EFI bootloader.
+  # Startup configuration.
+  # EFI boot manager parameters.
   boot.loader = {
+    # Bootloader options.
+    # Systemd startup manager activation.
     systemd-boot.enable = true;
 
+    # Firmware options.
+    # EFI partition and variable values.
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot/efi";
     };
   };
 
-  # Uses the Zen kernel optimized for gaming.
+  # Core kernel.
+  # Zen desktop-optimized variant.
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Enables network management.
+  # Connectivity configuration.
+  # Network Manager service activation.
   networking.networkmanager.enable = true;
 
-  # Creates a user account.
+  # Personal account.
+  # Primary profile definitions.
   users.users.vertennn = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
 
-  # Installs list of defined system packages.
-  # https://search.nixos.org/
+  # Software selection.
+  # Global system environment packages.
   environment.systemPackages = with pkgs; [ git ];
 
-  # Sets version of first NixOS installation.
+  # State identifier.
+  # NixOS compatibility version string.
   system.stateVersion = "26.05";
 }
 ```

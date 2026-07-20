@@ -42,11 +42,11 @@
       fallback = true;
 
       # Binary caches.
-      # External binary cache sources.
+      # External store fetch sources.
       substituters = [ "https://nix-community.cachix.org" ];
 
       # Public keys.
-      # Trusted binary cache keys.
+      # Trusted store verification material.
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 
       # Repository warnings.

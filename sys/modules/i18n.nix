@@ -21,7 +21,7 @@
     };
   };
 
-  # System timezone.
+  # System locality.
   # Local time zone definitions.
   time.timeZone = "Europe/Warsaw";
 }

@@ -18,24 +18,30 @@
     # Script configuration.
     # Editor appearance and behavior parameters.
     initLua = ''
-      -- Line numbers
+      -- Line indicators.
+      -- Sequential number visibility settings.
       vim.opt.number = true
 
-      -- End-of-buffer markers
+      -- Buffer markers.
+      -- End-of-file tilde character suppression definitions.
       vim.opt.fillchars = { eob = " " }
 
-      -- Indentation
+      -- Indentation width.
+      -- Tab and shift character count values.
       vim.opt.tabstop = 2
       vim.opt.shiftwidth = 2
       vim.opt.expandtab = true
 
-      -- Cursor line highlight
+      -- Cursor position.
+      -- Active line highlight display settings.
       vim.opt.cursorline = true
 
-      -- Persistent undo history
+      -- Edit history.
+      -- Persistent undo file storage settings.
       vim.opt.undofile = true
 
-      -- Case-insensitive search
+      -- Search sensitivity.
+      -- Case matching and smart override modes.
       vim.opt.ignorecase = true
       vim.opt.smartcase = true
     '';
