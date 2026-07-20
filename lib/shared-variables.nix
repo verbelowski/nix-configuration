@@ -1,6 +1,6 @@
 { lib }: {
   # Machine identity.
-  # Network hostname identifier.
+  # Network hostname value.
   hostname = "nixos";
 
   # Account identity.

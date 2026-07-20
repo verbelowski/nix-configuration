@@ -3,7 +3,7 @@
   # Systemd lifecycle and resource configuration.
   systemd = {
     # Memory management.
-    # Proactive out-of-memory handling.
+    # Proactive out-of-memory intervention states.
     oomd = {
       enableSystemSlice = true;
       enableUserSlices = true;

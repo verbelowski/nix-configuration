@@ -1,5 +1,5 @@
 { vars, ... }: {
-  # Connectivity configuration.
+  # Network configuration.
   # Hostname and connection settings.
   networking = {
     # Device identity.
@@ -11,7 +11,7 @@
     nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
 
     # Network Manager.
-    # Dynamic connection management options.
+    # Dynamic connection control options.
     networkmanager = {
       # Enablement state.
       # Network Manager activation flags.
@@ -39,7 +39,7 @@
     };
   };
 
-  # Resolver configuration.
+  # Lookup configuration.
   # Systemd-resolved daemon services.
   services.resolved = {
     # Enablement state.

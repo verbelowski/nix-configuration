@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  # Startup configuration.
+  # Platform configuration.
   # System boot definitions.
   boot = {
     # Core kernel.
@@ -22,7 +22,7 @@
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
     # Blacklisted extensions.
-    # Blocked kernel module sets.
+    # Disallowed kernel module sets.
     blacklistedKernelModules = [ "iTCO_wdt" "pcspkr" ];
 
     # Runtime settings.
@@ -80,7 +80,7 @@
       # TIME_WAIT state endpoint reuse.
       "net.ipv4.tcp_tw_reuse" = 1;
 
-      # Closure timeout.
+      # Termination timeout.
       # TCP connection close wait durations.
       "net.ipv4.tcp_fin_timeout" = 15;
 

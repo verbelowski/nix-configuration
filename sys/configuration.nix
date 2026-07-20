@@ -28,8 +28,8 @@
     # Rebuild command execution arguments.
     flags = [ "--update-input" "nixpkgs" "--update-input" "home-manager" ];
 
-    # Restart permission.
-    # Automatic reboot after kernel updates.
+    # Reboot permission.
+    # Automatic power cycle after kernel updates.
     allowReboot = true; # NOTE: `persistent` defaults to `true`, so missed weekly upgrades run on next boot.
   };
 

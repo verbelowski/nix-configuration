@@ -38,11 +38,11 @@
       };
 
       # Revision signing.
-      # Automatic commit signature generation states.
+      # Automatic commit attestation generation states.
       commit.gpgSign = true;
 
       # Release signing.
-      # Automatic tag signature generation states.
+      # Automatic tag attestation generation states.
       tag.gpgSign = true;
 
       # Engine options.

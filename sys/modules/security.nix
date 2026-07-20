@@ -1,5 +1,5 @@
 { ... }: {
-  # Protection configuration.
+  # Hardening configuration.
   # System security parameters.
   security = {
     # Escalation configuration.
@@ -15,7 +15,7 @@
     };
 
     # Memory protection.
-    # Runtime kernel modification prevention states.
+    # Runtime kernel modification restriction states.
     protectKernelImage = true;
   };
 }
