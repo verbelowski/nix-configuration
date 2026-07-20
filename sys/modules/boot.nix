@@ -22,7 +22,7 @@
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
     # Blacklisted extensions.
-    # Disallowed kernel module sets.
+    # Kernel module identifier sets.
     blacklistedKernelModules = [ "iTCO_wdt" "pcspkr" ];
 
     # Runtime settings.
@@ -81,7 +81,7 @@
       "net.ipv4.tcp_tw_reuse" = 1;
 
       # Termination timeout.
-      # TCP connection close wait durations.
+      # TCP connection wait durations.
       "net.ipv4.tcp_fin_timeout" = 15;
 
       # TCP inbound.

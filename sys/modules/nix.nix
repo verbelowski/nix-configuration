@@ -17,7 +17,7 @@
       # Weekly collection interval definitions.
       dates = "weekly";
 
-      # Purge options.
+      # Retention options.
       # Generation age deletion thresholds.
       options = "--delete-older-than 7d";
     };
@@ -71,7 +71,7 @@
   # Unfree package installation allowances.
   nixpkgs.config.allowUnfree = true;
 
-  # Manual pages.
-  # System reference generation states.
+  # Help resources.
+  # System documentation generation states.
   documentation.enable = false;
 }
