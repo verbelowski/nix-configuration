@@ -10,7 +10,7 @@
     # Primary profile definitions.
     users.${vars.user.name} = {
       # Privilege level.
-      # Normal user profile states.
+      # Normal user profile settings.
       isNormalUser = true;
 
       # Visual moniker.
