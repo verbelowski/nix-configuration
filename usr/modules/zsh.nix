@@ -1,53 +1,53 @@
 { ... }: {
-  # Interpreter configuration.
-  # Interactive shell program options.
+  # Command interpreter.
+  # Interactive terminal session customization.
   programs.zsh = {
-    # Enablement state.
-    # Program activation flags.
+    # Zsh activation.
+    # Interactive shell environment switch.
     enable = true;
 
-    # Path transition.
-    # Implicit directory navigation without command prefixes.
+    # Directory navigation.
+    # Implicit path movement behavior.
     autocd = true;
 
-    # Input mapping.
-    # Emacs key binding modes for prompt editing.
+    # Keybindings mode.
+    # Line editor keymap profile.
     defaultKeymap = "emacs";
 
-    # Session context.
-    # Default workspace environment definitions.
+    # Environment variables.
+    # Shell startup exports.
     envExtra = ''
       export EDITOR=nvim
       export VISUAL=nvim
     '';
 
-    # Visual feedback.
-    # Real-time command syntax coloring states.
+    # Syntax highlighting.
+    # Command line colorization engine.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
 
-    # Input predictions.
-    # History-based command completion hint states.
+    # Auto-suggestions.
+    # Command history prediction engine.
     autosuggestion.enable = true;
 
-    # Record filtering.
-    # Arrow key navigation through matching history entries.
+    # Substring search.
+    # Partial command matching utility.
     historySubstringSearch.enable = true;
 
-    # Transcript options.
-    # Command history parameters.
+    # Command history.
+    # Interactive session storage parameters.
     history = {
-      # Record exclusion.
-      # Duplicate and space prefixed command omission states.
+      # Duplicate suppression.
+      # Consecutive filter and leading whitespace exclusion flags.
       ignoreAllDups = true;
       ignoreSpace = true;
 
-      # Chronological markers.
-      # Per-entry date and time recording states.
+      # Timestamp metadata.
+      # Execution time logging mode.
       extended = true;
     };
 
-    # Execution shorthands.
-    # Command alias definitions.
+    # Command aliases.
+    # Terminal shortcut definition list.
     shellAliases = {
       cls = "clear";
       ls = "ls --color=auto";

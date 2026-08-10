@@ -2,105 +2,117 @@
 
 Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 
+> [!WARNING]
+> **Notice & Disclaimer**
+> * **Scope**: Represents personal reference notes and custom system dotfiles, not an installation guide.
+> * **Usage**: Permitted for educational reference and inspection.
+> * **Disclaimer**: Execution occurs strictly at your own risk. No liability is assumed for system instability, misconfiguration, or data loss.
+
 ## Project Structure
 
 ```bash
 ├── lib
 │   ├── import-modules.nix
-│   │   ├── # Evaluation logic.
-│   │   ├── # Directory path definitions.
+│   │   ├── # Module importer.
+│   │   ├── # Automatic Nix file evaluator.
 │   ├── shared-variables.nix
-│   │   ├── # Global constants.
-│   │   ├── # Shared system settings.
+│   │   ├── # Global variables.
+│   │   ├── # Common system expression values.
 ├── sys
 │   ├── modules
 │   │   ├── boot.nix
-│   │   │   ├── # Startup sequence.
-│   │   │   ├── # Core kernel settings.
+│   │   │   ├── # Bootloader settings.
+│   │   │   ├── # Startup sequence initialization logic.
 │   │   ├── console.nix
-│   │   │   ├── # Terminal appearance.
-│   │   │   ├── # Keymap layout definitions.
+│   │   │   ├── # TTY console.
+│   │   │   ├── # Virtual terminal display configuration.
 │   │   ├── i18n.nix
-│   │   │   ├── # Locale settings.
-│   │   │   ├── # Timezone region definitions.
+│   │   │   ├── # Localization preferences.
+│   │   │   ├── # Regional language encoding rules.
 │   │   ├── networking.nix
-│   │   │   ├── # Interface configuration.
-│   │   │   ├── # Firewall security policy.
+│   │   │   ├── # Network management.
+│   │   │   ├── # Interface connectivity daemon control.
 │   │   ├── nix.nix
 │   │   │   ├── # Package manager.
-│   │   │   ├── # Garbage collection policy.
+│   │   │   ├── # Flake evaluation engine parameters.
 │   │   ├── security.nix
-│   │   │   ├── # Privilege management.
-│   │   │   ├── # Administrative access policy.
+│   │   │   ├── # System hardening.
+│   │   │   ├── # Authentication privilege escalation policies.
 │   │   ├── systemd.nix
-│   │   │   ├── # Service lifecycle management.
-│   │   │   ├── # Resource and crash policy.
+│   │   │   ├── # Service orchestration.
+│   │   │   ├── # Background daemon lifecycle handling.
 │   │   ├── users.nix
-│   │   │   ├── # Account configuration.
-│   │   │   ├── # Group membership definitions.
+│   │   │   ├── # User accounts.
+│   │   │   ├── # Human operator profile definitions.
 │   ├── configuration.nix
-│   │   ├── # Host integration.
-│   │   ├── # Base platform configuration.
+│   │   ├── # Host definitions.
+│   │   ├── # Central operating system specification.
 │   ├── hardware-configuration.nix
-│   │   ├── # Hardware layout.
-│   │   ├── # Filesystem storage definitions.
+│   │   ├── # Hardware architecture.
+│   │   ├── # Physical component kernel drivers.
 ├── usr
 │   ├── modules
 │   │   ├── git.nix
 │   │   │   ├── # Version control.
-│   │   │   ├── # User identity settings.
+│   │   │   ├── # Source code revision tracking.
 │   │   ├── neovim.nix
-│   │   │   ├── # Editor options.
-│   │   │   ├── # Plugin architecture definitions.
+│   │   │   ├── # Text editor.
+│   │   │   ├── # Command-line code environment setup.
 │   │   ├── ssh.nix
-│   │   │   ├── # Remote access.
-│   │   │   ├── # Security key policy.
+│   │   │   ├── # Secure shell.
+│   │   │   ├── # Encrypted remote access protocol.
 │   │   ├── zsh.nix
-│   │   │   ├── # Shell customization.
-│   │   │   ├── # Theme style options.
+│   │   │   ├── # Command interpreter.
+│   │   │   ├── # Interactive terminal session customization.
 │   ├── home.nix
-│   │   ├── # Profile integration.
-│   │   ├── # Home environment configuration.
+│   │   ├── # Home manager.
+│   │   ├── # User space environment profile.
 ├── flake.lock
-│   ├── # Version lock.
-│   ├── # Immutable dependency hashes.
+│   ├── # Dependency lockfile.
+│   ├── # Exact input revision pins.
 ├── flake.nix
-│   ├── # Dependency map.
-│   ├── # System structure definitions.
-├── LICENSE.md
-│   ├── # Legal basis.
-│   ├── # Usage permission definitions.
+│   ├── # Flake entrypoint.
+│   ├── # Declarative project input schema.
+├── LICENSE
+│   ├── # Software license.
+│   ├── # Legal distribution rights terms.
 ├── README.md
-│   ├── # Project overview.
-│   ├── # Repository structure documentation.
+│   ├── # Project documentation.
+│   ├── # Overview repository instruction manual.
 ```
 
-## Hardware Interaction
+## Firmware Shortcuts
 
-### System Functional Keys
+> [!NOTE]
+> These key bindings are specific to a Lenovo IdeaCentre Gaming 5 desktop and may differ on other hardware.
+>
+> * **CPU**: Intel Core i5-10400F (6 cores, 12 threads, 2.90–4.30 GHz, 12 MB cache)
+> * **Chipset**: Intel B560
+> * **RAM**: 16 GB DDR4 (3200 MHz)
+> * **GPU**: NVIDIA GeForce RTX 3060 (12 GB GDDR6)
+> * **Storage**: 512 GB NVMe SSD, 120 GB SATA SSD, 1 TB USB SSD, 2 TB USB HDD
+> * **Network**: Wi-Fi 5 (802.11 a/b/g/n/ac), 10/100/1000 Mbps LAN
+> * **PSU**: 380 W
 
 * **F1**: Access BIOS/UEFI firmware interface.
 * **F5**: Display hardware asset information.
 * **F10**: Execute system diagnostic utility.
 * **F12**: Trigger boot device selection menu.
 
-### Boot Menu Selection
-
-* **LTS Version**: Prioritize system stability and reduced error probability.
-* **Latest Kernel**: Prioritize feature availability and hardware compatibility.
-
 ## Disk Sanitization
 
 Permanent storage erasure via block overwrite.
 
-> **Warning:** Operation causes irreversible data loss on the designated target device. Verification of the correct identifier via `lsblk` is mandatory before execution.
+> [!CAUTION]
+> Operation causes irreversible data loss on the designated target device. Verification of the correct identifier via `lsblk` is mandatory before execution.
+
+> [!IMPORTANT]
+> Replace `/dev/nvme0n1` with the identifier confirmed in the previous step. Process duration depends on the storage capacity and write velocity.
 
 ```bash
 lsblk
-dd if=/dev/zero of=/dev/sdX bs=1M status=progress
+dd if=/dev/zero of=/dev/nvme0n1 bs=1M status=progress
 ```
-
-> **Note:** Replace `/dev/sdX` with the identifier confirmed in the previous step. Process duration depends on the storage capacity and write velocity.
 
 ## NixOS Installation
 
@@ -112,7 +124,8 @@ Switch to the root user to begin the installation process.
 sudo -i
 ```
 
-> **Note:** Press `Ctrl+L` to clear the terminal screen.
+> [!TIP]
+> Press `Ctrl+L` to clear the terminal screen.
 
 ### 2. Internet Connection
 
@@ -123,7 +136,8 @@ nmcli device wifi list
 nmcli device wifi connect "WIFI_NAME" password "WIFI_PASSWORD"
 ```
 
-> **Note:** Press `Ctrl+C` to interrupt and exit the current operation.
+> [!TIP]
+> Press `Ctrl+C` to interrupt and exit the current operation.
 
 ### 3. Disk Partitioning
 
@@ -131,23 +145,23 @@ Identify your drive and create the required GPT partitions.
 
 ```bash
 lsblk
-cfdisk /dev/sda
+cfdisk /dev/nvme0n1
 ```
 
 * Select a **GPT** partition table.
-* Create a new partition -> `1G` -> **EFI System**
-* Create a new partition -> `4G` -> **Linux swap**
-* Create a new partition -> Remaining disk space -> **Linux filesystem**
+* Create a new partition → `1G` → **EFI System**
+* Create a new partition → `4G` → **Linux swap**
+* Create a new partition → Remaining disk space → **Linux filesystem**
 * Confirm changes by selecting **Write**, then terminate with **Quit**.
 
-### 4. Filesystem Formatting
+### 4. Partition Formatting
 
 Initialize the filesystems on the newly created partitions.
 
 ```bash
-mkfs.ext4 -L nixos /dev/sda3
-mkswap -L swap /dev/sda2
-mkfs.fat -F 32 -n boot /dev/sda1
+mkfs.ext4 -L nixos /dev/nvme0n1p3
+mkswap -L swap /dev/nvme0n1p2
+mkfs.fat -F 32 -n boot /dev/nvme0n1p1
 ```
 
 ### 5. Partition Mounting
@@ -155,9 +169,9 @@ mkfs.fat -F 32 -n boot /dev/sda1
 Mount the partitions to the target installation directory and enable swap.
 
 ```bash
-mount /dev/sda3 /mnt
-mount --mkdir /dev/sda1 /mnt/boot/efi
-swapon /dev/sda2
+mount /dev/nvme0n1p3 /mnt
+mount --mkdir /dev/nvme0n1p1 /mnt/boot/efi
+swapon /dev/nvme0n1p2
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars
 ```
 
@@ -170,55 +184,59 @@ nixos-generate-config --root /mnt
 vim /mnt/etc/nixos/configuration.nix
 ```
 
+> [!TIP]
+> **LTS Version**: Prioritize system stability and reduced error probability. <br />
+> **Latest Kernel**: Prioritize feature availability and hardware compatibility.
+
 Update the generated `configuration.nix` with the following base settings:
 
 ```nix
 { pkgs, ... }: {
-  # Component imports.
-  # Hardware definition file references.
+  # External modules.
+  # Hardware structural component declarations.
   imports = [ ./hardware-configuration.nix ];
 
-  # Startup configuration.
-  # EFI boot manager parameters.
+  # Boot initialization.
+  # System startup software specification.
   boot.loader = {
-    # Bootloader options.
-    # Systemd startup manager activation.
+    # Boot loader.
+    # Systemd-based UEFI entry management.
     systemd-boot.enable = true;
 
-    # Firmware options.
-    # EFI partition and variable values.
+    # Firmware interface.
+    # Non-volatile motherboard setting parameters.
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot/efi";
     };
   };
 
-  # Core kernel.
-  # Zen desktop-optimized variant.
+  # Kernel selection.
+  # Core operating system drivers.
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Connectivity configuration.
-  # Network Manager service activation.
+  # Network management.
+  # Interface connectivity daemon control.
   networking.networkmanager.enable = true;
 
-  # Personal account.
-  # Primary profile definitions.
+  # User account.
+  # Human operator profile definitions.
   users.users.vertennn = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
 
-  # Software selection.
-  # Global system environment packages.
+  # System software.
+  # Globally accessible binary packages.
   environment.systemPackages = with pkgs; [ git ];
 
-  # State identifier.
-  # NixOS compatibility version string.
+  # State compatibility.
+  # Backwards migration release baseline.
   system.stateVersion = "26.05";
 }
 ```
 
-### 7. Base Installation
+### 7. Installer Execution
 
 Run the installer and set the password for your user account.
 
@@ -235,16 +253,21 @@ Restart the machine to boot into your new system.
 reboot
 ```
 
-## Security Infrastructure
+## SSH Keys
 
-### SSH Key Generation
+> [!IMPORTANT]
+> The `allowed_signers` file requires manual creation for local Git SSH signature verification.
+> * `id_ed25519_auth`: Facilitates remote platform access and SSH authentication (e.g., GitHub).
+> * `id_ed25519_sign`: Reserved exclusively for cryptographic signing of Git commits and tags.
+
+Generate a signing and an authentication key pair.
 
 ```bash
 ssh-keygen -t ed25519 -C "id_ed25519_sign" -f ~/.ssh/id_ed25519_sign
 ssh-keygen -t ed25519 -C "id_ed25519_auth" -f ~/.ssh/id_ed25519_auth
 ```
 
-### Access Control
+Restrict access to the generated key material.
 
 ```bash
 chmod 700 ~/.ssh
@@ -254,18 +277,21 @@ chmod 644 ~/.ssh/*.pub ~/.ssh/known_hosts ~/.ssh/allowed_signers
 
 ## Shortcut Reference
 
-### Hyprland Environment
+> [!NOTE]
+> Bindings relevant to the machine configuration process, not an exhaustive list for either environment.
+
+Hyprland environment key bindings.
 
 * **Ctrl+Q**: Initiate built-in terminal session.
 * **Ctrl+M**: Switch to TTY console environment.
 
-### Neovim Editor
+Neovim editor key bindings.
 
-* **%d**: Execute file content clearance.
+* **:%d**: Execute file content clearance.
 * **v**: Activate graphical selection layer.
 * **+y**: Copy to system clipboard.
 * **:e file.nix**: Navigate to target file.
-* **:p**: Paste from system clipboard.
+* **+p**: Paste from system clipboard.
 * **i**: Activate text editing layer.
 
 ## Commenting Guidelines
@@ -273,31 +299,49 @@ chmod 644 ~/.ssh/*.pub ~/.ssh/known_hosts ~/.ssh/allowed_signers
 Technical documentation within the source code must adhere to the following restrictions to maintain high quality and structural clarity:
 
 1. **Two-part structure**: Every comment consists of exactly two single-line parts: a header and a description.
-2. **Header limit**: A thematic title containing a minimum of two and a maximum of three words.
-3. **Description style**: Noun-phrase expansion of the header meaning, strictly devoid of verbs.
-4. **Vocabulary uniqueness**: Prohibition of word or synonym repetition within a single entry. Requirement for linguistic diversity.
-5. **Technical nomenclature**: Strict assignment of terms to specific functions:
-  * `settings`: specific configuration values (e.g., *boolean*, *nix parameters*).
-  * `options`: available variants, parameters, or sets of configuration values.
-  * `policy`: rules, restrictions, or operational guidelines.
-  * `definitions`: declarations, mappings, or structures defining elements.
-  * `configuration`: larger structures, whole module blocks, or groups of related settings.
-6. **Enumeration format**: Comma-separated lists permitted only for values inherently composed of multiple equivalent parts. Otherwise, a uniform noun phrase is required.
-7. **Linguistic precision**: Elimination of generic or vague terms (e.g., *all*, *additional*, *extra*, *various*, *other*, *some*).
-8. **Punctuation and typography**: Strict punctuation enforcement. Both the header and the description must end with a period. The description must begin with a capital letter.
-9. **Comment placement**: Strict vertical positioning directly above the documented code block without blank lines. Inline comments are prohibited unless explicitly prefixed with `NOTE`, `TODO`, or `FIXME`.
-10. **Line length boundaries**: Hard character limit per line (e.g., *80*, *100*, or *120* characters) to prevent IDE text wrapping and ensure the single-line constraint is practical.
-11. **Acronyms and abbreviations**: Allowance strictly for universally recognized technical acronyms (e.g., *API*, *HTTP*). Prohibition of truncated or colloquial terms (e.g., *info*, *config*, *dir* must be expanded to *information*, *configuration*, *directory*).
-12. **Language standard**: Mandatory use of standard US English to eliminate spelling variations (e.g., *color* vs *colour*) and ensure repository-wide consistency.
+2. **Header limit**: A thematic title containing a minimum of two and a maximum of three words, gravitating toward the minimum unless fewer words cause ambiguity.
+3. **Verb prohibition**: Both the header and the description are noun phrases, strictly devoid of verbs.
+4. **Description scope**: The description conveys exactly one cohesive fact that expands the header meaning. Compound or unrelated facts joined by conjunctions require separate comments.
+5. **Enumeration format**: Comma-separated lists permitted only for values inherently composed of multiple equivalent parts. Otherwise, a uniform noun phrase is required.
+6. **Vocabulary uniqueness**: Prohibition of word or synonym repetition within a single entry. Requirement for linguistic diversity.
+7. **Cross-file consistency**: Comments documenting the same key across different files share an identical header, while the description adapts to the surrounding context.
+8. **Linguistic precision**: Elimination of generic or vague terms (e.g., `all`, `additional`, `extra`, `various`, `other`, `some`).
+9. **Acronyms and abbreviations**: Allowance strictly for universally recognized technical acronyms (e.g., `API`, `HTTP`). Prohibition of truncated or colloquial terms (e.g., `info`, `config`, `dir` must be expanded to `information`, `configuration`, `directory`).
+10. **Language standard**: Mandatory use of standard US English to eliminate spelling variations (e.g., `color` vs `colour`) and ensure repository-wide consistency.
+11. **Punctuation and typography**: Strict punctuation enforcement. Both the header and the description must end with a period. The description must begin with a capital letter.
+12. **Comment placement**: Strict vertical positioning directly above the documented code block without blank lines. Inline comments are prohibited unless explicitly prefixed with `NOTE`, `TODO`, or `FIXME`.
+13. **Line length boundary**: Hard character limit of `80` characters per line to prevent IDE text wrapping and ensure the single-line constraint is practical.
+14. **Redundancy prohibition**: Prohibition of comment content directly inferable from adjacent code, including purpose clauses (e.g., "for X") that restate a fact already visible in the syntax. Requirement for information beyond the immediate syntax.
+15. **Value-independent scope**: Description addresses the option's role or category rather than its current specific value. Lists and enumerable settings receive descriptions valid regardless of the entries present or later added.
+16. **Length proportionality**: Description word count does not exceed twice the header word count.
 
-## Technical Resources
+> [!TIP]
+> **Compliant Example**
+>
+> ```nix
+> # Boot loader.
+> # Systemd-based UEFI entry management.
+> boot.loader.systemd-boot.enable = true;
+> ```
+
+> [!WARNING]
+> **Non-Compliant Example**
+>
+> ```nix
+> # Boot config.
+> # Sets up the loader for booting.
+> boot.loader.systemd-boot.enable = true;
+> ```
+>
+> **Detected Violations:**
+> * **Verb prohibition**: Contains verb phrase (`sets up`).
+> * **Abbreviation prohibition**: Uses truncated term (`config` instead of `configuration`).
+> * **Vocabulary uniqueness**: Repeats word within entry (`boot`).
+
+## Reference Links
 
 * Nix: [File Reference](https://nix.dev/manual/nix/2.34/command-ref/conf-file)
 * NixOS: [Options Search](https://search.nixos.org/options?channel=26.05) | [Manual](https://nixos.org/manual/nixos/stable)
 * Home Manager: [NixOS Settings](https://home-manager.dev/manual/26.05/nixos-options.xhtml)
 * Git: [Configuration Variables](https://git-scm.com/docs/git-config)
 * Neovim: [User Preferences](https://neovim.io/doc/user/options)
-
-## Attribution Notice
-
-The technical implementation, system architecture, and source code of this configuration are entirely human-made. However, the standardized, highly structured code comments were generated with the assistance of Claude to ensure strict and unwavering adherence to the project's rigid documentation guidelines.

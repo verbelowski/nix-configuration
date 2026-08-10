@@ -1,108 +1,108 @@
 { vars, ... }: {
-  # Repository configuration.
-  # Version control program options.
+  # Version control.
+  # Source code revision tracking.
   programs.git = {
-    # Enablement state.
-    # Program activation flags.
+    # Git activation.
+    # Revision tracking system switch.
     enable = true;
 
-    # Global settings.
-    # Version control configuration options.
+    # Core settings.
+    # Revision tracking configuration tree.
     settings = {
-      # Author identity.
-      # Commit creator metadata fields.
+      # Commit author.
+      # Developer identity metadata defaults.
       user = {
-        # Personal details.
-        # Commit creator name and email values.
+        # Author identity.
+        # Identity label and contact address.
         name = vars.capitalize vars.user.name;
         email = vars.user.email;
 
-        # Cryptographic key.
-        # SSH material for commit signature verification.
+        # Signing key.
+        # Public SSH file path.
         signingKey = "~/.ssh/id_ed25519_sign.pub";
 
-        # Scope restriction.
-        # Configuration file identity value enforcement.
+        # Identity enforcement.
+        # Explicit user definition requirement.
         useConfigOnly = true;
       };
 
-      # Security bounds.
-      # Trusted directory path definitions.
+      # Directory trust.
+      # Universal path safety override.
       safe.directory = "*";
 
-      # Attestation format.
-      # SSH mode and trusted signers file paths.
+      # Signature verification.
+      # SSH crypto engine format and allowed key file.
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
 
-      # Revision signing.
-      # Automatic commit attestation generation states.
+      # Change verification.
+      # Automatic commit signature enforcement.
       commit.gpgSign = true;
 
-      # Release signing.
-      # Automatic tag attestation generation states.
+      # Release verification.
+      # Automated tag signature enforcement.
       tag.gpgSign = true;
 
-      # Engine options.
-      # Editor and line ending configurations.
+      # Core parameters.
+      # Text editor choice and line ending conventions.
       core = {
         editor = "nvim";
         autocrlf = "input";
       };
 
-      # Creation defaults.
-      # Primary branch name definitions.
+      # Initial branch.
+      # Repository creation default identifier.
       init.defaultBranch = "main";
 
-      # Transport substitution.
-      # GitHub SSH access HTTPS rules.
+      # Transport protocol.
+      # SSH rewrite substitution rule.
       url."git@github.com:".insteadOf = "https://github.com/";
 
-      # Fetch policy.
-      # Remote branch pruning behaviors.
+      # Remote cleanup.
+      # Stale branch reference removal.
       fetch.prune = true;
 
-      # Pull policy.
-      # Linear history rebase behaviors.
+      # History alignment.
+      # Downstream commit rebase policy.
       pull.rebase = true;
 
-      # Push policy.
-      # Remote update and authentication options.
+      # Upstream publishing.
+      # Remote branch push defaults.
       push = {
-        # Upload mode.
-        # Simple transmission strategy definitions.
+        # Push behavior.
+        # Scope matching mode and upstream tracking automation.
         default = "simple";
         autoSetupRemote = true;
 
-        # Release propagation.
-        # Remote tag synchronization states.
+        # Tag propagation.
+        # Associated release marker upload.
         followTags = true;
       };
 
-      # Rebase policy.
-      # History rewriting rules.
+      # Branch integration.
+      # Linear history rewrite parameters.
       rebase = {
-        # Workspace management.
-        # Automatic stash and squash states.
+        # Rebase automation.
+        # Uncommitted change preservation and fixup consolidation.
         autoStash = true;
         autoSquash = true;
 
-        # Pointer updates.
-        # Branch reference adjustment states.
+        # Reference pointers.
+        # Stacked branch head adjustments.
         updateRefs = true;
       };
 
-      # Integration options.
-      # Rename detection and conflict style values.
+      # Conflict resolution.
+      # Rename tracking and three-way presentation style.
       merge = {
         renames = true;
         conflictStyle = "zdiff3";
       };
 
-      # Comparison options.
-      # Histogram diff algorithm selection.
+      # Difference engine.
+      # Histogram code comparison algorithm.
       diff.algorithm = "histogram";
     };
   };

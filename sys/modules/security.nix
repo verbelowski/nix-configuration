@@ -1,21 +1,21 @@
 { ... }: {
-  # Hardening configuration.
-  # System security parameters.
+  # System hardening.
+  # Access restriction policy enforcement.
   security = {
-    # Escalation configuration.
-    # Privilege management options.
+    # Privilege escalation.
+    # Superuser command execution rules.
     sudo = {
-      # Authentication requirement.
-      # Wheel group passwordless sudo states.
+      # Password requirement.
+      # Administrative escalation authentication barrier.
       wheelNeedsPassword = false; # TODO: Remove this option for security once the configuration is stable.
 
       # Binary restriction.
-      # Path executable sudo enforcement.
+      # Group execution scope boundary.
       execWheelOnly = true;
     };
 
-    # Memory protection.
-    # Runtime kernel modification restriction states.
+    # Kernel protection.
+    # Runtime memory modification shield.
     protectKernelImage = true;
   };
 }

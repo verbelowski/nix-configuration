@@ -1,60 +1,60 @@
 { vars, ... }: {
-  # Network configuration.
-  # Hostname and connection settings.
+  # Network management.
+  # Interface connectivity daemon control.
   networking = {
-    # Device identity.
-    # Machine network hostname.
+    # Network identity.
+    # Local system domain name.
     hostName = vars.hostname;
 
-    # Resolution servers.
-    # Quad9 DNS addresses.
+    # Static resolvers.
+    # Quad9 DNS server addresses.
     nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
 
-    # Network Manager.
-    # Dynamic connection control options.
+    # NetworkManager daemon.
+    # System interface state parameters.
     networkmanager = {
-      # Enablement state.
-      # Network Manager activation flags.
+      # Manager activation.
+      # Interface configuration daemon switch.
       enable = true;
 
-      # Output severity.
-      # Daemon message suppression levels.
+      # Logging verbosity.
+      # System journal output level.
       logLevel = "OFF";
 
-      # Name resolution.
-      # Systemd-resolved integration modes.
+      # DNS backend.
+      # Name resolution service integration.
       dns = "systemd-resolved";
 
-      # Wireless settings.
-      # Radio connection options.
+      # Wireless interface.
+      # Wi-Fi adapter hardware parameters.
       wifi = {
-        # Energy efficiency.
-        # Wireless power-save mode states.
+        # Power management.
+        # Wi-Fi adapter energy reduction.
         powersave = false;
 
         # Hardware identity.
-        # Randomized MAC address privacy policies.
+        # Wireless interface MAC address randomization.
         macAddress = "random";
       };
     };
   };
 
-  # Lookup configuration.
-  # Systemd-resolved daemon services.
+  # Name resolution.
+  # Systemd-resolved DNS daemon.
   services.resolved = {
-    # Enablement state.
-    # DNS resolver activation flags.
+    # Resolved activation.
+    # Local DNS caching service.
     enable = true;
 
-    # Resolution settings.
-    # Domain security and encryption options.
+    # Resolver security.
+    # Encrypted DNS protocol parameters.
     settings.Resolve = {
       # DNSSEC validation.
-      # Cryptographic domain response verification.
+      # Domain name signature verification.
       DNSSEC = "true";
 
-      # DoT protocol.
-      # Encrypted DNS query transmission modes.
+      # Encrypted transport.
+      # DNS queries over TLS protocol.
       DNSOverTLS = "true";
     };
   };

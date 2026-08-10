@@ -1,77 +1,77 @@
 { vars, ... }: {
-  # Package management.
-  # Nix daemon configurations.
+  # Package manager.
+  # Nix engine subsystem configuration.
   nix = {
-    # Source tracking.
-    # Legacy channel system states.
+    # Channel synchronization.
+    # Imperative state management mechanism.
     channel.enable = false;
 
-    # Space reclamation.
-    # Automatic old generation removal settings.
+    # Garbage collection.
+    # Automatic store cleanup routine.
     gc = {
-      # Enablement state.
-      # Automatic garbage collection flags.
+      # Automated execution.
+      # Scheduled cleanup trigger status.
       automatic = true;
 
       # Execution schedule.
-      # Weekly collection interval definitions.
+      # Maintenance interval timing specification.
       dates = "weekly";
 
-      # Retention options.
-      # Generation age deletion thresholds.
+      # Removal parameters.
+      # Deletion retention threshold flags.
       options = "--delete-older-than 7d";
     };
 
-    # Daemon settings.
-    # Store and build options.
+    # Core settings.
+    # Package manager daemon parameters.
     settings = {
-      # Modern capabilities.
-      # Flakes and new CLI command enablement.
+      # Experimental capabilities.
+      # Unstable CLI feature flags.
       experimental-features = [ "nix-command" "flakes" ];
 
       # Privileged accounts.
-      # Trusted Nix operation access lists.
+      # Daemon access level boundaries.
       trusted-users = [ vars.user.name ];
 
-      # Request timeout.
-      # Binary cache connection time limits.
+      # Connection threshold.
+      # Remote binary cache wait duration.
       connect-timeout = 5;
 
-      # Compilation fallback.
-      # Source build on binary cache failures.
+      # Fallback mechanism.
+      # Source compilation secondary path.
       fallback = true;
 
       # Binary caches.
-      # External store fetch sources.
+      # Prebuilt package archive mirrors.
       substituters = [ "https://nix-community.cachix.org" ];
 
-      # Public keys.
-      # Trusted store verification material.
+      # Cryptographic keys.
+      # Signature verification public tokens.
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 
-      # Repository warnings.
-      # Git tree modification alert states.
+      # Repository status.
+      # Uncommitted workspace state alerts.
       warn-dirty = false;
 
-      # Capacity optimization.
-      # Automatic hard link deduplication states.
+      # Store optimization.
+      # Hard link deduplication mechanism.
       auto-optimise-store = true;
 
-      # Minimum capacity.
-      # Garbage collection trigger threshold bytes.
+      # Minimum threshold.
+      # Storage limit allocation floor.
       min-free = 128000000;
 
-      # Maximum capacity.
-      # Garbage collection target threshold bytes.
+      # Maximum threshold.
+      # Storage limit allocation ceiling.
       max-free = 1000000000;
     };
   };
 
-  # Repository configuration.
-  # Unfree package installation allowances.
+  # Unfree software.
+  # Proprietary license policy exemption.
   nixpkgs.config.allowUnfree = true;
 
-  # Help resources.
-  # System documentation generation states.
+  # System documentation.
+  # Offline reference manual generation.
   documentation.enable = false;
 }

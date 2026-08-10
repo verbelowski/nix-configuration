@@ -1,71 +1,71 @@
 {
-  # Project metadata.
-  # Flake description strings.
+  # Repository description.
+  # High-level overview project summary.
   description = "Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.";
 
-  # External sources.
-  # Flake dependency definitions.
+  # External dependencies.
+  # Flake channel input sources.
   inputs = {
-    # Core repository.
-    # System package set sources.
+    # Package repository.
+    # Official NixOS distribution channel URL.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    # User space.
-    # Home Manager environment modules.
+    # User environment.
+    # Dotfile management framework source.
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  # Build targets.
-  # System configuration output definitions.
+  # Target outputs.
+  # Evaluated system build specifications.
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
-    # Global constants.
-    # Central value definitions.
+    # Global parameters.
+    # Shared configuration variable set.
     vars = import ./lib/shared-variables.nix {
       inherit (nixpkgs) lib;
     };
 
-    # Context parameters.
-    # Common module argument set definitions.
+    # Module arguments.
+    # System-wide context variable map.
     sharedArgs = {
       inherit vars;
     };
   in {
-    # Operating system.
-    # Host configuration entry definitions.
+    # Host configurations.
+    # Declarative machine deployment specifications.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
-      # Scope variables.
-      # Shared context for system modules.
+      # Context injection.
+      # Global module parameter passing.
       specialArgs = sharedArgs;
 
-      # Component list.
-      # System and user configurations.
+      # System modules.
+      # Declarative component definition list.
       modules = [
-        # Architecture layers.
-        # System and hardware definitions.
+        # System entrypoints.
+        # Main configuration and hardware specifications.
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
 
-        # Personal scope.
-        # User environment integration layers.
+        # Environment integration.
+        # User space module wrapper.
         home-manager.nixosModules.home-manager {
-          # Software distribution.
-          # System-wide binary sets with user package enablement.
+          # Package scope.
+          # Global package sharing and scope flags.
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # Environment parameters.
-          # Shared context for user modules.
+          # Variable passing.
+          # Scope argument injection.
           home-manager.extraSpecialArgs = sharedArgs;
 
-          # Backup configuration.
-          # Global file conflict resolution suffix.
+          # Backup extension.
+          # File collision safety suffix.
           home-manager.backupFileExtension = "backup";
 
-          # Profile integration.
-          # Home environment definition imports.
+          # User entrypoint.
+          # Profile configuration path.
           home-manager.users.${vars.user.name} = import ./usr/home.nix;
         }
       ];

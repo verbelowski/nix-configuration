@@ -1,22 +1,22 @@
 { ... }: {
-  # Editor configuration.
-  # Text manipulation program options.
+  # Text editor.
+  # Command-line code environment setup.
   programs.neovim = {
-    # Enablement state.
-    # Program activation flags.
+    # Editor activation.
+    # Neovim application switch.
     enable = true;
 
-    # Primary workspace.
-    # System-wide editor definitions.
+    # Default editor.
+    # System-wide primary text modification switch.
     defaultEditor = true;
 
-    # Command aliases.
-    # Neovim substitution for legacy commands.
+    # Binary shortcuts.
+    # Legacy execution command compatibility wrappers.
     viAlias = true;
     vimAlias = true;
 
-    # Script configuration.
-    # Editor appearance and behavior parameters.
+    # Initialization script.
+    # Embedded Lua environment configuration.
     initLua = ''
       -- Line indicators.
       -- Sequential number visibility settings.

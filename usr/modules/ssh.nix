@@ -1,52 +1,56 @@
 { ... }: {
-  # Transport configuration.
-  # Secure shell program options.
+  # Secure shell.
+  # Encrypted remote access protocol.
   programs.ssh = {
-    # Enablement state.
-    # Program activation flags.
+    # SSH activation.
+    # Client daemon configuration switch.
     enable = true;
 
-    # Fallback override.
-    # Legacy SSH configuration generation states.
+    # Default configuration.
+    # Standard system client settings switch.
     enableDefaultConfig = false;
 
-    # Target definitions.
-    # Per-host connection options.
+    # Host options.
+    # Connection lookup table.
     settings = {
+      # Wildcard matching.
+      # Global connection default rules.
       "*" = {
-        # Credential proxy.
-        # SSH agent forwarding disabled states.
+        # Agent forwarding.
+        # Key delegation security policy.
         ForwardAgent = false;
 
-        # Material restriction.
-        # Explicit identity file strict enforcement.
+        # Identity restriction.
+        # Explicit key file selection enforcement.
         IdentitiesOnly = true;
 
-        # Fingerprint hashing.
-        # Unobfuscated host entry storage states.
+        # Host hashing.
+        # Obfuscated server registry switch.
         HashKnownHosts = false;
 
-        # Fingerprint path.
-        # Known hosts file location definitions.
+        # Known hosts.
+        # Trusted server public key file.
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
-        # Connection policy.
-        # Server reachability check intervals and failure tolerance.
+        # Keepalive parameters.
+        # Server probe interval and retry count limits.
         ServerAliveInterval = 60;
         ServerAliveCountMax = 3;
 
-        # Daemon integration.
-        # Automatic key addition to agent states.
+        # Agent integration.
+        # Automatic key loading policy.
         AddKeysToAgent = "yes";
       };
 
+      # GitHub host.
+      # Code platform authentication parameters.
       "github.com" = {
-        # Remote account.
-        # Git operations profile names.
+        # Service account.
+        # Remote Git platform login name.
         User = "git";
 
-        # Access material.
-        # Repository authentication identity file paths.
+        # Authentication key.
+        # Private SSH key file path.
         IdentityFile = "~/.ssh/id_ed25519_auth";
       };
     };

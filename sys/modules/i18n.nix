@@ -1,13 +1,13 @@
 { ... }: {
-  # Regional configuration.
-  # System-wide language and area settings.
+  # Localization preferences.
+  # Regional language encoding rules.
   i18n = {
-    # Primary locale.
-    # System-wide language definitions.
+    # System locale.
+    # Default primary language environment variable.
     defaultLocale = "en_US.UTF-8";
 
-    # Specific formats.
-    # Regional measurement and time settings.
+    # Regional formats.
+    # Geographic unit measurement standards.
     extraLocaleSettings = {
       LC_ADDRESS = "pl_PL.UTF-8";
       LC_IDENTIFICATION = "pl_PL.UTF-8";
@@ -21,7 +21,7 @@
     };
   };
 
-  # System locality.
-  # Local time zone definitions.
+  # System clock.
+  # Geographic timezone designation.
   time.timeZone = "Europe/Warsaw";
 }
