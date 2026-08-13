@@ -104,7 +104,7 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 Permanent storage erasure via block overwrite.
 
 > [!CAUTION]
-> Operation causes irreversible data loss on the designated target device. Verification of the correct identifier via `lsblk` is mandatory before execution.
+> This operation causes irreversible data loss on the designated target device. Verification of the correct identifier via `lsblk` is mandatory before execution.
 
 > [!IMPORTANT]
 > Replace `/dev/nvme0n1` with the identifier confirmed in the previous step. Process duration depends on the storage capacity and write velocity.
@@ -134,6 +134,13 @@ Establish a Wi-Fi connection if you are not using an Ethernet cable.
 ```bash
 nmcli device wifi list
 nmcli device wifi connect "WIFI_NAME" password "WIFI_PASSWORD"
+```
+
+Verify IP allocation and check network connectivity.
+
+```bash
+ip a
+ping mynixos.com
 ```
 
 > [!TIP]
@@ -168,9 +175,12 @@ mkfs.fat -F 32 -n boot /dev/nvme0n1p1
 
 Mount the partitions to the target installation directory and enable swap.
 
+> [!NOTE]
+> The `umask=077` flag restricts permissions on the FAT32 boot partition to `root` (0700), preventing `systemd-boot` security warnings regarding world-accessible random seed files.
+
 ```bash
 mount /dev/nvme0n1p3 /mnt
-mount --mkdir /dev/nvme0n1p1 /mnt/boot/efi
+mount -o umask=077 --mkdir /dev/nvme0n1p1 /mnt/boot/efi
 swapon /dev/nvme0n1p2
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars
 ```
@@ -184,11 +194,11 @@ nixos-generate-config --root /mnt
 vim /mnt/etc/nixos/configuration.nix
 ```
 
+Update the generated `configuration.nix` with the following base settings:
+
 > [!TIP]
 > **LTS Version**: Prioritize system stability and reduced error probability. <br />
 > **Latest Kernel**: Prioritize feature availability and hardware compatibility.
-
-Update the generated `configuration.nix` with the following base settings:
 
 ```nix
 { pkgs, ... }: {

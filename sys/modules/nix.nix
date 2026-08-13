@@ -19,7 +19,7 @@
 
       # Removal parameters.
       # Deletion retention threshold flags.
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 14d";
     };
 
     # Core settings.
