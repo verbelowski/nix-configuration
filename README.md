@@ -196,10 +196,6 @@ vim /mnt/etc/nixos/configuration.nix
 
 Update the generated `configuration.nix` with the following base settings:
 
-> [!TIP]
-> **LTS Version**: Prioritize system stability and reduced error probability. <br />
-> **Latest Kernel**: Prioritize feature availability and hardware compatibility.
-
 ```nix
 { pkgs, ... }: {
   # External modules.
@@ -263,12 +259,32 @@ Restart the machine to boot into your new system.
 reboot
 ```
 
-## SSH Keys
+## Configuration Deployment
 
 > [!IMPORTANT]
-> The `allowed_signers` file requires manual creation for local Git SSH signature verification.
-> * `id_ed25519_auth`: Facilitates remote platform access and SSH authentication (e.g., GitHub).
-> * `id_ed25519_sign`: Reserved exclusively for cryptographic signing of Git commits and tags.
+> **Prerequisites**
+> * **Network**: Ensure active network connectivity on the newly booted system.
+> * **SSH Keys**: Complete key generation (in the section below) to enable Git authentication and commit signing.
+
+Clone the configuration repository to the home directory.
+
+```bash
+git clone https://github.com/verbelowski/nix-configuration.git
+```
+
+Build and apply the system configuration flake.
+
+```bash
+sudo nixos-rebuild switch --flake ~/nix-configuration#nixos
+```
+
+## SSH Keys
+
+* `id_ed25519_auth`: Facilitates remote platform access and SSH authentication (e.g., GitHub).
+* `id_ed25519_sign`: Reserved exclusively for cryptographic signing of Git commits and tags.
+
+> [!IMPORTANT]
+> Local Git SSH signature verification requires manual creation and population of the `~/.ssh/allowed_signers` file.
 
 Generate a signing and an authentication key pair.
 
