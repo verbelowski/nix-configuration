@@ -50,7 +50,7 @@
     # Terminal shortcut definition list.
     shellAliases = {
       reboot = "sudo reboot --no-wall";
-      shutdown = "sudo shutdown --no-wall";
+      shutdown = "sudo shutdown --no-wall now";
     };
   };
 }
