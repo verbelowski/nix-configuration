@@ -13,7 +13,7 @@
       # Developer identity metadata defaults.
       user = {
         # Author identity.
-        # Identity label and contact address.
+        # Developer contact metadata specification.
         name = vars.capitalize vars.user.name;
         email = vars.user.email;
 
@@ -31,7 +31,7 @@
       safe.directory = "*";
 
       # Signature verification.
-      # SSH crypto engine format and allowed key file.
+      # Cryptographic SSH validation parameters.
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
@@ -46,7 +46,7 @@
       tag.gpgSign = true;
 
       # Core parameters.
-      # Text editor choice and line ending conventions.
+      # Fundamental repository execution settings.
       core = {
         editor = "nvim";
         autocrlf = "input";
@@ -72,7 +72,7 @@
       # Remote branch push defaults.
       push = {
         # Push behavior.
-        # Scope matching mode and upstream tracking automation.
+        # Upstream reference transmission rules.
         default = "simple";
         autoSetupRemote = true;
 
@@ -85,7 +85,7 @@
       # Linear history rewrite parameters.
       rebase = {
         # Rebase automation.
-        # Uncommitted change preservation and fixup consolidation.
+        # Automated workspace state preservation.
         autoStash = true;
         autoSquash = true;
 
@@ -95,7 +95,7 @@
       };
 
       # Conflict resolution.
-      # Rename tracking and three-way presentation style.
+      # Structural merge presentation format.
       merge = {
         renames = true;
         conflictStyle = "zdiff3";

@@ -15,7 +15,7 @@
   stateVersion = "26.05";
 
   # String helper.
-  # Capital initial letter function.
+  # Upper case letter conversion.
   capitalize = str: with lib.strings;
     toUpper (substring 0 1 str) + substring 1 (stringLength str - 1) str;
 }

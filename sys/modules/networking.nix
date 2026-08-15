@@ -33,7 +33,7 @@
         powersave = false;
 
         # Hardware identity.
-        # Wireless interface MAC address randomization.
+        # Wireless MAC address randomization.
         macAddress = "random";
       };
     };
@@ -54,7 +54,7 @@
       DNSSEC = "true";
 
       # Encrypted transport.
-      # DNS queries over TLS protocol.
+      # TLS protocol DNS queries.
       DNSOverTLS = "true";
     };
   };

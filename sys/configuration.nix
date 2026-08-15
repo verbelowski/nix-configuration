@@ -29,7 +29,7 @@
     flags = [ "--update-input" "nixpkgs" "--update-input" "home-manager" ];
 
     # Automatic reboot.
-    # Post-update machine power cycle authorization.
+    # Post-update power cycle authorization.
     allowReboot = true; # NOTE: `persistent` defaults to `true`, so missed weekly upgrades run on next boot.
   };
 

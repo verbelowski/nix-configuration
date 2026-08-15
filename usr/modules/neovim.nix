@@ -7,11 +7,11 @@
     enable = true;
 
     # Default editor.
-    # System-wide primary text modification switch.
+    # Primary text modification switch.
     defaultEditor = true;
 
     # Binary shortcuts.
-    # Legacy execution command compatibility wrappers.
+    # Legacy execution command wrappers.
     viAlias = true;
     vimAlias = true;
 
@@ -23,25 +23,25 @@
       vim.opt.number = true
 
       -- Buffer markers.
-      -- End-of-file tilde character suppression definitions.
+      -- Trailing workspace symbol suppression.
       vim.opt.fillchars = { eob = " " }
 
       -- Indentation width.
-      -- Tab and shift character count values.
+      -- Code structure offset rules.
       vim.opt.tabstop = 2
       vim.opt.shiftwidth = 2
       vim.opt.expandtab = true
 
       -- Cursor position.
-      -- Active line highlight display settings.
+      -- Active line highlight mode.
       vim.opt.cursorline = true
 
       -- Edit history.
-      -- Persistent undo file storage settings.
+      -- Persistent change tracking storage.
       vim.opt.undofile = true
 
       -- Search sensitivity.
-      -- Case matching and smart override modes.
+      -- Character casing query behavior.
       vim.opt.ignorecase = true
       vim.opt.smartcase = true
     '';

@@ -3,7 +3,7 @@
   # Regional language encoding rules.
   i18n = {
     # System locale.
-    # Default primary language environment variable.
+    # Default primary language variable.
     defaultLocale = "en_US.UTF-8";
 
     # Regional formats.

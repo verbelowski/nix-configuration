@@ -8,12 +8,12 @@ let
   dirEntries = builtins.readDir dir;
   dirEntryNames = builtins.sort builtins.lessThan (builtins.attrNames dirEntries);
 
-  # File filters.
-  # Regular Nix file predicate functions.
+  # Expression filters.
+  # Evaluation predicate match logic.
   isNixFile = name: builtins.match ".*\\.nix$" name != null;
   isRegularNixFile = name: dirEntries.${name} == "regular" && isNixFile name;
 in
   # Path resolution.
-  # Absolute file path mapping construct.
+  # Absolute source location mapping.
   map (file: dir + "/${file}")
     (builtins.filter isRegularNixFile dirEntryNames)

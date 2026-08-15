@@ -7,14 +7,14 @@
     defaultUserShell = pkgs.zsh;
 
     # Main account.
-    # Primary human operator profile configuration.
+    # Primary human operator profile.
     users.${vars.user.name} = {
       # Account classification.
       # Non-system interactive identity flag.
       isNormalUser = true;
 
       # Display name.
-      # Human-readable account label metadata.
+      # Human-readable profile label metadata.
       description = vars.capitalize vars.user.name;
 
       # Group memberships.

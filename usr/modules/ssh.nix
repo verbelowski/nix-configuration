@@ -7,7 +7,7 @@
     enable = true;
 
     # Default configuration.
-    # Standard system client settings switch.
+    # Standard client settings switch.
     enableDefaultConfig = false;
 
     # Host options.
@@ -21,7 +21,7 @@
         ForwardAgent = false;
 
         # Identity restriction.
-        # Explicit key file selection enforcement.
+        # Explicit key file enforcement.
         IdentitiesOnly = true;
 
         # Host hashing.
@@ -29,11 +29,11 @@
         HashKnownHosts = false;
 
         # Known hosts.
-        # Trusted server public key file.
+        # Trusted server key storage.
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Keepalive parameters.
-        # Server probe interval and retry count limits.
+        # Connection probe frequency bounds.
         ServerAliveInterval = 60;
         ServerAliveCountMax = 3;
 
@@ -46,11 +46,11 @@
       # Code platform authentication parameters.
       "github.com" = {
         # Service account.
-        # Remote Git platform login name.
+        # Remote platform login identifier.
         User = "git";
 
         # Authentication key.
-        # Private SSH key file path.
+        # Private credential file path.
         IdentityFile = "~/.ssh/id_ed25519_auth";
       };
     };

@@ -278,6 +278,13 @@ Build and apply the system configuration flake.
 sudo nixos-rebuild switch --flake ~/nix-configuration#nixos
 ```
 
+Remove legacy imperative channels to enforce pure Flake evaluation.
+
+```bash
+sudo rm -rf /root/.nix-defexpr/channels
+sudo rm -rf /nix/var/nix/profiles/per-user/root/channels
+```
+
 ## SSH Keys
 
 * `id_ed25519_auth`: Facilitates remote platform access and SSH authentication (e.g., GitHub).

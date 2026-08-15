@@ -34,7 +34,7 @@
       trusted-users = [ vars.user.name ];
 
       # Connection threshold.
-      # Remote binary cache wait duration.
+      # Remote binary cache timeout.
       connect-timeout = 5;
 
       # Fallback mechanism.
@@ -54,7 +54,7 @@
       warn-dirty = false;
 
       # Store optimization.
-      # Hard link deduplication mechanism.
+      # Hardlink deduplication mechanism.
       auto-optimise-store = true;
 
       # Minimum threshold.

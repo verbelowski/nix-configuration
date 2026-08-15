@@ -7,7 +7,7 @@
   # Flake channel input sources.
   inputs = {
     # Package repository.
-    # Official NixOS distribution channel URL.
+    # Official NixOS distribution URL.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     # User environment.
@@ -44,7 +44,7 @@
       # Declarative component definition list.
       modules = [
         # System entrypoints.
-        # Main configuration and hardware specifications.
+        # Essential machine specification files.
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
 
@@ -52,7 +52,7 @@
         # User space module wrapper.
         home-manager.nixosModules.home-manager {
           # Package scope.
-          # Global package sharing and scope flags.
+          # Global inheritance flags.
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 

@@ -15,7 +15,7 @@
     defaultKeymap = "emacs";
 
     # Environment variables.
-    # Shell startup exports.
+    # Shell session environment exports.
     envExtra = ''
       export EDITOR=nvim
       export VISUAL=nvim
@@ -37,7 +37,7 @@
     # Interactive session storage parameters.
     history = {
       # Duplicate suppression.
-      # Consecutive filter and leading whitespace exclusion flags.
+      # Repeated entry exclusion flags.
       ignoreAllDups = true;
       ignoreSpace = true;
 
@@ -49,8 +49,8 @@
     # Command aliases.
     # Terminal shortcut definition list.
     shellAliases = {
-      cls = "clear";
-      ls = "ls --color=auto";
+      reboot = "sudo reboot --no-wall";
+      shutdown = "sudo shutdown --no-wall";
     };
   };
 }
