@@ -278,6 +278,13 @@ Build and apply the system configuration flake.
 sudo nixos-rebuild switch --flake ~/nix-configuration#nixos
 ```
 
+> [!TIP]
+> Once this configuration is applied, Git SSH authentication and URL rewrites take effect, enabling repository operations via SSH:
+>
+> ```bash
+> git clone git@github.com:verbelowski/nix-configuration.git
+> ```
+
 Remove legacy imperative channels to enforce pure Flake evaluation.
 
 ```bash

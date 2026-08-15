@@ -7,8 +7,10 @@
     kernelPackages = pkgs.linuxPackages_zen;
 
     # Kernel parameters.
-    # Silent console display options.
+    # Boot directive string definitions.
     kernelParams = [
+      # Console verbosity.
+      # Silent terminal output suppression.
       "quiet"
       "loglevel=3"
       "systemd.show_status=false"
@@ -16,6 +18,12 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "vt.global_cursor_default=0"
+
+      # Subsystem overrides.
+      # Hardware diagnostic log exclusions.
+      "nosgx"
+      "mce=nobootlog"
+      "libata.force=1.00:nodmalog"
     ];
 
     # Kernel drivers.
@@ -23,7 +31,7 @@
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
     # Disabled modules.
-    # Hardware watchdog component exclusions.
+    # Hardware driver initialization preventions.
     blacklistedKernelModules = [ "iTCO_wdt" "intel_oc_wdt" "pcspkr" ];
 
     # Runtime parameters.
