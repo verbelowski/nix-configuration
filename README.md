@@ -6,7 +6,7 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 > **Notice & Disclaimer**
 > * **Scope**: Represents personal reference notes and custom system dotfiles, not an installation guide.
 > * **Usage**: Permitted for educational reference and inspection.
-> * **Disclaimer**: Execution occurs strictly at your own risk. No liability is assumed for system instability, misconfiguration, or data loss.
+> * **Liability**: Execution occurs strictly at your own risk. No liability is assumed for system instability, misconfiguration, or data loss.
 
 ## Project Structure
 
@@ -21,8 +21,8 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 ├── sys
 │   ├── modules
 │   │   ├── boot.nix
-│   │   │   ├── # Bootloader settings.
-│   │   │   ├── # Startup sequence initialization logic.
+│   │   │   ├── # Boot initialization.
+│   │   │   ├── # System startup software specification.
 │   │   ├── console.nix
 │   │   │   ├── # TTY console.
 │   │   │   ├── # Virtual terminal display configuration.
@@ -34,7 +34,7 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   │   ├── # Interface connectivity daemon control.
 │   │   ├── nix.nix
 │   │   │   ├── # Package manager.
-│   │   │   ├── # Flake evaluation engine parameters.
+│   │   │   ├── # Nix engine subsystem configuration.
 │   │   ├── security.nix
 │   │   │   ├── # System hardening.
 │   │   │   ├── # Authentication privilege escalation policies.
@@ -104,10 +104,10 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 Permanent storage erasure via block overwrite.
 
 > [!CAUTION]
-> This operation causes irreversible data loss on the designated target device. Verification of the correct identifier via `lsblk` is mandatory before execution.
+> This operation causes irreversible data loss on the designated target device. Verification of the correct identifier is mandatory before execution.
 
 > [!IMPORTANT]
-> Replace `/dev/nvme0n1` with the identifier confirmed in the previous step. Process duration depends on the storage capacity and write velocity.
+> Replace `/dev/nvme0n1` with the target block device identifier. Process duration depends on the storage capacity and write velocity.
 
 ```bash
 lsblk
@@ -140,7 +140,7 @@ Verify IP allocation and check network connectivity.
 
 ```bash
 ip a
-ping mynixos.com
+ping nixos.org
 ```
 
 > [!TIP]
@@ -202,15 +202,15 @@ Update the generated `configuration.nix` with the following base settings:
   # Hardware structural component declarations.
   imports = [ ./hardware-configuration.nix ];
 
-  # Boot initialization.
-  # System startup software specification.
+  # Boot loader.
+  # Firmware startup manager.
   boot.loader = {
-    # Boot loader.
-    # Systemd-based UEFI entry management.
+    # Systemd-boot manager.
+    # EFI binary selection daemon.
     systemd-boot.enable = true;
 
     # Firmware interface.
-    # Non-volatile motherboard setting parameters.
+    # Non-volatile variables access.
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot/efi";
@@ -225,7 +225,7 @@ Update the generated `configuration.nix` with the following base settings:
   # Interface connectivity daemon control.
   networking.networkmanager.enable = true;
 
-  # User account.
+  # User accounts.
   # Human operator profile definitions.
   users.users.vertennn = {
     isNormalUser = true;
@@ -259,12 +259,41 @@ Restart the machine to boot into your new system.
 reboot
 ```
 
+## SSH Keys
+
+* `id_ed25519_auth`: Facilitates remote platform access and SSH authentication (e.g., GitHub).
+* `id_ed25519_sign`: Reserved exclusively for cryptographic signing of Git commits and tags.
+
+> [!IMPORTANT]
+> Local Git SSH signature verification requires manual creation and population of the `~/.ssh/allowed_signers` file, whereas `~/.ssh/known_hosts` is generated automatically during SSH connections.
+
+Create the target SSH directory.
+
+```bash
+mkdir -p ~/.ssh
+```
+
+Generate a signing and an authentication key pair.
+
+```bash
+ssh-keygen -t ed25519 -C "id_ed25519_sign" -f ~/.ssh/id_ed25519_sign
+ssh-keygen -t ed25519 -C "id_ed25519_auth" -f ~/.ssh/id_ed25519_auth
+```
+
+Restrict access to the generated key material.
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_ed25519_{auth,sign}
+chmod 644 ~/.ssh/*.pub ~/.ssh/known_hosts ~/.ssh/allowed_signers
+```
+
 ## Configuration Deployment
 
 > [!IMPORTANT]
 > **Prerequisites**
 > * **Network**: Ensure active network connectivity on the newly booted system.
-> * **SSH Keys**: Complete key generation (in the section below) to enable Git authentication and commit signing.
+> * **SSH Keys**: Complete key generation (in the section above) to enable Git authentication and commit signing.
 
 Clone the configuration repository to the home directory.
 
@@ -290,29 +319,6 @@ Remove legacy imperative channels to enforce pure Flake evaluation.
 ```bash
 sudo rm -rf /root/.nix-defexpr/channels
 sudo rm -rf /nix/var/nix/profiles/per-user/root/channels
-```
-
-## SSH Keys
-
-* `id_ed25519_auth`: Facilitates remote platform access and SSH authentication (e.g., GitHub).
-* `id_ed25519_sign`: Reserved exclusively for cryptographic signing of Git commits and tags.
-
-> [!IMPORTANT]
-> Local Git SSH signature verification requires manual creation and population of the `~/.ssh/allowed_signers` file.
-
-Generate a signing and an authentication key pair.
-
-```bash
-ssh-keygen -t ed25519 -C "id_ed25519_sign" -f ~/.ssh/id_ed25519_sign
-ssh-keygen -t ed25519 -C "id_ed25519_auth" -f ~/.ssh/id_ed25519_auth
-```
-
-Restrict access to the generated key material.
-
-```bash
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/id_ed25519_{auth,sign}
-chmod 644 ~/.ssh/*.pub ~/.ssh/known_hosts ~/.ssh/allowed_signers
 ```
 
 ## Shortcut Reference

@@ -5,17 +5,17 @@
     # Privilege escalation.
     # Superuser command execution rules.
     sudo = {
-      # Password requirement.
-      # Administrative escalation authentication barrier.
+      # Password barrier.
+      # Escalation authentication requirement flag.
       wheelNeedsPassword = false; # TODO: Remove this option for security once the configuration is stable.
 
-      # Binary restriction.
-      # Group execution scope boundary.
+      # Wheel group boundary.
+      # Superuser access restriction switch.
       execWheelOnly = true;
     };
 
     # Kernel protection.
-    # Runtime memory modification shield.
+    # System execution space shield.
     protectKernelImage = true;
   };
 }

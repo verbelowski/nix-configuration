@@ -2,67 +2,67 @@
   # Package manager.
   # Nix engine subsystem configuration.
   nix = {
-    # Channel synchronization.
-    # Imperative state management mechanism.
+    # Channel usage.
+    # Imperative path state management.
     channel.enable = false;
 
-    # Garbage collection.
-    # Automatic store cleanup routine.
+    # Store cleanup.
+    # Space reclamation routine settings.
     gc = {
-      # Automated execution.
-      # Scheduled cleanup trigger status.
-      automatic = true;
+      # Automated routine.
+      # Scheduled maintenance execution switch.
+      automatic = true; # NOTE: `persistent` defaults to `true`, so missed biweekly garbage collections run on next boot.
 
-      # Execution schedule.
-      # Maintenance interval timing specification.
+      # Maintenance schedule.
+      # Periodic execution interval rule.
       dates = "weekly";
 
-      # Removal parameters.
-      # Deletion retention threshold flags.
+      # Retention threshold.
+      # Generation deletion criteria flags.
       options = "--delete-older-than 14d";
     };
 
-    # Core settings.
-    # Package manager daemon parameters.
+    # System settings.
+    # Nix daemon configuration parameters.
     settings = {
-      # Experimental capabilities.
-      # Unstable CLI feature flags.
+      # Feature flags.
+      # Experimental engine capability switches.
       experimental-features = [ "nix-command" "flakes" ];
 
       # Privileged accounts.
-      # Daemon access level boundaries.
+      # Administrative user access list.
       trusted-users = [ vars.user.name ];
 
-      # Connection threshold.
-      # Remote binary cache timeout.
+      # Remote timeout.
+      # Binary mirror connection limit.
       connect-timeout = 5;
 
-      # Fallback mechanism.
-      # Source compilation secondary path.
+      # Cache fallback.
+      # Secondary build path authorization.
       fallback = true;
 
-      # Binary caches.
-      # Prebuilt package archive mirrors.
+      # Binary mirrors.
+      # Package download endpoint URLs.
       substituters = [ "https://nix-community.cachix.org" ];
 
-      # Cryptographic keys.
-      # Signature verification public tokens.
+      # Public keys.
+      # Download signature verification tokens.
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 
       # Repository status.
-      # Uncommitted workspace state alerts.
+      # Uncommitted workspace modification alerts.
       warn-dirty = false;
 
       # Store optimization.
-      # Hardlink deduplication mechanism.
+      # Disk space deduplication process.
       auto-optimise-store = true;
 
-      # Minimum threshold.
-      # Storage limit allocation floor.
+      # Minimum boundary.
+      # Storage allocation floor limit.
       min-free = 128000000;
 
-      # Maximum threshold.
-      # Storage limit allocation ceiling.
+      # Maximum boundary.
+      # Storage allocation ceiling limit.
       max-free = 1000000000;
     };
   };
@@ -71,7 +71,7 @@
   # Proprietary license policy exemption.
   nixpkgs.config.allowUnfree = true;
 
-  # System documentation.
-  # Offline reference manual generation.
+  # Manual generation.
+  # System documentation build switch.
   documentation.enable = false;
 }

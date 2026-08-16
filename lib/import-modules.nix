@@ -1,19 +1,19 @@
 { dir }:
-  # Path assertion.
-  # Target directory existence verification.
+  # Directory precondition.
+  # Target folder existence assertion.
   assert builtins.pathExists dir;
 let
-  # Directory contents.
-  # Sorted filesystem entry collection.
+  # Folder contents.
+  # Sorted directory entries retrieval.
   dirEntries = builtins.readDir dir;
   dirEntryNames = builtins.sort builtins.lessThan (builtins.attrNames dirEntries);
 
-  # Expression filters.
-  # Evaluation predicate match logic.
+  # Extension criteria.
+  # Expression file selector logic.
   isNixFile = name: builtins.match ".*\\.nix$" name != null;
   isRegularNixFile = name: dirEntries.${name} == "regular" && isNixFile name;
 in
   # Path resolution.
-  # Absolute source location mapping.
+  # Absolute module location list.
   map (file: dir + "/${file}")
     (builtins.filter isRegularNixFile dirEntryNames)

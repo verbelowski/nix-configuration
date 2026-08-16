@@ -1,185 +1,353 @@
 { pkgs, ... }: {
-  # Bootloader settings.
-  # Startup sequence initialization logic.
+  # Boot initialization.
+  # System startup software specification.
   boot = {
     # Kernel selection.
     # Core operating system drivers.
     kernelPackages = pkgs.linuxPackages_zen;
 
-    # Kernel parameters.
-    # Boot directive string definitions.
+    # Boot launch directives.
+    # Startup software command line parameters.
     kernelParams = [
       # Console verbosity.
-      # Silent terminal output suppression.
+      # Terminal screen output minimization.
       "quiet"
+
+      # Kernel log level.
+      # Console message verbosity threshold.
       "loglevel=3"
+
+      # System initialization.
+      # Service progress concealment flags.
       "systemd.show_status=false"
       "rd.systemd.show_status=false"
+
+      # Device manager.
+      # Udev event verbosity reduction.
       "rd.udev.log_level=3"
       "udev.log_priority=3"
+
+      # Terminal cursor.
+      # Console prompt indicator removal.
       "vt.global_cursor_default=0"
 
-      # Subsystem overrides.
-      # Hardware diagnostic log exclusions.
+      # Processor features.
+      # Intel capability deactivation flag.
       "nosgx"
+
+      # Hardware diagnostics.
+      # Processor fault messaging behavior.
       "mce=nobootlog"
+
+      # Storage controller interfaces.
+      # Serial direct memory access filter.
       "libata.force=1.00:nodmalog"
+
+      # Memory protection.
+      # Allocation cache merging deactivation.
+      "slab_nomerge"
+
+      # Memory initialization.
+      # Dynamic allocation heap sanitization.
+      "init_on_alloc=1"
+      "init_on_free=1"
+
+      # Page allocation.
+      # Physical memory location randomization.
+      "page_alloc.shuffle=1"
+
+      # Kernel stack protection.
+      # System call memory layout guard.
+      "randomize_kstack_offset=on"
+
+      # Surface reduction.
+      # Unused subsystem access points.
+      "debugfs=off"
+      "vsyscall=none"
     ];
 
-    # Kernel drivers.
-    # Network queue discipline components.
+    # Traffic schedulers.
+    # Network queue algorithm drivers.
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
-    # Disabled modules.
-    # Hardware driver initialization preventions.
-    blacklistedKernelModules = [ "iTCO_wdt" "intel_oc_wdt" "pcspkr" ];
+    # Module blocklist.
+    # Subsystem dynamic loading prevention.
+    blacklistedKernelModules = [
+      # Hardware watchdogs.
+      # Motherboard system safety modules.
+      "iTCO_wdt"
+      "intel_oc_wdt"
+
+      # Acoustic signals.
+      # Internal chassis speaker driver.
+      "pcspkr"
+
+      # Transport protocols.
+      # Socket communication interface exclusion.
+      "dccp"
+      "sctp"
+
+      # Cluster messaging.
+      # Inter-process communication subsystem restriction.
+      "rds"
+      "tipc"
+
+      # Data link.
+      # Serial framing driver interface.
+      "n-hdlc"
+
+      # Radio protocols.
+      # Packet transmission layer stack.
+      "ax25"
+      "netrom"
+      "x25"
+      "rose"
+
+      # Network stacks.
+      # Legacy local communication architecture.
+      "decnet"
+      "econet"
+      "ipx"
+      "appletalk"
+
+      # Network layers.
+      # Personal area infrastructure exclusion.
+      "af_802154"
+      "can"
+      "atm"
+
+      # Frame encapsulation.
+      # Logical link control protocol containment.
+      "psnap"
+      "p8023"
+      "p8022"
+
+      # Flash filesystems.
+      # Embedded read-only image format.
+      "cramfs"
+      "jffs2"
+
+      # Storage formats.
+      # Cluster disk layout deactivation.
+      "freevxfs"
+      "gfs2"
+
+      # Optical media.
+      # Universal disk format driver.
+      "udf"
+
+      # Macintosh volumes.
+      # Apple filesystem structure blocking.
+      "hfs"
+      "hfsplus"
+
+      # Read-only volumes.
+      # Archival image storage module.
+      "squashfs"
+
+      # File sharing.
+      # Network protocol message block.
+      "cifs"
+      "ksmbd"
+
+      # Remote mounts.
+      # Shared directory access drivers.
+      "nfs"
+      "nfsv3"
+      "nfsv4"
+
+      # Physical interfaces.
+      # High-speed serial bus drivers.
+      "firewire-core"
+      "firewire-ohci"
+      "firewire-sbp2"
+      "firewire-net"
+
+      # Legacy architecture.
+      # Obsolete video capture bus.
+      "ohci1394"
+      "sbp2"
+      "dv1394"
+      "raw1394"
+      "video1394"
+
+      # Controller ports.
+      # Direct memory access interface.
+      "thunderbolt"
+
+      # Virtual media.
+      # Synthetic display device driver.
+      "vivid"
+    ];
 
     # Runtime parameters.
-    # Low-level subsystem option defaults.
+    # Low-level kernel subsystem options.
     kernel.sysctl = {
-      # File handles.
-      # Global system descriptor limit.
+      # Resource handles.
+      # System-wide file descriptor limit.
       "fs.file-max" = 1000000;
 
-      # File monitoring.
-      # Inotify instance observation allocation.
+      # File monitoring allocations.
+      # Inotify watch and instance limits.
       "fs.inotify.max_user_watches" = 524288;
-
-      # Watcher instances.
-      # Inotify event monitor ceiling.
       "fs.inotify.max_user_instances" = 256;
+
+      # Filesystem links.
+      # World-writable directory attack prevention.
+      "fs.protected_fifos" = 2;
+      "fs.protected_regular" = 2;
 
       # Process limits.
       # System task identifier ceiling.
       "kernel.pid_max" = 4194303;
 
       # Crash dumps.
-      # Application failure log redirection.
+      # Process failure log redirection.
       "kernel.core_pattern" = "|/bin/false";
 
+      # Kernel pointers.
+      # Address disclosure prevention.
+      "kernel.kptr_restrict" = 2;
+
       # Connection backlog.
-      # Listen socket queue ceiling.
+      # Maximum socket queue capacity.
       "net.core.somaxconn" = 65536;
 
       # Network queue.
       # Packet input buffer limit.
       "net.core.netdev_max_backlog" = 250000;
 
-      # Read buffer.
-      # Socket receive memory ceiling.
+      # Socket buffer memory.
+      # Dynamic inbound and outbound limits.
       "net.core.rmem_max" = 16777216;
-
-      # Write buffer.
-      # Socket transmit memory ceiling.
       "net.core.wmem_max" = 16777216;
 
       # Queue discipline.
-      # Packet scheduling algorithm preference.
+      # Packet scheduling algorithm default.
       "net.core.default_qdisc" = "cake";
 
-      # Connection requests.
-      # Half-open socket buffer ceiling.
+      # JIT compiler.
+      # Bytecode hardening safeguard.
+      "net.core.bpf_jit_harden" = 2;
+
+      # Handshake requests.
+      # Half-open TCP socket queue.
       "net.ipv4.tcp_max_syn_backlog" = 65536;
 
       # Ephemeral ports.
-      # Outbound network allocation range.
+      # Outbound socket allocation range.
       "net.ipv4.ip_local_port_range" = "1024\t65535";
 
       # Socket recycling.
-      # Time-wait connection reuse switch.
+      # Time-wait state connection reuse.
       "net.ipv4.tcp_tw_reuse" = 1;
 
-      # Termination timeout.
-      # Closed connection hold duration.
+      # Termination delay.
+      # Closed socket hold duration.
       "net.ipv4.tcp_fin_timeout" = 15;
 
-      # TCP receive.
-      # Inbound window memory vector.
+      # TCP window buffers.
+      # Inbound and outbound memory vectors.
       "net.ipv4.tcp_rmem" = "4096\t87380\t16777216";
-
-      # TCP transmit.
-      # Outbound window memory vector.
       "net.ipv4.tcp_wmem" = "4096\t65536\t16777216";
 
       # Congestion control.
-      # Bandwidth delay optimization algorithm.
+      # Network bandwidth optimization algorithm.
       "net.ipv4.tcp_congestion_control" = "bbr";
 
       # SYN protection.
       # Flood attack mitigation mechanism.
       "net.ipv4.tcp_syncookies" = 1;
 
+      # Connection termination.
+      # Time-wait assassination protection.
+      "net.ipv4.tcp_rfc1337" = 1;
+
+      # Connection establishment.
+      # Handshake latency reduction.
+      "net.ipv4.tcp_fastopen" = 3;
+
       # Reverse path.
-      # Loose mode packet filter.
-      "net.ipv4.conf.all.rp_filter" = 2;
-      "net.ipv4.conf.default.rp_filter" = 2;
+      # Strict packet origin filter.
+      "net.ipv4.conf.all.rp_filter" = 1;
+      "net.ipv4.conf.default.rp_filter" = 1;
 
-      # ICMP broadcasts.
-      # Subnet ping response suppression.
+      # ICMP safety policies.
+      # Subnet ping and invalid log suppression.
       "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
-
-      # ICMP errors.
-      # Invalid response log suppression.
       "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
 
-      # ICMP redirects.
-      # Gateway redirection packet verification.
-      "net.ipv4.conf.all.secure_redirects" = 1;
-      "net.ipv4.conf.default.secure_redirects" = 1;
+      # Routing notices.
+      # Gateway path modification rejection.
+      "net.ipv4.conf.all.secure_redirects" = 0;
+      "net.ipv4.conf.default.secure_redirects" = 0;
+
+      # Redirect handling.
+      # Bidirectional rejection policy.
+      "net.ipv4.conf.all.accept_redirects" = 0;
+      "net.ipv4.conf.default.accept_redirects" = 0;
+      "net.ipv6.conf.all.accept_redirects" = 0;
+      "net.ipv6.conf.default.accept_redirects" = 0;
+      "net.ipv4.conf.all.send_redirects" = 0;
+      "net.ipv4.conf.default.send_redirects" = 0;
 
       # Memory swapping.
-      # Page cache eviction ratio.
+      # Page eviction preference ratio.
       "vm.swappiness" = 10;
+
+      # TTY disciplines.
+      # Line protocol loading restriction.
+      "dev.tty.ldisc_autoload" = 0;
     };
 
     # Console verbosity.
-    # TTY log display threshold.
+    # Terminal output minimization.
     consoleLogLevel = 0;
 
-    # RAM disk.
-    # Early boot message switch.
+    # Early verbosity.
+    # Initial RAM disk output.
     initrd.verbose = false;
 
-    # Temporary directory.
-    # Volatile storage cleanup trigger.
+    # Storage cleanup.
+    # Automated temporary directory purge.
     tmp.cleanOnBoot = true;
 
-    # Compressed swap.
-    # In-memory pooled cache storage.
+    # Memory compression.
+    # In-RAM page cache swap.
     zswap.enable = true;
 
-    # Bootloader specification.
-    # System startup software parameters.
+    # Boot loader.
+    # Firmware startup manager.
     loader = {
-      # Boot loader.
-      # Systemd-based UEFI entry management.
+      # Systemd-boot manager.
+      # EFI binary selection daemon.
       systemd-boot = {
-        # Loader activation.
-        # UEFI boot menu switch.
+        # Feature state.
+        # Startup manager activation switch.
         enable = true;
 
-        # Command editor.
-        # Boot parameter modification switch.
+        # Parameter editor.
+        # Interactive kernel argument modification.
         editor = false;
 
-        # Screen resolution.
-        # Maximum framebuffer display mode.
-        consoleMode = "max";
+        # Display mode.
+        # Firmware console resolution rule.
+        consoleMode = "auto";
 
-        # Generation history.
-        # Retained system profile count.
+        # Entry retention.
+        # Maximum menu generation limit.
         configurationLimit = 10;
       };
 
       # Firmware interface.
-      # Non-volatile motherboard settings.
+      # Non-volatile variables access.
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
       };
 
-      # Selection delay.
-      # Boot menu display countdown.
+      # Menu delay.
+      # Startup selection countdown duration.
       timeout = 3; # TODO: Set to "0" when configuration is stable.
     };
   };

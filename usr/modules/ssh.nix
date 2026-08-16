@@ -3,7 +3,7 @@
   # Encrypted remote access protocol.
   programs.ssh = {
     # SSH activation.
-    # Client daemon configuration switch.
+    # Encrypted connection client switch.
     enable = true;
 
     # Default configuration.

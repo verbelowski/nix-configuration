@@ -2,28 +2,28 @@
   # User accounts.
   # Human operator profile definitions.
   users = {
-    # Default shell.
-    # Command line interactive interpreter.
+    # Default interpreter.
+    # Interactive command terminal package.
     defaultUserShell = pkgs.zsh;
 
-    # Main account.
-    # Primary human operator profile.
+    # Account configuration.
+    # Main user profile parameters.
     users.${vars.user.name} = {
-      # Account classification.
-      # Non-system interactive identity flag.
+      # Account type.
+      # Non-system interactive operator flag.
       isNormalUser = true;
 
-      # Display name.
-      # Human-readable profile label metadata.
+      # Account label.
+      # Formatted user identity string.
       description = vars.capitalize vars.user.name;
 
-      # Group memberships.
-      # Privilege access vector assignments.
+      # Group access.
+      # Permission elevation membership list.
       extraGroups = [ "networkmanager" "wheel" ]; # TODO: Add groups as configuration grows (e.g. `audio`, `video`, `render`, `input`, `lp`).
     };
   };
 
-  # Shell interpreter.
-  # Interactive terminal session environment.
+  # Interactive shell.
+  # Command interpreter system integration.
   programs.zsh.enable = true;
 }

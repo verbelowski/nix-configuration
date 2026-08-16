@@ -2,38 +2,38 @@
   # Network management.
   # Interface connectivity daemon control.
   networking = {
-    # Network identity.
-    # Local system domain name.
+    # Host designation.
+    # Local node identification string.
     hostName = vars.hostname;
 
-    # Static resolvers.
-    # Quad9 DNS server addresses.
+    # Name servers.
+    # Static DNS resolver addresses.
     nameservers = [ "9.9.9.9" "149.112.112.112" "2620:fe::fe" "2620:fe::9" ];
 
     # NetworkManager daemon.
     # System interface state parameters.
     networkmanager = {
-      # Manager activation.
-      # Interface configuration daemon switch.
+      # Daemon state.
+      # Network configuration controller integration.
       enable = true;
 
-      # Logging verbosity.
-      # System journal output level.
+      # Journal output.
+      # Log message verbosity level.
       logLevel = "OFF";
 
-      # DNS backend.
-      # Name resolution service integration.
+      # Resolution backend.
+      # Name service integration engine.
       dns = "systemd-resolved";
 
-      # Wireless interface.
-      # Wi-Fi adapter hardware parameters.
+      # Wireless adapter.
+      # Wi-Fi hardware operation parameters.
       wifi = {
         # Power management.
-        # Wi-Fi adapter energy reduction.
+        # Radio hardware energy preservation.
         powersave = false;
 
-        # Hardware identity.
-        # Wireless MAC address randomization.
+        # Hardware address.
+        # Physical interface identity randomization.
         macAddress = "random";
       };
     };
@@ -42,19 +42,19 @@
   # Name resolution.
   # Systemd-resolved DNS daemon.
   services.resolved = {
-    # Resolved activation.
-    # Local DNS caching service.
+    # Resolution service.
+    # Local address lookup toggle.
     enable = true;
 
-    # Resolver security.
-    # Encrypted DNS protocol parameters.
+    # Service security.
+    # Encrypted resolution protocol parameters.
     settings.Resolve = {
-      # DNSSEC validation.
-      # Domain name signature verification.
+      # Signature validation.
+      # Domain record authenticity verification.
       DNSSEC = "true";
 
       # Encrypted transport.
-      # TLS protocol DNS queries.
+      # Query transmission security enforcement.
       DNSOverTLS = "true";
     };
   };

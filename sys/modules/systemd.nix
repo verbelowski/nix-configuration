@@ -2,15 +2,15 @@
   # Service orchestration.
   # Background daemon lifecycle management.
   systemd = {
-    # Memory management.
-    # Resource exhaustion slice monitor.
+    # Resource exhaustion.
+    # Out-of-memory handler settings.
     oomd = {
       enableSystemSlice = true;
       enableUserSlices = true;
     };
 
-    # Crash dumps.
-    # Process failure state log.
+    # Failure diagnostics.
+    # Memory dump generation toggle.
     coredump.enable = false;
   };
 }

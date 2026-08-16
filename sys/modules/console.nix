@@ -8,7 +8,7 @@
   };
 
   # Terminal login.
-  # Automatic console session initialization.
+  # Console session initialization service.
   services.getty = {
     autologinUser = vars.user.name;
     extraArgs = [ "--nonewline" "--noissue" "--noreset" "--noclear" ];

@@ -25,8 +25,8 @@
     # Command line colorization engine.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
 
-    # Auto-suggestions.
-    # Command history prediction engine.
+    # Command prediction.
+    # History entry matching engine.
     autosuggestion.enable = true;
 
     # Substring search.

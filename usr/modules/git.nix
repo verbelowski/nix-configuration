@@ -6,8 +6,8 @@
     # Revision tracking system switch.
     enable = true;
 
-    # Core settings.
-    # Revision tracking configuration tree.
+    # Repository settings.
+    # Global version control parameters.
     settings = {
       # Commit author.
       # Developer identity metadata defaults.
