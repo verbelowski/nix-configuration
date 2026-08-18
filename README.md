@@ -261,12 +261,6 @@ reboot
 
 ## SSH Keys
 
-* `id_ed25519_auth`: Facilitates remote platform access and SSH authentication (e.g., GitHub).
-* `id_ed25519_sign`: Reserved exclusively for cryptographic signing of Git commits and tags.
-
-> [!IMPORTANT]
-> Local Git SSH signature verification requires manual creation and population of the `~/.ssh/allowed_signers` file, whereas `~/.ssh/known_hosts` is generated automatically during SSH connections.
-
 Create the target SSH directory.
 
 ```bash
@@ -275,12 +269,18 @@ mkdir -p ~/.ssh
 
 Generate a signing and an authentication key pair.
 
+> [!WARNING]
+> A passphrase must be configured for key encryption. Without a passphrase, the key remains unencrypted and the `-a 32` flag has no effect.
+
 ```bash
-ssh-keygen -t ed25519 -C "id_ed25519_sign" -f ~/.ssh/id_ed25519_sign
-ssh-keygen -t ed25519 -C "id_ed25519_auth" -f ~/.ssh/id_ed25519_auth
+ssh-keygen -t ed25519 -a 32 -C "id_ed25519_sign" -f ~/.ssh/id_ed25519_sign
+ssh-keygen -t ed25519 -a 32 -C "id_ed25519_auth" -f ~/.ssh/id_ed25519_auth
 ```
 
 Restrict access to the generated key material.
+
+> [!IMPORTANT]
+> Local Git SSH signature verification requires manual creation and population of the `~/.ssh/allowed_signers` file, whereas `~/.ssh/known_hosts` is generated automatically during SSH connections.
 
 ```bash
 chmod 700 ~/.ssh

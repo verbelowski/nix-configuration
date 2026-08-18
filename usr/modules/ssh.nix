@@ -16,17 +16,13 @@
       # Wildcard matching.
       # Global connection default rules.
       "*" = {
-        # Agent forwarding.
-        # Key delegation security policy.
-        ForwardAgent = false;
-
         # Identity restriction.
         # Explicit key file enforcement.
         IdentitiesOnly = true;
 
         # Host hashing.
         # Obfuscated server registry switch.
-        HashKnownHosts = false;
+        HashKnownHosts = true;
 
         # Known hosts.
         # Trusted server key storage.
@@ -35,7 +31,6 @@
         # Keepalive parameters.
         # Connection probe frequency bounds.
         ServerAliveInterval = 60;
-        ServerAliveCountMax = 3;
 
         # Agent integration.
         # Automatic key loading policy.
