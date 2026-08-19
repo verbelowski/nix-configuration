@@ -26,6 +26,9 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   ├── console.nix
 │   │   │   ├── # TTY console.
 │   │   │   ├── # Virtual terminal display configuration.
+│   │   ├── hardware.nix
+│   │   │   ├── # ...
+│   │   │   ├── # ...
 │   │   ├── i18n.nix
 │   │   │   ├── # Localization preferences.
 │   │   │   ├── # Regional language encoding rules.
@@ -36,28 +39,28 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   │   ├── # Package manager.
 │   │   │   ├── # Nix engine subsystem configuration.
 │   │   ├── security.nix
-│   │   │   ├── # System hardening.
+│   │   │   ├── # System security enforcement.
 │   │   │   ├── # Authentication privilege escalation policies.
 │   │   ├── systemd.nix
 │   │   │   ├── # Service orchestration.
-│   │   │   ├── # Background daemon lifecycle handling.
+│   │   │   ├── # Background daemon lifecycle management.
 │   │   ├── users.nix
 │   │   │   ├── # User accounts.
 │   │   │   ├── # Human operator profile definitions.
 │   ├── configuration.nix
-│   │   ├── # Host definitions.
-│   │   ├── # Central operating system specification.
+│   │   ├── # External modules.
+│   │   ├── # Hardware structural component declarations.
 │   ├── hardware-configuration.nix
-│   │   ├── # Hardware architecture.
-│   │   ├── # Physical component kernel drivers.
+│   │   ├── # Storage mounts.
+│   │   ├── # Physical disk filesystem specifications.
 ├── usr
 │   ├── modules
 │   │   ├── git.nix
 │   │   │   ├── # Version control.
-│   │   │   ├── # Source code revision tracking.
+│   │   │   ├── # Source code revision history.
 │   │   ├── neovim.nix
 │   │   │   ├── # Text editor.
-│   │   │   ├── # Command-line code environment setup.
+│   │   │   ├── # Terminal-based source code interface.
 │   │   ├── ssh.nix
 │   │   │   ├── # Secure shell.
 │   │   │   ├── # Encrypted remote access protocol.
@@ -65,8 +68,8 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   │   ├── # Command interpreter.
 │   │   │   ├── # Interactive terminal session customization.
 │   ├── home.nix
-│   │   ├── # Home manager.
-│   │   ├── # User space environment profile.
+│   │   ├── # External modules.
+│   │   ├── # User space component declarations.
 ├── flake.lock
 │   ├── # Dependency lockfile.
 │   ├── # Exact input revision pins.
@@ -78,7 +81,7 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   ├── # Legal distribution rights terms.
 ├── README.md
 │   ├── # Project documentation.
-│   ├── # Overview repository instruction manual.
+│   ├── # Repository instruction manual.
 ```
 
 ## Firmware Shortcuts
@@ -203,7 +206,7 @@ Update the generated `configuration.nix` with the following base settings:
   imports = [ ./hardware-configuration.nix ];
 
   # Boot loader.
-  # Firmware startup manager.
+  # Systemd-based UEFI entry management.
   boot.loader = {
     # Systemd-boot manager.
     # EFI binary selection daemon.
@@ -221,14 +224,19 @@ Update the generated `configuration.nix` with the following base settings:
   # Core operating system drivers.
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Network management.
-  # Interface connectivity daemon control.
+  # NetworkManager daemon.
+  # Network configuration controller integration.
   networking.networkmanager.enable = true;
 
   # User accounts.
   # Human operator profile definitions.
   users.users.vertennn = {
+    # Account type.
+    # Non-system interactive operator flag.
     isNormalUser = true;
+
+    # Group access.
+    # Permission elevation membership list.
     extraGroups = [ "wheel" ];
   };
 

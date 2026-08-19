@@ -36,7 +36,7 @@
       "nosgx"
 
       # Hardware diagnostics.
-      # Processor fault messaging behavior.
+      # Processor fault log behavior.
       "mce=nobootlog"
 
       # Storage controller interfaces.
@@ -44,7 +44,7 @@
       "libata.force=1.00:nodmalog"
 
       # Memory protection.
-      # Allocation cache merging deactivation.
+      # Allocation cache merge deactivation.
       "slab_nomerge"
 
       # Memory initialization.
@@ -71,7 +71,7 @@
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
     # Module blocklist.
-    # Subsystem dynamic loading prevention.
+    # Subsystem dynamic load prevention.
     blacklistedKernelModules = [
       # Hardware watchdogs.
       # Motherboard system safety modules.
@@ -87,13 +87,13 @@
       "dccp"
       "sctp"
 
-      # Cluster messaging.
-      # Inter-process communication subsystem restriction.
+      # Cluster communications.
+      # Interprocess node traffic restriction.
       "rds"
       "tipc"
 
       # Data link.
-      # Serial framing driver interface.
+      # Serial frame driver interface.
       "n-hdlc"
 
       # Radio protocols.
@@ -117,7 +117,7 @@
       "atm"
 
       # Frame encapsulation.
-      # Logical link control protocol containment.
+      # Logical link protocol containment.
       "psnap"
       "p8023"
       "p8022"
@@ -137,7 +137,7 @@
       "udf"
 
       # Macintosh volumes.
-      # Apple filesystem structure blocking.
+      # Apple filesystem structure exclusion.
       "hfs"
       "hfsplus"
 
@@ -181,14 +181,14 @@
     ];
 
     # Runtime parameters.
-    # Low-level kernel subsystem options.
+    # Low-level kernel subsystem controls.
     kernel.sysctl = {
       # Resource handles.
       # System-wide file descriptor limit.
       "fs.file-max" = 1000000;
 
-      # File monitoring allocations.
-      # Inotify watch and instance limits.
+      # File observation allocations.
+      # Inotify event threshold boundaries.
       "fs.inotify.max_user_watches" = 524288;
       "fs.inotify.max_user_instances" = 256;
 
@@ -218,16 +218,16 @@
       "net.core.netdev_max_backlog" = 250000;
 
       # Socket buffer memory.
-      # Dynamic inbound and outbound limits.
+      # Dynamic transfer direction thresholds.
       "net.core.rmem_max" = 16777216;
       "net.core.wmem_max" = 16777216;
 
       # Queue discipline.
-      # Packet scheduling algorithm default.
+      # Packet schedule algorithm default.
       "net.core.default_qdisc" = "cake";
 
       # JIT compiler.
-      # Bytecode hardening safeguard.
+      # Bytecode security safeguard.
       "net.core.bpf_jit_harden" = 2;
 
       # Handshake requests.
@@ -238,8 +238,8 @@
       # Outbound socket allocation range.
       "net.ipv4.ip_local_port_range" = "1024\t65535";
 
-      # Socket recycling.
-      # Time-wait state connection reuse.
+      # Socket reuse.
+      # Time-wait state connection reset.
       "net.ipv4.tcp_tw_reuse" = 1;
 
       # Termination delay.
@@ -247,7 +247,7 @@
       "net.ipv4.tcp_fin_timeout" = 15;
 
       # TCP window buffers.
-      # Inbound and outbound memory vectors.
+      # Bidirectional traffic memory vectors.
       "net.ipv4.tcp_rmem" = "4096\t87380\t16777216";
       "net.ipv4.tcp_wmem" = "4096\t65536\t16777216";
 
@@ -260,7 +260,7 @@
       "net.ipv4.tcp_syncookies" = 1;
 
       # Connection termination.
-      # Time-wait assassination protection.
+      # Time-wait tear-down protection.
       "net.ipv4.tcp_rfc1337" = 1;
 
       # Connection establishment.
@@ -273,17 +273,17 @@
       "net.ipv4.conf.default.rp_filter" = 1;
 
       # ICMP safety policies.
-      # Subnet ping and invalid log suppression.
+      # Subnet echo response suppression.
       "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
       "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
 
-      # Routing notices.
+      # Route notices.
       # Gateway path modification rejection.
       "net.ipv4.conf.all.secure_redirects" = 0;
       "net.ipv4.conf.default.secure_redirects" = 0;
 
-      # Redirect handling.
-      # Bidirectional rejection policy.
+      # ICMP redirects.
+      # Bidirectional packet rejection policy.
       "net.ipv4.conf.all.accept_redirects" = 0;
       "net.ipv4.conf.default.accept_redirects" = 0;
       "net.ipv6.conf.all.accept_redirects" = 0;
@@ -291,12 +291,12 @@
       "net.ipv4.conf.all.send_redirects" = 0;
       "net.ipv4.conf.default.send_redirects" = 0;
 
-      # Memory swapping.
+      # Memory swap.
       # Page eviction preference ratio.
       "vm.swappiness" = 10;
 
       # TTY disciplines.
-      # Line protocol loading restriction.
+      # Line protocol auto-load restriction.
       "dev.tty.ldisc_autoload" = 0;
     };
 
@@ -314,10 +314,10 @@
 
     # Memory compression.
     # In-RAM page cache swap.
-    zswap.enable = true;
+    zswap.enable = true; # NOTE: 4GB swap is sufficient for 16GB RAM without hibernation.
 
     # Boot loader.
-    # Firmware startup manager.
+    # Systemd-based UEFI entry management.
     loader = {
       # Systemd-boot manager.
       # EFI binary selection daemon.
@@ -348,7 +348,7 @@
 
       # Menu delay.
       # Startup selection countdown duration.
-      timeout = 3; # TODO: Set to "0" when configuration is stable.
+      timeout = 3; # TODO: Set value to "0" once configuration is complete.
     };
   };
 }

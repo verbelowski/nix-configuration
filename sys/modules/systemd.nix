@@ -3,7 +3,7 @@
   # Background daemon lifecycle management.
   systemd = {
     # Resource exhaustion.
-    # Out-of-memory handler settings.
+    # Memory depletion handler settings.
     oomd = {
       enableSystemSlice = true;
       enableUserSlices = true;

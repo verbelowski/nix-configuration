@@ -69,7 +69,7 @@
 
   # Unfree software.
   # Proprietary license policy exemption.
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true; # NOTE: Required for proprietary NVIDIA graphics drivers.
 
   # Manual generation.
   # System documentation build switch.

@@ -1,23 +1,23 @@
 { vars, ... }: {
   # Version control.
-  # Source code revision tracking.
+  # Source code revision history.
   programs.git = {
     # Git activation.
-    # Revision tracking system switch.
+    # Source management subsystem switch.
     enable = true;
 
     # Repository settings.
-    # Global version control parameters.
+    # Central software workspace options.
     settings = {
       # Commit author.
       # Developer identity metadata defaults.
       user = {
         # Author identity.
-        # Developer contact metadata specification.
+        # Human operator contact parameters.
         name = vars.capitalize vars.user.name;
         email = vars.user.email;
 
-        # Signing key.
+        # Signature key.
         # Public SSH file path.
         signingKey = "~/.ssh/id_ed25519_sign.pub";
 
@@ -68,7 +68,7 @@
       # Downstream commit rebase policy.
       pull.rebase = true;
 
-      # Upstream publishing.
+      # Upstream publication.
       # Remote branch push defaults.
       push = {
         # Push behavior.

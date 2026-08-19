@@ -1,13 +1,13 @@
 { ... }: {
   # Text editor.
-  # Command-line code environment setup.
+  # Terminal-based source code interface.
   programs.neovim = {
     # Editor activation.
     # Neovim application switch.
     enable = true;
 
     # Default editor.
-    # Primary text modification switch.
+    # Primary text modification tool.
     defaultEditor = true;
 
     # Binary shortcuts.
@@ -37,7 +37,7 @@
       vim.opt.cursorline = true
 
       -- Edit history.
-      -- Persistent change tracking storage.
+      -- Persistent change history storage.
       vim.opt.undofile = true
 
       -- Search sensitivity.

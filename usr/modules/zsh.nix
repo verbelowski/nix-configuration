@@ -15,22 +15,22 @@
     defaultKeymap = "emacs";
 
     # Environment variables.
-    # Shell session environment exports.
+    # Shell session context exports.
     envExtra = ''
       export EDITOR=nvim
       export VISUAL=nvim
     '';
 
-    # Syntax highlighting.
+    # Syntax colors.
     # Command line colorization engine.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
 
     # Command prediction.
-    # History entry matching engine.
+    # History entry suggestion engine.
     autosuggestion.enable = true;
 
     # Substring search.
-    # Partial command matching utility.
+    # Partial command lookup utility.
     historySubstringSearch.enable = true;
 
     # Command history.
@@ -42,7 +42,7 @@
       ignoreSpace = true;
 
       # Timestamp metadata.
-      # Execution time logging mode.
+      # Execution time record mode.
       extended = true;
     };
 

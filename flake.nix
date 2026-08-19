@@ -1,6 +1,6 @@
 {
-  # Repository description.
-  # High-level overview project summary.
+  # Project metadata.
+  # Declarative system scope summary.
   description = "Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.";
 
   # External dependencies.
@@ -36,8 +36,8 @@
     # Host configurations.
     # Declarative machine deployment specifications.
     nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
-      # Context injection.
-      # Global module parameter passing.
+      # Context propagation.
+      # Global module parameter delivery.
       specialArgs = sharedArgs;
 
       # System modules.
@@ -56,7 +56,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # Variable passing.
+          # Variable scope.
           # Scope argument injection.
           home-manager.extraSpecialArgs = sharedArgs;
 

@@ -4,7 +4,7 @@
   assert builtins.pathExists dir;
 let
   # Folder contents.
-  # Sorted directory entries retrieval.
+  # Directory entry list retrieval.
   dirEntries = builtins.readDir dir;
   dirEntryNames = builtins.sort builtins.lessThan (builtins.attrNames dirEntries);
 

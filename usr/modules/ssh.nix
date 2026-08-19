@@ -13,14 +13,14 @@
     # Host options.
     # Connection lookup table.
     settings = {
-      # Wildcard matching.
+      # Wildcard pattern.
       # Global connection default rules.
       "*" = {
         # Identity restriction.
         # Explicit key file enforcement.
         IdentitiesOnly = true;
 
-        # Host hashing.
+        # Host obfuscation.
         # Obfuscated server registry switch.
         HashKnownHosts = true;
 
@@ -33,7 +33,7 @@
         ServerAliveInterval = 60;
 
         # Agent integration.
-        # Automatic key loading policy.
+        # Automatic key import policy.
         AddKeysToAgent = "yes";
       };
 

@@ -7,7 +7,7 @@
     defaultUserShell = pkgs.zsh;
 
     # Account configuration.
-    # Main user profile parameters.
+    # Primary operator identity parameters.
     users.${vars.user.name} = {
       # Account type.
       # Non-system interactive operator flag.
