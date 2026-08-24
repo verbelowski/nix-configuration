@@ -22,13 +22,13 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   ├── modules
 │   │   ├── boot.nix
 │   │   │   ├── # Boot initialization.
-│   │   │   ├── # System startup software specification.
+│   │   │   ├── # Primary execution framework specification.
 │   │   ├── console.nix
 │   │   │   ├── # TTY console.
-│   │   │   ├── # Virtual terminal display configuration.
+│   │   │   ├── # Virtual screen layout options.
 │   │   ├── hardware.nix
-│   │   │   ├── # ...
-│   │   │   ├── # ...
+│   │   │   ├── # Hardware management.
+│   │   │   ├── # Physical component firmware configuration.
 │   │   ├── i18n.nix
 │   │   │   ├── # Localization preferences.
 │   │   │   ├── # Regional language encoding rules.
@@ -45,8 +45,8 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   │   ├── # Service orchestration.
 │   │   │   ├── # Background daemon lifecycle management.
 │   │   ├── users.nix
-│   │   │   ├── # User accounts.
-│   │   │   ├── # Human operator profile definitions.
+│   │   │   ├── # Account records.
+│   │   │   ├── # User profile definitions.
 │   ├── configuration.nix
 │   │   ├── # External modules.
 │   │   ├── # Hardware structural component declarations.
@@ -75,7 +75,7 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   ├── # Exact input revision pins.
 ├── flake.nix
 │   ├── # Flake entrypoint.
-│   ├── # Declarative project input schema.
+│   ├── # Complete project input schema.
 ├── LICENSE
 │   ├── # Software license.
 │   ├── # Legal distribution rights terms.
@@ -228,11 +228,11 @@ Update the generated `configuration.nix` with the following base settings:
   # Network configuration controller integration.
   networking.networkmanager.enable = true;
 
-  # User accounts.
-  # Human operator profile definitions.
+  # Account records.
+  # User profile definitions.
   users.users.vertennn = {
     # Account type.
-    # Non-system interactive operator flag.
+    # Non-system interactive profile flag.
     isNormalUser = true;
 
     # Group access.

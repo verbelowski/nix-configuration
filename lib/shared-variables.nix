@@ -1,10 +1,10 @@
 { lib }: {
-  # Network identity.
-  # System node designation string.
+  # Machine identity.
+  # Network node label string.
   hostname = "nixos";
 
-  # User profile.
-  # Human operator metadata record.
+  # Account profile.
+  # User metadata record.
   user = {
     name = "vertennn";
     email = "145216301+verbelowski@users.noreply.github.com";

@@ -1,134 +1,134 @@
 { pkgs, ... }: {
   # Boot initialization.
-  # System startup software specification.
+  # Primary execution framework specification.
   boot = {
     # Kernel selection.
     # Core operating system drivers.
     kernelPackages = pkgs.linuxPackages_zen;
 
-    # Boot launch directives.
-    # Startup software command line parameters.
+    # Kernel parameters.
+    # Low-level execution flags.
     kernelParams = [
-      # Console verbosity.
-      # Terminal screen output minimization.
+      # Screen output.
+      # Textual status message suppression.
       "quiet"
 
-      # Kernel log level.
-      # Console message verbosity threshold.
+      # Log verbosity.
+      # System console notification threshold.
       "loglevel=3"
 
-      # System initialization.
-      # Service progress concealment flags.
+      # Service status.
+      # Background daemon progress concealment.
       "systemd.show_status=false"
       "rd.systemd.show_status=false"
 
       # Device manager.
-      # Udev event verbosity reduction.
+      # Hardware event log restriction.
       "rd.udev.log_level=3"
       "udev.log_priority=3"
 
-      # Terminal cursor.
-      # Console prompt indicator removal.
+      # Console prompt.
+      # Virtual terminal cursor motion halt.
       "vt.global_cursor_default=0"
 
       # Processor features.
-      # Intel capability deactivation flag.
+      # Intel enclave capability deactivation.
       "nosgx"
 
-      # Hardware diagnostics.
-      # Processor fault log behavior.
+      # Diagnostic audit.
+      # Machine check fault suppression.
       "mce=nobootlog"
 
-      # Storage controller interfaces.
-      # Serial direct memory access filter.
+      # Storage interfaces.
+      # Serial transfer diagnostic suppression.
       "libata.force=1.00:nodmalog"
 
-      # Memory protection.
-      # Allocation cache merge deactivation.
+      # Memory allocation.
+      # Core cache separation policy.
       "slab_nomerge"
 
-      # Memory initialization.
-      # Dynamic allocation heap sanitization.
+      # Dynamic heap.
+      # RAM wipe policy.
       "init_on_alloc=1"
       "init_on_free=1"
 
-      # Page allocation.
-      # Physical memory location randomization.
+      # Page location.
+      # Physical memory layout distribution.
       "page_alloc.shuffle=1"
 
-      # Kernel stack protection.
-      # System call memory layout guard.
+      # Stack protection.
+      # System call offset variance.
       "randomize_kstack_offset=on"
 
-      # Surface reduction.
-      # Unused subsystem access points.
+      # Virtual filesystems.
+      # Unused subsystem access reduction.
       "debugfs=off"
       "vsyscall=none"
     ];
 
-    # Traffic schedulers.
-    # Network queue algorithm drivers.
+    # Network schedulers.
+    # Congestion management algorithm drivers.
     kernelModules = [ "tcp_bbr" "sch_cake" ];
 
     # Module blocklist.
-    # Subsystem dynamic load prevention.
+    # Dynamic subsystem load prohibition.
     blacklistedKernelModules = [
       # Hardware watchdogs.
-      # Motherboard system safety modules.
+      # Motherboard safety circuit shutdown.
       "iTCO_wdt"
       "intel_oc_wdt"
 
-      # Acoustic signals.
-      # Internal chassis speaker driver.
+      # Chassis speaker.
+      # Internal audio signaller mute.
       "pcspkr"
 
       # Transport protocols.
-      # Socket communication interface exclusion.
+      # Specialized network socket drivers.
       "dccp"
       "sctp"
 
-      # Cluster communications.
-      # Interprocess node traffic restriction.
+      # Cluster communication.
+      # Distributed node traffic restriction.
       "rds"
       "tipc"
 
-      # Data link.
-      # Serial frame driver interface.
+      # Frame encapsulation.
+      # High-level data link driver.
       "n-hdlc"
 
-      # Radio protocols.
-      # Packet transmission layer stack.
+      # Packet radio.
+      # Amateur wireless network protocols.
       "ax25"
       "netrom"
       "x25"
       "rose"
 
-      # Network stacks.
-      # Legacy local communication architecture.
+      # Legacy architectures.
+      # Outdated communication stack removal.
       "decnet"
       "econet"
       "ipx"
       "appletalk"
 
-      # Network layers.
-      # Personal area infrastructure exclusion.
+      # Sensor networks.
+      # Personal area infrastructure drivers.
       "af_802154"
       "can"
       "atm"
 
-      # Frame encapsulation.
-      # Logical link protocol containment.
+      # Data link.
+      # Logical packet layer containment.
       "psnap"
       "p8023"
       "p8022"
 
-      # Flash filesystems.
-      # Embedded read-only image format.
+      # Flash storage.
+      # Embedded read-only image formats.
       "cramfs"
       "jffs2"
 
-      # Storage formats.
-      # Cluster disk layout deactivation.
+      # Storage structures.
+      # Shared disk layout drivers.
       "freevxfs"
       "gfs2"
 
@@ -136,17 +136,17 @@
       # Universal disk format driver.
       "udf"
 
-      # Macintosh volumes.
-      # Apple filesystem structure exclusion.
+      # Apple filesystems.
+      # Proprietary volume structure exclusion.
       "hfs"
       "hfsplus"
 
-      # Read-only volumes.
-      # Archival image storage module.
+      # Archival images.
+      # Compressed read-only volume module.
       "squashfs"
 
-      # File sharing.
-      # Network protocol message block.
+      # File exchange.
+      # Network message block protocols.
       "cifs"
       "ksmbd"
 
@@ -156,15 +156,15 @@
       "nfsv3"
       "nfsv4"
 
-      # Physical interfaces.
-      # High-speed serial bus drivers.
+      # Serial bus.
+      # IEEE 1394 interface drivers.
       "firewire-core"
       "firewire-ohci"
       "firewire-sbp2"
       "firewire-net"
 
-      # Legacy architecture.
-      # Obsolete video capture bus.
+      # Video capture.
+      # Obsolete multimedia hardware interface.
       "ohci1394"
       "sbp2"
       "dv1394"
@@ -172,118 +172,118 @@
       "video1394"
 
       # Controller ports.
-      # Direct memory access interface.
+      # Direct memory access bus.
       "thunderbolt"
 
-      # Virtual media.
-      # Synthetic display device driver.
+      # Virtual displays.
+      # Synthetic video capture device.
       "vivid"
     ];
 
-    # Runtime parameters.
-    # Low-level kernel subsystem controls.
+    # Subsystem controls.
+    # Runtime kernel configuration settings.
     kernel.sysctl = {
-      # Resource handles.
-      # System-wide file descriptor limit.
+      # Handle limits.
+      # System file descriptor threshold.
       "fs.file-max" = 1000000;
 
-      # File observation allocations.
-      # Inotify event threshold boundaries.
+      # Notification boundaries.
+      # Inotify event monitor capacity.
       "fs.inotify.max_user_watches" = 524288;
       "fs.inotify.max_user_instances" = 256;
 
-      # Filesystem links.
-      # World-writable directory attack prevention.
+      # Link protection.
+      # Shared directory security rules.
       "fs.protected_fifos" = 2;
       "fs.protected_regular" = 2;
 
-      # Process limits.
-      # System task identifier ceiling.
+      # Process ceiling.
+      # Maximum task identifier value.
       "kernel.pid_max" = 4194303;
 
-      # Crash dumps.
+      # Crash recovery.
       # Process failure log redirection.
       "kernel.core_pattern" = "|/bin/false";
 
-      # Kernel pointers.
-      # Address disclosure prevention.
+      # Address privacy.
+      # Kernel pointer disclosure prevention.
       "kernel.kptr_restrict" = 2;
 
-      # Connection backlog.
-      # Maximum socket queue capacity.
+      # Socket queue.
+      # Maximum connection capacity threshold.
       "net.core.somaxconn" = 65536;
 
-      # Network queue.
-      # Packet input buffer limit.
+      # Input buffer.
+      # Inbound packet queue ceiling.
       "net.core.netdev_max_backlog" = 250000;
 
-      # Socket buffer memory.
-      # Dynamic transfer direction thresholds.
+      # Buffer limits.
+      # Dynamic socket transfer boundaries.
       "net.core.rmem_max" = 16777216;
       "net.core.wmem_max" = 16777216;
 
-      # Queue discipline.
-      # Packet schedule algorithm default.
+      # Packet dispatch.
+      # Default queue discipline algorithm.
       "net.core.default_qdisc" = "cake";
 
-      # JIT compiler.
-      # Bytecode security safeguard.
+      # Bytecode security.
+      # Compiler mitigation level.
       "net.core.bpf_jit_harden" = 2;
 
-      # Handshake requests.
-      # Half-open TCP socket queue.
+      # Handshake buffer.
+      # Half-open socket capacity limit.
       "net.ipv4.tcp_max_syn_backlog" = 65536;
 
-      # Ephemeral ports.
-      # Outbound socket allocation range.
+      # Port allocation.
+      # Ephemeral outbound socket boundaries.
       "net.ipv4.ip_local_port_range" = "1024\t65535";
 
-      # Socket reuse.
-      # Time-wait state connection reset.
+      # Connection reuse.
+      # Time-wait state socket reset.
       "net.ipv4.tcp_tw_reuse" = 1;
 
-      # Termination delay.
-      # Closed socket hold duration.
+      # Termination duration.
+      # Closed socket hold interval.
       "net.ipv4.tcp_fin_timeout" = 15;
 
-      # TCP window buffers.
-      # Bidirectional traffic memory vectors.
+      # Memory vectors.
+      # Bidirectional network window buffers.
       "net.ipv4.tcp_rmem" = "4096\t87380\t16777216";
       "net.ipv4.tcp_wmem" = "4096\t65536\t16777216";
 
-      # Congestion control.
-      # Network bandwidth optimization algorithm.
+      # Bandwidth optimization.
+      # Network congestion control algorithm.
       "net.ipv4.tcp_congestion_control" = "bbr";
 
-      # SYN protection.
-      # Flood attack mitigation mechanism.
+      # Flood mitigation.
+      # SYN attack defense mechanism.
       "net.ipv4.tcp_syncookies" = 1;
 
-      # Connection termination.
-      # Time-wait tear-down protection.
+      # Teardown protection.
+      # Time-wait connection reset rule.
       "net.ipv4.tcp_rfc1337" = 1;
 
-      # Connection establishment.
-      # Handshake latency reduction.
+      # Fast open.
+      # Connection handshake latency reduction.
       "net.ipv4.tcp_fastopen" = 3;
 
-      # Reverse path.
-      # Strict packet origin filter.
+      # Path validation.
+      # Strict packet origin check.
       "net.ipv4.conf.all.rp_filter" = 1;
       "net.ipv4.conf.default.rp_filter" = 1;
 
-      # ICMP safety policies.
+      # ICMP safety.
       # Subnet echo response suppression.
       "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
       "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
 
-      # Route notices.
-      # Gateway path modification rejection.
+      # Path updates.
+      # Gateway route modification rejection.
       "net.ipv4.conf.all.secure_redirects" = 0;
       "net.ipv4.conf.default.secure_redirects" = 0;
 
-      # ICMP redirects.
-      # Bidirectional packet rejection policy.
+      # Redirect rejection.
+      # Bidirectional packet route policy.
       "net.ipv4.conf.all.accept_redirects" = 0;
       "net.ipv4.conf.default.accept_redirects" = 0;
       "net.ipv6.conf.all.accept_redirects" = 0;
@@ -291,30 +291,30 @@
       "net.ipv4.conf.all.send_redirects" = 0;
       "net.ipv4.conf.default.send_redirects" = 0;
 
-      # Memory swap.
-      # Page eviction preference ratio.
+      # Page eviction.
+      # Physical memory swap ratio.
       "vm.swappiness" = 10;
 
-      # TTY disciplines.
-      # Line protocol auto-load restriction.
+      # Line protocols.
+      # TTY driver automatic load restriction.
       "dev.tty.ldisc_autoload" = 0;
     };
 
-    # Console verbosity.
-    # Terminal output minimization.
+    # Terminal verbosity.
+    # Boot screen output minimization.
     consoleLogLevel = 0;
 
-    # Early verbosity.
-    # Initial RAM disk output.
+    # Ramdisk output.
+    # Initial stage message suppression.
     initrd.verbose = false;
 
-    # Storage cleanup.
-    # Automated temporary directory purge.
+    # Temporary storage.
+    # Automated boot directory clearance.
     tmp.cleanOnBoot = true;
 
     # Memory compression.
-    # In-RAM page cache swap.
-    zswap.enable = true; # NOTE: 4GB swap is sufficient for 16GB RAM without hibernation.
+    # RAM page cache swap.
+    zswap.enable = true;
 
     # Boot loader.
     # Systemd-based UEFI entry management.
@@ -322,8 +322,8 @@
       # Systemd-boot manager.
       # EFI binary selection daemon.
       systemd-boot = {
-        # Feature state.
-        # Startup manager activation switch.
+        # Manager state.
+        # Startup orchestrator activation switch.
         enable = true;
 
         # Parameter editor.

@@ -2,28 +2,28 @@
   # Command interpreter.
   # Interactive terminal session customization.
   programs.zsh = {
-    # Zsh activation.
-    # Interactive shell environment switch.
+    # Shell activation.
+    # Zsh environment switch.
     enable = true;
 
-    # Directory navigation.
-    # Implicit path movement behavior.
+    # Path movement.
+    # Implicit directory navigation behavior.
     autocd = true;
 
     # Keybindings mode.
     # Line editor keymap profile.
     defaultKeymap = "emacs";
 
-    # Environment variables.
-    # Shell session context exports.
+    # Session environment.
+    # Context variable exports.
     envExtra = ''
       export EDITOR=nvim
       export VISUAL=nvim
     '';
 
-    # Syntax colors.
-    # Command line colorization engine.
-    syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the next release.
+    # Command colorization.
+    # Real-time line syntax highlight.
+    syntaxHighlighting.enable = true; # TODO: Switch to fastSyntaxHighlighting.
 
     # Command prediction.
     # History entry suggestion engine.
@@ -33,21 +33,21 @@
     # Partial command lookup utility.
     historySubstringSearch.enable = true;
 
-    # Command history.
-    # Interactive session storage parameters.
+    # History parameters.
+    # Interactive session log options.
     history = {
-      # Duplicate suppression.
-      # Repeated entry exclusion flags.
+      # Duplicate exclusion.
+      # Repeated entry suppression flags.
       ignoreAllDups = true;
       ignoreSpace = true;
 
-      # Timestamp metadata.
-      # Execution time record mode.
+      # Execution metadata.
+      # Command timestamp record mode.
       extended = true;
     };
 
-    # Command aliases.
-    # Terminal shortcut definition list.
+    # Shortcut definitions.
+    # Terminal command substitution aliases.
     shellAliases = {
       reboot = "sudo reboot --no-wall";
       shutdown = "sudo shutdown --no-wall now";

@@ -2,12 +2,12 @@
   # Localization preferences.
   # Regional language encoding rules.
   i18n = {
-    # System locale.
-    # Primary interface language selection.
+    # Primary language.
+    # System default interface locale.
     defaultLocale = "en_US.UTF-8";
 
-    # Regional standards.
-    # Geographic unit measurement rules.
+    # Regional conventions.
+    # Geographic measurement unit rules.
     extraLocaleSettings = {
       LC_ADDRESS = "pl_PL.UTF-8";
       LC_IDENTIFICATION = "pl_PL.UTF-8";

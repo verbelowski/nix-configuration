@@ -10,7 +10,7 @@
     };
 
     # Failure diagnostics.
-    # Memory dump generation toggle.
+    # Process memory dump generation.
     coredump.enable = false;
   };
 

@@ -2,8 +2,8 @@
   # Network management.
   # Interface connectivity daemon control.
   networking = {
-    # Host designation.
-    # Local node identification string.
+    # Machine identifier.
+    # Local network node designation.
     hostName = vars.hostname;
 
     # Name servers.
@@ -13,48 +13,48 @@
     # NetworkManager daemon.
     # System interface state parameters.
     networkmanager = {
-      # Daemon state.
-      # Network configuration controller integration.
+      # Controller state.
+      # Connection management daemon status.
       enable = true;
 
-      # Journal output.
-      # Log message verbosity level.
+      # Log verbosity.
+      # Diagnostic message filter level.
       logLevel = "OFF";
 
       # Resolution backend.
-      # Name service integration engine.
+      # Name service integration daemon.
       dns = "systemd-resolved";
 
-      # Wireless adapter.
-      # Wi-Fi hardware operation parameters.
+      # Wireless interface.
+      # Radio hardware operation parameters.
       wifi = {
-        # Power management.
-        # Radio hardware energy preservation.
+        # Power preservation.
+        # Adapter energy conservation mode.
         powersave = false;
 
-        # Hardware address.
-        # Physical interface identity randomization.
+        # Hardware identity.
+        # Physical adapter address randomization.
         macAddress = "random";
       };
     };
   };
 
-  # Name resolution.
-  # Systemd-resolved DNS daemon.
+  # Domain resolution.
+  # Systemd DNS lookup service.
   services.resolved = {
-    # Resolution service.
-    # Local address lookup toggle.
+    # Service state.
+    # Local address lookup status.
     enable = true;
 
-    # Service security.
-    # Encrypted resolution protocol parameters.
+    # Security parameters.
+    # Encrypted transmission protocol options.
     settings.Resolve = {
-      # Signature validation.
-      # Domain record authenticity verification.
+      # Record validation.
+      # Cryptographic zone signature verification.
       DNSSEC = "true";
 
-      # Encrypted transport.
-      # Query transmission security enforcement.
+      # Transport security.
+      # Encrypted query tunnel enforcement.
       DNSOverTLS = "true";
     };
   };

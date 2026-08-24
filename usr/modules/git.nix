@@ -13,7 +13,7 @@
       # Developer identity metadata defaults.
       user = {
         # Author identity.
-        # Human operator contact parameters.
+        # User profile contact parameters.
         name = vars.capitalize vars.user.name;
         email = vars.user.email;
 
@@ -72,7 +72,7 @@
       # Remote branch push defaults.
       push = {
         # Push behavior.
-        # Upstream reference transmission rules.
+        # Target reference transmission rules.
         default = "simple";
         autoSetupRemote = true;
 
@@ -85,7 +85,7 @@
       # Linear history rewrite parameters.
       rebase = {
         # Rebase automation.
-        # Automated workspace state preservation.
+        # Workspace state preservation settings.
         autoStash = true;
         autoSquash = true;
 
@@ -102,7 +102,7 @@
       };
 
       # Difference engine.
-      # Histogram code comparison algorithm.
+      # Code comparison algorithm selection.
       diff.algorithm = "histogram";
     };
   };

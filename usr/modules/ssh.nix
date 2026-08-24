@@ -3,11 +3,11 @@
   # Encrypted remote access protocol.
   programs.ssh = {
     # SSH activation.
-    # Encrypted connection client switch.
+    # Connection client switch.
     enable = true;
 
-    # Default configuration.
-    # Standard client settings switch.
+    # Standard settings.
+    # Default client options toggle.
     enableDefaultConfig = false;
 
     # Host options.
@@ -17,19 +17,19 @@
       # Global connection default rules.
       "*" = {
         # Identity restriction.
-        # Explicit key file enforcement.
+        # Key file enforcement flag.
         IdentitiesOnly = true;
 
         # Host obfuscation.
-        # Obfuscated server registry switch.
+        # Server registry hash toggle.
         HashKnownHosts = true;
 
         # Known hosts.
         # Trusted server key storage.
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
-        # Keepalive parameters.
-        # Connection probe frequency bounds.
+        # Connection probes.
+        # Keepalive packet transmission frequency.
         ServerAliveInterval = 60;
 
         # Agent integration.
@@ -37,14 +37,14 @@
         AddKeysToAgent = "yes";
       };
 
-      # GitHub host.
-      # Code platform authentication parameters.
+      # Platform host.
+      # Code repository authentication parameters.
       "github.com" = {
         # Service account.
         # Remote platform login identifier.
         User = "git";
 
-        # Authentication key.
+        # Key location.
         # Private credential file path.
         IdentityFile = "~/.ssh/id_ed25519_auth";
       };

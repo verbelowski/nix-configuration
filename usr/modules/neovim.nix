@@ -6,12 +6,12 @@
     # Neovim application switch.
     enable = true;
 
-    # Default editor.
-    # Primary text modification tool.
+    # Primary editor.
+    # Environment text modification tool.
     defaultEditor = true;
 
     # Binary shortcuts.
-    # Legacy execution command wrappers.
+    # Executable command wrappers.
     viAlias = true;
     vimAlias = true;
 
@@ -19,11 +19,11 @@
     # Embedded Lua environment configuration.
     initLua = ''
       -- Line indicators.
-      -- Sequential number visibility settings.
+      -- Sequential margin number visibility.
       vim.opt.number = true
 
       -- Buffer markers.
-      -- Trailing workspace symbol suppression.
+      -- Unused workspace symbol suppression.
       vim.opt.fillchars = { eob = " " }
 
       -- Indentation width.
@@ -37,7 +37,7 @@
       vim.opt.cursorline = true
 
       -- Edit history.
-      -- Persistent change history storage.
+      -- Persistent change storage.
       vim.opt.undofile = true
 
       -- Search sensitivity.

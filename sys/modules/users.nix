@@ -1,20 +1,20 @@
 { pkgs, vars, ... }: {
-  # User accounts.
-  # Human operator profile definitions.
+  # Account records.
+  # User profile definitions.
   users = {
-    # Default interpreter.
-    # Interactive command terminal package.
+    # Default shell.
+    # Command interpreter package selection.
     defaultUserShell = pkgs.zsh;
 
-    # Account configuration.
-    # Primary operator identity parameters.
+    # Identity parameters.
+    # Primary user profile details.
     users.${vars.user.name} = {
       # Account type.
-      # Non-system interactive operator flag.
+      # Non-system interactive profile flag.
       isNormalUser = true;
 
       # Account label.
-      # Formatted user identity string.
+      # Formatted text representation.
       description = vars.capitalize vars.user.name;
 
       # Group access.

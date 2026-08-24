@@ -2,59 +2,59 @@
   # Package manager.
   # Nix engine subsystem configuration.
   nix = {
-    # Channel usage.
-    # Imperative path state management.
+    # Imperative channels.
+    # Path state management toggle.
     channel.enable = false;
 
     # Store cleanup.
-    # Space reclamation routine settings.
+    # Garbage collector schedule settings.
     gc = {
-      # Automated routine.
-      # Scheduled maintenance execution switch.
-      automatic = true; # NOTE: `persistent` defaults to `true`, so missed biweekly garbage collections run on next boot.
+      # Maintenance trigger.
+      # Automated routine execution status.
+      automatic = true; # NOTE: Missed garbage collection runs on next boot.
 
-      # Maintenance schedule.
-      # Periodic execution interval rule.
+      # Execution interval.
+      # Periodic maintenance timing rule.
       dates = "weekly";
 
-      # Retention threshold.
-      # Generation deletion criteria flags.
+      # Retention criteria.
+      # Generation deletion age threshold.
       options = "--delete-older-than 14d";
     };
 
-    # System settings.
-    # Nix daemon configuration parameters.
+    # Engine parameters.
+    # Nix daemon options block.
     settings = {
       # Feature flags.
       # Experimental engine capability switches.
       experimental-features = [ "nix-command" "flakes" ];
 
       # Privileged accounts.
-      # Administrative user access list.
+      # Administrative daemon access list.
       trusted-users = [ vars.user.name ];
 
-      # Remote timeout.
-      # Binary mirror connection limit.
+      # Mirror timeout.
+      # Binary cache response limit.
       connect-timeout = 5;
 
-      # Cache fallback.
-      # Secondary build path authorization.
+      # Build fallback.
+      # Secondary path compilation authorization.
       fallback = true;
 
-      # Binary mirrors.
-      # Package download endpoint URLs.
+      # Package mirrors.
+      # Binary download location URLs.
       substituters = [ "https://nix-community.cachix.org" ];
 
-      # Public keys.
-      # Download signature verification tokens.
+      # Download verification.
+      # Cache signature public tokens.
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 
-      # Repository status.
-      # Uncommitted workspace modification alerts.
+      # Repository alerts.
+      # Uncommitted workspace status notifications.
       warn-dirty = false;
 
-      # Store optimization.
-      # Disk space deduplication process.
+      # Store deduplication.
+      # Disk space reduction process.
       auto-optimise-store = true;
 
       # Minimum boundary.
@@ -67,9 +67,9 @@
     };
   };
 
-  # Unfree software.
-  # Proprietary license policy exemption.
-  nixpkgs.config.allowUnfree = true; # NOTE: Required for proprietary NVIDIA graphics drivers.
+  # Proprietary software.
+  # Unfree license policy exemption.
+  nixpkgs.config.allowUnfree = true;
 
   # Manual generation.
   # System documentation build switch.

@@ -5,13 +5,13 @@
     dir = ../usr/modules;
   };
 
-  # Account parameters.
-  # User space path specifications.
+  # User environment.
+  # Account home path settings.
   home.username = vars.user.name;
   home.homeDirectory = "/home/${vars.user.name}";
 
-  # User packages.
-  # Individual profile binary executables.
+  # User software.
+  # Individual profile binary packages.
   home.packages = with pkgs; [ ];
 
   # State compatibility.

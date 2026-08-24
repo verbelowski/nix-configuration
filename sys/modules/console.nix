@@ -1,6 +1,6 @@
 { vars, ... }: {
   # TTY console.
-  # Virtual terminal display configuration.
+  # Virtual screen layout options.
   console = {
     font = "Lat2-Terminus16";
     keyMap = "pl";
@@ -8,7 +8,7 @@
   };
 
   # Terminal login.
-  # Console session initialization service.
+  # Interactive session initialization service.
   services.getty = {
     autologinUser = vars.user.name;
     extraArgs = [ "--nonewline" "--noissue" "--noreset" "--noclear" ];

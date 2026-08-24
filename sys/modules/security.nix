@@ -5,11 +5,11 @@
     # Privilege escalation.
     # Superuser command execution rules.
     sudo = {
-      # Password barrier.
+      # Password prompt.
       # Escalation authentication requirement flag.
       wheelNeedsPassword = false; # TODO: Remove this option for security reasons once configuration is complete.
 
-      # Wheel group boundary.
+      # Wheel boundary.
       # Superuser access restriction switch.
       execWheelOnly = true;
     };
