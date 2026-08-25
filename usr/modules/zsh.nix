@@ -23,7 +23,7 @@
 
     # Command colorization.
     # Real-time line syntax highlight.
-    syntaxHighlighting.enable = true; # TODO: Switch to fastSyntaxHighlighting.
+    syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the 26.11 release.
 
     # Command prediction.
     # History entry suggestion engine.

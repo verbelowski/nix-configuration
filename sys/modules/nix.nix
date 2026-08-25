@@ -11,7 +11,7 @@
     gc = {
       # Maintenance trigger.
       # Automated routine execution status.
-      automatic = true; # NOTE: Missed garbage collection runs on next boot.
+      automatic = true; # NOTE: `persistent` defaults to `true`, so missed biweekly garbage collections run on next boot.
 
       # Execution interval.
       # Periodic maintenance timing rule.

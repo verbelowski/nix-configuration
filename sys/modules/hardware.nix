@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   # Hardware management.
   # Physical component firmware configuration.
   hardware = {
@@ -27,23 +27,11 @@
     nvidia = {
       # Kernel module type.
       # Open-source driver variant selection.
-      open = true;
-
-      # Software release channel.
-      # Stable package version target.
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-      # Kernel display control.
-      # Direct DRM driver activation.
-      modesetting.enable = true;
+      open = true; # NOTE: `branch` defaults to `stable` if `datacenter.enable` is `false`.
 
       # Energy preservation.
       # Dynamic power state policy.
       powerManagement.enable = true;
-
-      # Media decode.
-      # Hardware stream offload interface.
-      videoAcceleration = true;
 
       # Device node retention.
       # Persistence daemon background state.
@@ -60,7 +48,7 @@
   programs.gamemode = {
     # Service activation.
     # Background daemon enablement.
-    enable = true; # NOTE: Switches default `powerManagement.cpuFreqGovernor` from `powersave` to `performance` during gameplay.
+    enable = true; # NOTE: `powerManagement.cpuFreqGovernor` switches from `powersave` to `performance` during gameplay.
 
     # Execution parameters.
     # GameMode runtime setting block.
@@ -73,9 +61,9 @@
       # Display idle timeout control.
       inhibit_screensaver = 0;
 
-      # Bus locking.
+      # Bus control.
       # Atomic instruction boundary penalty.
-      disable_splitlock = 0;
+      disable_splitlock = 0; # NOTE: `split_lock_detect` protection is not disabled during gameplay.
     };
   };
 }

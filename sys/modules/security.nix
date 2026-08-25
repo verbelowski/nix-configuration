@@ -16,6 +16,6 @@
 
     # Kernel protection.
     # System execution space shield.
-    protectKernelImage = true;
+    protectKernelImage = true; # NOTE: This option appends `nohibernate` to `boot.kernelParams` and disables `kexec_load`.
   };
 }
