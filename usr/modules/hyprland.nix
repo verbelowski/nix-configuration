@@ -2,7 +2,7 @@
   # Wayland compositor.
   # Dynamic tiling window manager.
   wayland.windowManager.hyprland = {
-    # Service activation.
+    # Activation state.
     # Background daemon execution switch.
     enable = true;
 
@@ -10,6 +10,10 @@
     # External binary override sources.
     package = null;
     portalPackage = null;
+
+    # Integration state.
+    # System manager control option.
+    systemd.enable = false; # NOTE: Home Manager's systemd integration is disabled to avoid conflicts with `programs.hyprland.withUWSM`.
   };
 
   # Session configuration.

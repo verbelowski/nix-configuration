@@ -2,11 +2,11 @@
   # Version control.
   # Source code revision history.
   programs.git = {
-    # Git activation.
+    # Activation state.
     # Source management subsystem switch.
     enable = true;
 
-    # Repository settings.
+    # Option configuration.
     # Central software workspace options.
     settings = {
       # Commit author.

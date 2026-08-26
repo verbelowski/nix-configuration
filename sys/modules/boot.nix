@@ -301,18 +301,18 @@
     };
 
     # Terminal verbosity.
-    # Boot screen output minimization.
+    # Boot screen output threshold.
     consoleLogLevel = 0;
 
     # Ramdisk output.
-    # Initial stage message suppression.
+    # Initial stage message visibility.
     initrd.verbose = false;
 
     # Temporary storage.
-    # Automated boot directory clearance.
+    # Boot directory cleanup policy.
     tmp.cleanOnBoot = true;
 
-    # Pool compression.
+    # Subsystem state.
     # Volatile memory page swap.
     zswap.enable = true;
 
@@ -322,7 +322,7 @@
       # Systemd-boot manager.
       # EFI binary selection daemon.
       systemd-boot = {
-        # Manager state.
+        # Activation state.
         # Startup orchestrator activation switch.
         enable = true;
 

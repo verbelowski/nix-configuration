@@ -2,7 +2,7 @@
   # Package manager.
   # Nix engine subsystem configuration.
   nix = {
-    # Imperative channels.
+    # Activation state.
     # Path state management toggle.
     channel.enable = false;
 
@@ -22,7 +22,7 @@
       options = "--delete-older-than 14d";
     };
 
-    # Engine parameters.
+    # Option configuration.
     # Nix daemon options block.
     settings = {
       # Feature flags.
@@ -47,7 +47,9 @@
 
       # Download verification.
       # Cache signature public tokens.
-      trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
 
       # Repository alerts.
       # Uncommitted workspace status notifications.
@@ -71,7 +73,7 @@
   # Unfree license policy exemption.
   nixpkgs.config.allowUnfree = true;
 
-  # Manual generation.
+  # Build configuration.
   # System documentation build switch.
   documentation.enable = false;
 }

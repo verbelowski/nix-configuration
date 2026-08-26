@@ -32,11 +32,11 @@
     # Automatic upgrades.
     # Scheduled system rebuild routine.
     autoUpgrade = {
-      # Service activation.
+      # Activation state.
       # Background daemon execution switch.
       enable = true;
 
-      # Execution schedule.
+      # Execution interval.
       # Maintenance interval timing specification.
       dates = "weekly";
 

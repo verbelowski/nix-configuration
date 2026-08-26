@@ -2,7 +2,7 @@
   # Command interpreter.
   # Interactive terminal session customization.
   programs.zsh = {
-    # Shell activation.
+    # Activation state.
     # Zsh environment switch.
     enable = true;
 
@@ -21,15 +21,15 @@
       export VISUAL=nvim
     '';
 
-    # Command colorization.
+    # Activation state.
     # Real-time line syntax highlight.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the 26.11 release.
 
-    # Command prediction.
+    # Activation state.
     # History entry suggestion engine.
     autosuggestion.enable = true;
 
-    # Substring search.
+    # Activation state.
     # Partial command lookup utility.
     historySubstringSearch.enable = true;
 

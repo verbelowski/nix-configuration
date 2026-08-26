@@ -9,7 +9,7 @@
       enableUserSlices = true;
     };
 
-    # Failure diagnostics.
+    # Activation state.
     # Process memory dump generation.
     coredump.enable = false;
   };
@@ -18,7 +18,7 @@
   # Central runtime event buffer.
   services.journald = {
     # Log persistence.
-    # Transient memory placement strategy.
+    # Runtime data placement strategy.
     storage = "volatile";
 
     # Journal boundaries.

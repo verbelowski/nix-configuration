@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   # Hardware management.
   # Physical component firmware configuration.
   hardware = {
@@ -13,20 +13,24 @@
     # Visual stack.
     # Render framework baseline.
     graphics = {
-      # Acceleration pipeline.
+      # Activation state.
       # Direct GPU access switch.
       enable = true;
 
       # Legacy architecture.
       # 32-bit user library integration.
       enable32Bit = true;
+
+      # Video acceleration.
+      # Hardware decoding driver package.
+      extraPackages = with pkgs; [ nvidia-vaapi-driver ];
     };
 
     # Dedicated graphics card.
     # Proprietary driver configuration.
     nvidia = {
       # Kernel module type.
-      # Open-source driver variant selection.
+      # Driver architecture variant selection.
       open = true; # NOTE: `branch` defaults to `stable` if `datacenter.enable` is `false`.
 
       # Energy preservation.
@@ -49,7 +53,7 @@
     # Wayland compositor.
     # Dynamic tiling window environment.
     hyprland = {
-      # Compositor baseline.
+      # Activation state.
       # Display server session enablement.
       enable = true;
 
@@ -61,11 +65,11 @@
     # Performance profile.
     # Dynamic system optimization service.
     gamemode = {
-      # Service activation.
+      # Activation state.
       # Background daemon enablement.
       enable = true; # NOTE: `powerManagement.cpuFreqGovernor` switches from `powersave` to `performance` during gameplay.
 
-      # Execution parameters.
+      # Option configuration.
       # GameMode runtime setting block.
       settings.general = {
         # Process priority.

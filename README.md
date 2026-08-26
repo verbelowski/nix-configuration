@@ -58,6 +58,9 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   ├── git.nix
 │   │   │   ├── # Version control.
 │   │   │   ├── # Source code revision history.
+│   │   ├── hyprland.nix
+│   │   │   ├── # Wayland compositor.
+│   │   │   ├── # Dynamic tiling window manager.
 │   │   ├── neovim.nix
 │   │   │   ├── # Code editor.
 │   │   │   ├── # Terminal-based file modification interface.

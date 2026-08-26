@@ -2,7 +2,7 @@
   # Secure shell.
   # Encrypted remote access protocol.
   programs.ssh = {
-    # SSH activation.
+    # Activation state.
     # Connection client switch.
     enable = true;
 
@@ -10,7 +10,7 @@
     # Default client options toggle.
     enableDefaultConfig = false;
 
-    # Host options.
+    # Option configuration.
     # Connection lookup table.
     settings = {
       # Wildcard pattern.
@@ -29,7 +29,7 @@
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Connection probes.
-        # Keepalive packet transmission frequency.
+        # Keep-alive packet transmission frequency.
         ServerAliveInterval = 60;
 
         # Agent integration.

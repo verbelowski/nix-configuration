@@ -23,7 +23,7 @@
     };
   };
 
-  # Command interpreter.
+  # Shell integration.
   # Interactive session system integration.
   programs.zsh.enable = true;
 }

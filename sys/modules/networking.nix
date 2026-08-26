@@ -13,7 +13,7 @@
     # NetworkManager daemon.
     # System interface state parameters.
     networkmanager = {
-      # Controller state.
+      # Activation state.
       # Network management daemon status.
       enable = true;
 
@@ -42,11 +42,11 @@
   # Domain resolution.
   # Systemd DNS lookup service.
   services.resolved = {
-    # Service state.
+    # Activation state.
     # Local address lookup status.
     enable = true;
 
-    # Security parameters.
+    # Option configuration.
     # Encrypted transmission protocol options.
     settings.Resolve = {
       # Record validation.

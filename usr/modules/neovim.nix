@@ -2,7 +2,7 @@
   # Code editor.
   # Terminal-based file modification interface.
   programs.neovim = {
-    # Editor activation.
+    # Activation state.
     # Neovim application switch.
     enable = true;
 
