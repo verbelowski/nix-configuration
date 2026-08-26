@@ -1,6 +1,6 @@
 { ... }: {
-  # Text editor.
-  # Terminal-based source code interface.
+  # Code editor.
+  # Terminal-based file modification interface.
   programs.neovim = {
     # Editor activation.
     # Neovim application switch.

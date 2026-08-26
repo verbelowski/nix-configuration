@@ -36,8 +36,8 @@
     # History parameters.
     # Interactive session log options.
     history = {
-      # Duplicate exclusion.
-      # Repeated entry suppression flags.
+      # Identical records.
+      # Multiple command entry suppression.
       ignoreAllDups = true;
       ignoreSpace = true;
 

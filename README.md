@@ -49,7 +49,7 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   │   ├── # User profile definitions.
 │   ├── configuration.nix
 │   │   ├── # External modules.
-│   │   ├── # Hardware structural component declarations.
+│   │   ├── # System directory component declarations.
 │   ├── hardware-configuration.nix
 │   │   ├── # Storage mounts.
 │   │   ├── # Physical disk filesystem specifications.
@@ -59,8 +59,8 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   │   ├── # Version control.
 │   │   │   ├── # Source code revision history.
 │   │   ├── neovim.nix
-│   │   │   ├── # Text editor.
-│   │   │   ├── # Terminal-based source code interface.
+│   │   │   ├── # Code editor.
+│   │   │   ├── # Terminal-based file modification interface.
 │   │   ├── ssh.nix
 │   │   │   ├── # Secure shell.
 │   │   │   ├── # Encrypted remote access protocol.
@@ -69,7 +69,7 @@ Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
 │   │   │   ├── # Interactive terminal session customization.
 │   ├── home.nix
 │   │   ├── # External modules.
-│   │   ├── # User space component declarations.
+│   │   ├── # User directory component declarations.
 ├── flake.lock
 │   ├── # Dependency lockfile.
 │   ├── # Exact input revision pins.

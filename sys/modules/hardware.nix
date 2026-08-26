@@ -14,7 +14,7 @@
     # Render framework baseline.
     graphics = {
       # Acceleration pipeline.
-      # Direct GPU hardware access switch.
+      # Direct GPU access switch.
       enable = true;
 
       # Legacy architecture.
@@ -43,27 +43,43 @@
   # Primary graphics module selection.
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  # Performance profile.
-  # Dynamic system optimization service.
-  programs.gamemode = {
-    # Service activation.
-    # Background daemon enablement.
-    enable = true; # NOTE: `powerManagement.cpuFreqGovernor` switches from `powersave` to `performance` during gameplay.
+  # System applications.
+  # User environment execution suite.
+  programs = {
+    # Wayland compositor.
+    # Dynamic tiling window environment.
+    hyprland = {
+      # Compositor baseline.
+      # Display server session enablement.
+      enable = true;
 
-    # Execution parameters.
-    # GameMode runtime setting block.
-    settings.general = {
-      # Process priority.
-      # CPU scheduler override level.
-      renice = 10;
+      # Execution wrapper.
+      # Wayland session manager integration.
+      withUWSM = true;
+    };
 
-      # Screen preservation.
-      # Display idle timeout control.
-      inhibit_screensaver = 0;
+    # Performance profile.
+    # Dynamic system optimization service.
+    gamemode = {
+      # Service activation.
+      # Background daemon enablement.
+      enable = true; # NOTE: `powerManagement.cpuFreqGovernor` switches from `powersave` to `performance` during gameplay.
 
-      # Bus control.
-      # Atomic instruction boundary penalty.
-      disable_splitlock = 0; # NOTE: `split_lock_detect` protection is not disabled during gameplay.
+      # Execution parameters.
+      # GameMode runtime setting block.
+      settings.general = {
+        # Process priority.
+        # CPU scheduler override level.
+        renice = 10;
+
+        # Screen preservation.
+        # Display idle timeout control.
+        inhibit_screensaver = 0;
+
+        # Bus control.
+        # Atomic instruction boundary penalty.
+        disable_splitlock = 0; # NOTE: `split_lock_detect` protection is not disabled during gameplay.
+      };
     };
   };
 }

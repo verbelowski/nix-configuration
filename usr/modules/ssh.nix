@@ -33,7 +33,7 @@
         ServerAliveInterval = 60;
 
         # Agent integration.
-        # Automatic key import policy.
+        # Background key import policy.
         AddKeysToAgent = "yes";
       };
 

@@ -1,39 +1,60 @@
 { pkgs, vars, ... }: {
   # External modules.
-  # Hardware structural component declarations.
+  # System directory component declarations.
   imports = import ../lib/import-modules.nix {
     dir = ../sys/modules;
   };
 
-  # System software.
-  # Globally accessible binary packages.
-  environment.systemPackages = with pkgs; [ ];
+  # Platform domain.
+  # System profile resource specifications.
+  environment = {
+    # System software.
+    # Globally accessible binary packages.
+    systemPackages = with pkgs; [ ];
 
-  # Automatic upgrades.
-  # Scheduled system rebuild routine.
-  system.autoUpgrade = {
-    # Service activation.
-    # Background daemon execution switch.
-    enable = true;
+    # Runtime parameters.
+    # System environment variable definitions.
+    sessionVariables = {
+      # Graphics vendor.
+      # NVIDIA driver platform assignment.
+      LIBVA_DRIVER_NAME = "nvidia";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
 
-    # Execution schedule.
-    # Maintenance interval timing specification.
-    dates = "weekly";
-
-    # Target path.
-    # Flake repository configuration location.
-    flake = "/home/${vars.user.name}/nix-configuration#nixos";
-
-    # Update parameters.
-    # Lockfile input revision arguments.
-    flags = [ "--update-input" "nixpkgs" "--update-input" "home-manager" ];
-
-    # Automatic reboot.
-    # Post-update power cycle authorization.
-    allowReboot = true; # NOTE: `persistent` defaults to `true`, so missed weekly upgrades run on next boot.
+      # Acceleration mode.
+      # Direct hardware decode backend.
+      NVD_BACKEND = "direct";
+    };
   };
 
-  # State compatibility.
-  # Backwards migration release baseline.
-  system.stateVersion = vars.stateVersion;
+  # System scope.
+  # Machine platform lifecycle architecture.
+  system = {
+    # Automatic upgrades.
+    # Scheduled system rebuild routine.
+    autoUpgrade = {
+      # Service activation.
+      # Background daemon execution switch.
+      enable = true;
+
+      # Execution schedule.
+      # Maintenance interval timing specification.
+      dates = "weekly";
+
+      # Target path.
+      # Flake repository configuration location.
+      flake = "/home/${vars.user.name}/nix-configuration#nixos";
+
+      # Update parameters.
+      # Lockfile input revision arguments.
+      flags = [ "--update-input" "nixpkgs" "--update-input" "home-manager" ];
+
+      # Automatic reboot.
+      # Post-update power cycle authorization.
+      allowReboot = true; # NOTE: `persistent` defaults to `true`, so missed weekly upgrades run on next boot.
+    };
+
+    # State compatibility.
+    # Backwards migration release baseline.
+    stateVersion = vars.stateVersion;
+  };
 }

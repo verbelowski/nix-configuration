@@ -22,13 +22,13 @@
   # Evaluated system build specifications.
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     # Shared variables.
-    # Global configuration parameter set.
+    # Configuration parameter definition set.
     vars = import ./lib/shared-variables.nix {
       inherit (nixpkgs) lib;
     };
 
-    # Context map.
-    # System-wide argument delivery vector.
+    # Context propagation.
+    # Shared argument attribute map.
     sharedArgs = {
       inherit vars;
     };
@@ -51,22 +51,26 @@
         # Environment integration.
         # User space module wrapper.
         home-manager.nixosModules.home-manager {
-          # Package inheritance.
-          # Global software store reuse.
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          # Integration options.
+          # User space environment attributes.
+          home-manager = {
+            # Package inheritance.
+            # Global software store reuse.
+            useGlobalPkgs = true;
+            useUserPackages = true;
 
-          # Variable scope.
-          # Argument map injection rule.
-          home-manager.extraSpecialArgs = sharedArgs;
+            # Variable scope.
+            # Argument map injection rule.
+            extraSpecialArgs = sharedArgs;
 
-          # Backup extension.
-          # File collision safety suffix.
-          home-manager.backupFileExtension = "backup";
+            # Backup extension.
+            # File collision safety suffix.
+            backupFileExtension = "backup";
 
-          # User entrypoint.
-          # Profile configuration file path.
-          home-manager.users.${vars.user.name} = import ./usr/home.nix;
+            # User entrypoint.
+            # Profile configuration file path.
+            users.${vars.user.name} = import ./usr/home.nix;
+          };
         }
       ];
     };

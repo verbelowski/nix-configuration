@@ -28,7 +28,7 @@
       "udev.log_priority=3"
 
       # Console prompt.
-      # Virtual terminal cursor motion halt.
+      # Virtual cursor motion halt.
       "vt.global_cursor_default=0"
 
       # Processor features.
@@ -39,8 +39,8 @@
       # Machine check fault suppression.
       "mce=nobootlog"
 
-      # Storage interfaces.
-      # Serial transfer diagnostic suppression.
+      # Storage diagnostics.
+      # ATA DMA log suppression.
       "libata.force=1.00:nodmalog"
 
       # Memory allocation.
@@ -52,12 +52,12 @@
       "init_on_alloc=1"
       "init_on_free=1"
 
-      # Page location.
-      # Physical memory layout distribution.
+      # Page order.
+      # System memory block permutation.
       "page_alloc.shuffle=1"
 
       # Stack protection.
-      # System call offset variance.
+      # Kernel call offset randomization.
       "randomize_kstack_offset=on"
 
       # Virtual filesystems.
@@ -127,8 +127,8 @@
       "cramfs"
       "jffs2"
 
-      # Storage structures.
-      # Shared disk layout drivers.
+      # Enterprise filesystems.
+      # Shared disk volume drivers.
       "freevxfs"
       "gfs2"
 
@@ -213,7 +213,7 @@
       # Maximum connection capacity threshold.
       "net.core.somaxconn" = 65536;
 
-      # Input buffer.
+      # Device backlog.
       # Inbound packet queue ceiling.
       "net.core.netdev_max_backlog" = 250000;
 
@@ -230,8 +230,8 @@
       # Compiler mitigation level.
       "net.core.bpf_jit_harden" = 2;
 
-      # Handshake buffer.
-      # Half-open socket capacity limit.
+      # SYN backlog.
+      # Half-open connection capacity threshold.
       "net.ipv4.tcp_max_syn_backlog" = 65536;
 
       # Port allocation.
@@ -239,7 +239,7 @@
       "net.ipv4.ip_local_port_range" = "1024\t65535";
 
       # Connection reuse.
-      # Time-wait state socket reset.
+      # TIME-WAIT state socket reset.
       "net.ipv4.tcp_tw_reuse" = 1;
 
       # Termination duration.
@@ -259,8 +259,8 @@
       # SYN attack defense mechanism.
       "net.ipv4.tcp_syncookies" = 1;
 
-      # Teardown protection.
-      # Time-wait connection reset rule.
+      # Socket teardown.
+      # TIME-WAIT reset packet rejection.
       "net.ipv4.tcp_rfc1337" = 1;
 
       # Fast open.
@@ -291,12 +291,12 @@
       "net.ipv4.conf.all.send_redirects" = 0;
       "net.ipv4.conf.default.send_redirects" = 0;
 
-      # Page eviction.
-      # Physical memory swap ratio.
+      # Swap behavior.
+      # RAM cache protection level.
       "vm.swappiness" = 10;
 
       # Line protocols.
-      # TTY driver automatic load restriction.
+      # TTY driver load restriction.
       "dev.tty.ldisc_autoload" = 0;
     };
 
@@ -312,8 +312,8 @@
     # Automated boot directory clearance.
     tmp.cleanOnBoot = true;
 
-    # Memory compression.
-    # RAM page cache swap.
+    # Pool compression.
+    # Volatile memory page swap.
     zswap.enable = true;
 
     # Boot loader.

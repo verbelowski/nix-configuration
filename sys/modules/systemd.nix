@@ -14,22 +14,18 @@
     coredump.enable = false;
   };
 
-  # System daemons.
-  # Background process control infrastructure.
-  services = {
-    # Message collector.
-    # Central runtime event buffer.
-    journald = {
-      # Log persistence.
-      # Transient memory placement strategy.
-      storage = "volatile";
+  # Message collector.
+  # Central runtime event buffer.
+  services.journald = {
+    # Log persistence.
+    # Transient memory placement strategy.
+    storage = "volatile";
 
-      # Journal boundaries.
-      # Footprint size quota specifications.
-      extraConfig = ''
-        RuntimeMaxUse=500M
-        RuntimeMaxFileSize=50M
-      '';
-    };
+    # Journal boundaries.
+    # Footprint size quota specifications.
+    extraConfig = ''
+      RuntimeMaxUse=500M
+      RuntimeMaxFileSize=50M
+    '';
   };
 }

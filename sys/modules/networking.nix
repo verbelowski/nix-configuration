@@ -14,7 +14,7 @@
     # System interface state parameters.
     networkmanager = {
       # Controller state.
-      # Connection management daemon status.
+      # Network management daemon status.
       enable = true;
 
       # Log verbosity.
