@@ -26,7 +26,7 @@
       useTextGreeter = true; # TODO: Switch to `programs.regreet.enable` and remove `useTextGreeter` for GUI once the configuration is complete.
 
       # Session launcher.
-      # Default user session startup command.
+      # Default user environment command.
       settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
     };
   };

@@ -323,7 +323,7 @@
       # EFI binary selection daemon.
       systemd-boot = {
         # Activation state.
-        # Startup orchestrator activation switch.
+        # Startup orchestrator execution switch.
         enable = true;
 
         # Parameter editor.

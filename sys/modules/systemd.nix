@@ -9,7 +9,7 @@
       enableUserSlices = true;
     };
 
-    # Crash dump state.
+    # Diagnostic policy.
     # Process memory dump generation.
     coredump.enable = false;
   };

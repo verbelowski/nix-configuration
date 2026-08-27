@@ -3,7 +3,7 @@
   # Nix engine subsystem configuration.
   nix = {
     # Activation state.
-    # Path state management switch.
+    # Channel lookup management switch.
     channel.enable = false;
 
     # Store cleanup.
@@ -23,7 +23,7 @@
     };
 
     # Option configuration.
-    # Nix daemon options block.
+    # Nix daemon parameter block.
     settings = {
       # Feature flags.
       # Experimental engine capability switches.

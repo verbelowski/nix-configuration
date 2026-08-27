@@ -47,7 +47,7 @@
     enable = true;
 
     # Option configuration.
-    # Encrypted transmission protocol options.
+    # Encrypted transmission protocol settings.
     settings.Resolve = {
       # Record validation.
       # Cryptographic zone signature verification.

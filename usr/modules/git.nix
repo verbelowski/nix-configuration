@@ -7,7 +7,7 @@
     enable = true;
 
     # Option configuration.
-    # Central software workspace options.
+    # Central software workspace parameters.
     settings = {
       # Commit author.
       # Developer identity metadata defaults.
