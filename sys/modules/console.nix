@@ -27,7 +27,7 @@
 
       # Session launcher.
       # Default user environment command.
-      settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
+      settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
     };
   };
 }
