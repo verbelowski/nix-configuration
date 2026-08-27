@@ -9,7 +9,7 @@
       enableUserSlices = true;
     };
 
-    # Activation state.
+    # Crash dump state.
     # Process memory dump generation.
     coredump.enable = false;
   };

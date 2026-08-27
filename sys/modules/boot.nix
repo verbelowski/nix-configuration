@@ -348,7 +348,7 @@
 
       # Menu delay.
       # Startup selection countdown duration.
-      timeout = 3; # TODO: Set value to `0` once configuration is complete.
+      timeout = 3; # TODO: Set value to `0` once the configuration is complete.
     };
   };
 }
