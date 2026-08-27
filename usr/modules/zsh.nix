@@ -21,15 +21,15 @@
       export VISUAL=nvim
     '';
 
-    # Activation state.
+    # Syntax formatting.
     # Real-time line syntax highlight.
     syntaxHighlighting.enable = true; # TODO: Switch to `fastSyntaxHighlighting` in the 26.11 release.
 
-    # Activation state.
+    # Command completion.
     # History entry suggestion engine.
     autosuggestion.enable = true;
 
-    # Activation state.
+    # History search.
     # Partial command lookup utility.
     historySubstringSearch.enable = true;
 

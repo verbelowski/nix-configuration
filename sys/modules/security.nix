@@ -7,7 +7,7 @@
     sudo = {
       # Password prompt.
       # Escalation authentication requirement flag.
-      wheelNeedsPassword = false; # TODO: Remove this option for security reasons once configuration is complete.
+      wheelNeedsPassword = false; # TODO: Remove this option for security reasons once the configuration is complete.
 
       # Wheel boundary.
       # Superuser access restriction switch.

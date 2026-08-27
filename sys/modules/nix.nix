@@ -3,7 +3,7 @@
   # Nix engine subsystem configuration.
   nix = {
     # Activation state.
-    # Path state management toggle.
+    # Path state management switch.
     channel.enable = false;
 
     # Store cleanup.
@@ -72,6 +72,6 @@
   nixpkgs.config.allowUnfree = true;
 
   # Build configuration.
-  # System documentation build switch.
+  # System documentation build toggle.
   documentation.enable = false;
 }

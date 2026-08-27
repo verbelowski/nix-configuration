@@ -54,7 +54,7 @@
     # Dynamic tiling window environment.
     hyprland = {
       # Activation state.
-      # Display server session enablement.
+      # Display server session switch.
       enable = true;
 
       # Execution wrapper.
@@ -66,7 +66,7 @@
     # Dynamic system optimization service.
     gamemode = {
       # Activation state.
-      # Background daemon enablement.
+      # Background daemon switch.
       enable = true; # NOTE: `powerManagement.cpuFreqGovernor` switches from `powersave` to `performance` during gameplay.
 
       # Option configuration.
