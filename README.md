@@ -1,6 +1,6 @@
 # nix-configuration
 
-Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.
+Personal NixOS configuration with Hyprland and Noctalia shell dotfiles.
 
 > [!WARNING]
 > **Notice & Disclaimer**

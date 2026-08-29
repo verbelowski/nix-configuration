@@ -239,7 +239,7 @@
       "net.ipv4.ip_local_port_range" = "1024\t65535";
 
       # Connection reuse.
-      # TIME-WAIT state socket reset.
+      # TIME_WAIT state socket reset.
       "net.ipv4.tcp_tw_reuse" = 1;
 
       # Termination duration.
@@ -260,7 +260,7 @@
       "net.ipv4.tcp_syncookies" = 1;
 
       # Socket teardown.
-      # TIME-WAIT reset packet rejection.
+      # TIME_WAIT reset packet rejection.
       "net.ipv4.tcp_rfc1337" = 1;
 
       # Fast open.

@@ -1,7 +1,7 @@
 {
   # Project metadata.
   # Complete system scope summary.
-  description = "Personal NixOS configuration with Hyprland and Caelestia shell dotfiles.";
+  description = "Personal NixOS configuration with Hyprland and Noctalia shell dotfiles.";
 
   # External dependencies.
   # Flake channel input sources.
