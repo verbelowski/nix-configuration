@@ -7,18 +7,18 @@ This is a personal configuration and I do not expect contributions, but these ru
 1. **Two-part structure**: every comment consists of exactly two single-line parts, a header and a description.
 2. **Header length**: a thematic title of two or three words, preferring two unless that makes it ambiguous.
 3. **No verbs**: both the header and the description are noun phrases.
-4. **One fact**: the description states exactly one cohesive fact that expands the header. Unrelated facts joined by conjunctions need separate comments.
-5. **Enumerations**: comma-separated lists only for values that are inherently made of equivalent parts. Otherwise use one uniform noun phrase.
+4. **One fact**: the description states one cohesive fact that expands the header. Facts joined by conjunctions need separate comments.
+5. **Enumerations**: comma-separated lists only for values made of equivalent parts. Otherwise use one uniform noun phrase.
 6. **No repetition**: no word or synonym is repeated within one comment.
-7. **Cross-file consistency**: comments documenting the same key in different files share an identical header. The description adapts to the context.
+7. **Cross-file consistency**: comments for the same key across files share an identical header. Descriptions adapts to context.
 8. **Precise vocabulary**: avoid vague words such as `all`, `additional`, `extra`, `various`, `other`, `some`.
 9. **Abbreviations**: only universally recognized acronyms (`API`, `HTTP`). Spell out everything else (`information`, `configuration`, `directory`).
 10. **US English**: use US spelling throughout (`color`, not `colour`).
 11. **Punctuation**: both parts end with a period, and the description starts with a capital letter.
-12. **Placement**: directly above the documented code, with no blank line in between. Inline comments are only allowed with a `NOTE`, `TODO` or `FIXME` prefix.
+12. **Placement**: directly above the documented code, without a blank line. Inline comments require a `NOTE`, `TODO` or `FIXME` prefix.
 13. **Line length**: at most `80` characters per line.
 14. **No redundancy**: do not state what the adjacent code already says, including purpose clauses ("for X") that restate visible syntax. A comment must add information beyond the syntax, such as the reason or the constraint.
-15. **Value independence**: describe the option's role or category, not its current value. Descriptions of lists stay valid when entries are added or removed.
+15. **Value independence**: describe the option's role or category, not its current value. Descriptions of lists stay valid as entries change.
 16. **Proportional length**: the description has at most twice as many words as the header.
 
 ## Examples
